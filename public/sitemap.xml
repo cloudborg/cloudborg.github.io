@@ -2,17 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/blog/</loc>
-    <lastmod>2024-08-24T01:19:13+05:30</lastmod>
-  </url><url>
     <loc>http://localhost:1313/blog/gcp/gcp-ngfw/</loc>
     <lastmod>2024-08-24T01:19:13+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/k8s/kubernetes-hw/</loc>
     <lastmod>2024-08-24T01:18:30+05:30</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/blog/aws/</loc>
-    <lastmod>2024-08-24T01:13:21+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/blog/aws/aws-control-tower/</loc>
     <lastmod>2024-08-24T01:13:21+05:30</lastmod>
@@ -23,7 +17,19 @@
     <loc>http://localhost:1313/blog/aws/aws-networking/</loc>
     <lastmod>2024-08-24T00:29:36+05:30</lastmod>
   </url><url>
+    <loc>http://localhost:1313/blog/aws/</loc>
+    <lastmod>2024-08-24T00:01:57+05:30</lastmod>
+  </url><url>
     <loc>http://localhost:1313/docs/</loc>
+    <lastmod>2024-08-24T00:01:57+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/gcp/</loc>
+    <lastmod>2024-08-24T00:01:57+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/</loc>
+    <lastmod>2024-08-24T00:01:57+05:30</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/k8s/</loc>
     <lastmod>2024-08-24T00:01:57+05:30</lastmod>
   </url><url>
     <loc>http://localhost:1313/</loc>
