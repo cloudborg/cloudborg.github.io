@@ -12,7 +12,7 @@ draft = false
 
 #### Why might I want to use Transit VPCs instead of Transit Gateways?
 
-Transit Gateways provide no capability to examine the content of transitive traffic. This would need to be done using EC2-hosted software in a transit VPC. 
+[AWS Transit Gateways](https://docs.aws.amazon.com/vpc/latest/tgw/what-is-transit-gateway.html) provide no capability to examine the content of transitive traffic. This would need to be done using EC2-hosted software in a transit VPC. 
 
 - Transit VPCs are an un-managed option, requiring more effort from the customer to manage resources. 
 
