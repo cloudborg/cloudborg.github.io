@@ -1,0 +1,172 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloudborg – Abouts</title>
+    <link>http://localhost:1313/about/</link>
+    <description>Recent content in Abouts on Cloudborg</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 24 Aug 2024 00:01:56 +0530</lastBuildDate>
+    
+	  <atom:link href="http://localhost:1313/about/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Cloudborg Techs</title>
+      <link>http://localhost:1313/about/_index-copy/</link>
+      <pubDate>Sat, 24 Aug 2024 00:01:56 +0530</pubDate>
+      
+      <guid>http://localhost:1313/about/_index-copy/</guid>
+      <description>
+        
+        
+        &lt;div
+  class=&#34; hextra-feature-grid hx-grid sm:max-lg:hx-grid-cols-2 max-sm:hx-grid-cols-1 hx-gap-4 hx-w-full not-prose&#34;
+  style=&#34;--hextra-feature-grid-cols: 2; &#34;
+&gt;
+  &lt;div class=&#34;hx-w-full&#34;&gt;
+    
+&lt;div class=&#34;hx-mt-6 hx-mb-6&#34;&gt;
+&lt;h1
+  class=&#34;not-prose hx-text-4xl hx-font-bold hx-leading-none hx-tracking-tighter md:hx-text-5xl hx-py-2 hx-bg-clip-text hx-text-transparent hx-bg-gradient-to-r hx-from-gray-900 hx-to-gray-600 dark:hx-from-gray-100 dark:hx-to-gray-400&#34;
+  
+&gt;
+  Learn Technologies
+&lt;/h1&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&#34;hx-mt-6 hx-mb-6&#34;&gt;
+&lt;p
+  class=&#34;not-prose hx-text-xl hx-text-gray-600 dark:hx-text-gray-400 sm:hx-text-xl&#34;
+  
+&gt;
+  Documentation and tutorials to architect, deploy, manage your cloud infrastructure.
+&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;div class=&#34;hx-mt-6 hx-mb-6&#34;&gt;
+&lt;a
+  href=&#34;wiki&#34;
+  class=&#34;not-prose hx-font-medium hx-cursor-pointer hx-px-6 hx-py-3 hx-rounded-full hx-text-center hx-text-white hx-inline-block hx-bg-primary-600 hover:hx-bg-primary-700 focus:hx-outline-none focus:hx-ring-4 focus:hx-ring-primary-300 dark:hx-bg-primary-600 dark:hover:hx-bg-primary-700 dark:focus:hx-ring-primary-800 hx-transition-all hx-ease-in hx-duration-200&#34;
+  
+  &gt;Get Started&lt;/a&gt;
+
+&lt;/div&gt;
+
+  &lt;/div&gt;
+  &lt;div class=&#34;hx-mx-auto&#34;&gt;
+    &lt;a
+      
+      
+      class=&#34; &#34;
+    &gt;
+      &lt;img src=&#34;images/kind.png&#34; width=&#34;350&#34; height=&#34;350&#34; alt=&#34;Kubernetes Services&#34;/&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;div
+  class=&#34;hextra-feature-grid hx-grid sm:max-lg:hx-grid-cols-2 max-sm:hx-grid-cols-1 hx-gap-4 hx-w-full not-prose&#34;
+  style=&#34;--hextra-feature-grid-cols: 3; &#34;
+&gt;
+  
+  &lt;a
+    href=&#34;https://kubernetes.io/&#34;  target=&#34;_blank&#34; rel=&#34;noreferrer&#34;
+    
+    class=&#34; hextra-feature-card not-prose hx-block hx-relative hx-overflow-hidden hx-rounded-3xl hx-border hx-border-gray-200 hover:hx-border-gray-300 dark:hx-border-neutral-800 dark:hover:hx-border-neutral-700 before:hx-pointer-events-none before:hx-absolute before:hx-inset-0 before:hx-bg-glass-gradient&#34;
+  &gt;
+    &lt;div class=&#34;hx-relative hx-w-full hx-p-6&#34;&gt;
+      &lt;h3 class=&#34;hx-text-2xl hx-font-medium hx-leading-6 hx-mb-2 hx-flex hx-items-center&#34;&gt;
+        &lt;span&gt;Kubernetes&lt;/span&gt;
+      &lt;/h3&gt;
+      &lt;p class=&#34;hx-text-gray-500 dark:hx-text-gray-400 hx-text-sm hx-leading-6&#34;&gt;Learn Kubernetes on AWS, GCP, Azure, Tanzu, OSS.&lt;/p&gt;
+    &lt;/div&gt;&lt;/a&gt;
+
+  &lt;a
+    href=&#34;blog/aws/&#34; 
+    
+    class=&#34; hextra-feature-card not-prose hx-block hx-relative hx-overflow-hidden hx-rounded-3xl hx-border hx-border-gray-200 hover:hx-border-gray-300 dark:hx-border-neutral-800 dark:hover:hx-border-neutral-700 before:hx-pointer-events-none before:hx-absolute before:hx-inset-0 before:hx-bg-glass-gradient&#34;
+  &gt;
+    &lt;div class=&#34;hx-relative hx-w-full hx-p-6&#34;&gt;
+      &lt;h3 class=&#34;hx-text-2xl hx-font-medium hx-leading-6 hx-mb-2 hx-flex hx-items-center&#34;&gt;
+        &lt;span&gt;Amazon Web Services (AWS)&lt;/span&gt;
+      &lt;/h3&gt;
+      &lt;p class=&#34;hx-text-gray-500 dark:hx-text-gray-400 hx-text-sm hx-leading-6&#34;&gt;Learn the fundamentals best practices on Amazon Web Services&lt;/p&gt;
+    &lt;/div&gt;&lt;/a&gt;
+
+  &lt;a
+    href=&#34;https://cloud.google.com/?hl=en&#34;  target=&#34;_blank&#34; rel=&#34;noreferrer&#34;
+    
+    class=&#34; hextra-feature-card not-prose hx-block hx-relative hx-overflow-hidden hx-rounded-3xl hx-border hx-border-gray-200 hover:hx-border-gray-300 dark:hx-border-neutral-800 dark:hover:hx-border-neutral-700 before:hx-pointer-events-none before:hx-absolute before:hx-inset-0 before:hx-bg-glass-gradient&#34;
+  &gt;
+    &lt;div class=&#34;hx-relative hx-w-full hx-p-6&#34;&gt;
+      &lt;h3 class=&#34;hx-text-2xl hx-font-medium hx-leading-6 hx-mb-2 hx-flex hx-items-center&#34;&gt;
+        &lt;span&gt;Google Cloud Platform (GCP)&lt;/span&gt;
+      &lt;/h3&gt;
+      &lt;p class=&#34;hx-text-gray-500 dark:hx-text-gray-400 hx-text-sm hx-leading-6&#34;&gt;Design and operate GCP deployments in secure, efficient, resilient, high-performing, and cost-effective way.&lt;/p&gt;
+    &lt;/div&gt;&lt;/a&gt;
+
+  &lt;a
+    href=&#34;https://www.terraform.io/&#34;  target=&#34;_blank&#34; rel=&#34;noreferrer&#34;
+    
+    class=&#34; hextra-feature-card not-prose hx-block hx-relative hx-overflow-hidden hx-rounded-3xl hx-border hx-border-gray-200 hover:hx-border-gray-300 dark:hx-border-neutral-800 dark:hover:hx-border-neutral-700 before:hx-pointer-events-none before:hx-absolute before:hx-inset-0 before:hx-bg-glass-gradient&#34;
+  &gt;
+    &lt;div class=&#34;hx-relative hx-w-full hx-p-6&#34;&gt;
+      &lt;h3 class=&#34;hx-text-2xl hx-font-medium hx-leading-6 hx-mb-2 hx-flex hx-items-center&#34;&gt;
+        &lt;span&gt;Terraform&lt;/span&gt;
+      &lt;/h3&gt;
+      &lt;p class=&#34;hx-text-gray-500 dark:hx-text-gray-400 hx-text-sm hx-leading-6&#34;&gt;Most Popular IaC&lt;/p&gt;
+    &lt;/div&gt;&lt;/a&gt;
+
+  &lt;a
+    href=&#34;https://fluxcd.io/&#34;  target=&#34;_blank&#34; rel=&#34;noreferrer&#34;
+    
+    class=&#34; hextra-feature-card not-prose hx-block hx-relative hx-overflow-hidden hx-rounded-3xl hx-border hx-border-gray-200 hover:hx-border-gray-300 dark:hx-border-neutral-800 dark:hover:hx-border-neutral-700 before:hx-pointer-events-none before:hx-absolute before:hx-inset-0 before:hx-bg-glass-gradient&#34;
+  &gt;
+    &lt;div class=&#34;hx-relative hx-w-full hx-p-6&#34;&gt;
+      &lt;h3 class=&#34;hx-text-2xl hx-font-medium hx-leading-6 hx-mb-2 hx-flex hx-items-center&#34;&gt;
+        &lt;span&gt;GitOps&lt;/span&gt;
+      &lt;/h3&gt;
+      &lt;p class=&#34;hx-text-gray-500 dark:hx-text-gray-400 hx-text-sm hx-leading-6&#34;&gt;FluxCD by Weaveworks, ArgoCD and Github Action&lt;/p&gt;
+    &lt;/div&gt;&lt;/a&gt;
+
+  &lt;a
+    href=&#34;https://aws.amazon.com/what-is/cloud-networking/&#34;  target=&#34;_blank&#34; rel=&#34;noreferrer&#34;
+    
+    class=&#34; hextra-feature-card not-prose hx-block hx-relative hx-overflow-hidden hx-rounded-3xl hx-border hx-border-gray-200 hover:hx-border-gray-300 dark:hx-border-neutral-800 dark:hover:hx-border-neutral-700 before:hx-pointer-events-none before:hx-absolute before:hx-inset-0 before:hx-bg-glass-gradient&#34;
+  &gt;
+    &lt;div class=&#34;hx-relative hx-w-full hx-p-6&#34;&gt;
+      &lt;h3 class=&#34;hx-text-2xl hx-font-medium hx-leading-6 hx-mb-2 hx-flex hx-items-center&#34;&gt;
+        &lt;span&gt;Networking&lt;/span&gt;
+      &lt;/h3&gt;
+      &lt;p class=&#34;hx-text-gray-500 dark:hx-text-gray-400 hx-text-sm hx-leading-6&#34;&gt;Cloud and Kubernetes Networking&lt;/p&gt;
+    &lt;/div&gt;&lt;/a&gt;
+
+  &lt;a
+    href=&#34;https://www.cloudflare.com/learning/performance/what-is-load-balancing/&#34;  target=&#34;_blank&#34; rel=&#34;noreferrer&#34;
+    
+    class=&#34; hextra-feature-card not-prose hx-block hx-relative hx-overflow-hidden hx-rounded-3xl hx-border hx-border-gray-200 hover:hx-border-gray-300 dark:hx-border-neutral-800 dark:hover:hx-border-neutral-700 before:hx-pointer-events-none before:hx-absolute before:hx-inset-0 before:hx-bg-glass-gradient&#34;
+  &gt;
+    &lt;div class=&#34;hx-relative hx-w-full hx-p-6&#34;&gt;
+      &lt;h3 class=&#34;hx-text-2xl hx-font-medium hx-leading-6 hx-mb-2 hx-flex hx-items-center&#34;&gt;
+        &lt;span&gt;Load Balancers&lt;/span&gt;
+      &lt;/h3&gt;
+      &lt;p class=&#34;hx-text-gray-500 dark:hx-text-gray-400 hx-text-sm hx-leading-6&#34;&gt;Reliable, high-performance TCP/HTTP load balancer and proxy.&lt;/p&gt;
+    &lt;/div&gt;&lt;/a&gt;
+
+  
+
+&lt;/div&gt;
+
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

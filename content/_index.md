@@ -30,38 +30,26 @@ draft = false
   {{< hextra/feature-card
     title="Kubernetes"
     subtitle="Learn Kubernetes on AWS, GCP, Azure, Tanzu, OSS."
-    class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[140px]"
-    image="images/kubernetes-icon.png"
-    imageClass="hx-top-[20%] hx-left-[14px] hx-w-[80%] sm:hx-w-[50%] dark:hx-opacity-80"
     link="https://kubernetes.io/"
-    style="background: radial-gradient(ellipse at 50% 80%,rgba(221,210,59,0.15),hsla(0,0%,100%,0));"
   >}}
   {{< hextra/feature-card
     title="Amazon Web Services (AWS)"
     subtitle="Learn the fundamentals best practices on Amazon Web Services"
-    class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[140px]"
-    image="images/aws-icon.svg"
-    imageClass="hx-top-[20%] hx-left-[14px] hx-w-[20%] sm:hx-w-[40%] dark:hx-opacity-80"
     link="blog/aws/"
-    style="background: radial-gradient(ellipse at 50% 80%,rgba(194,97,254,0.15),hsla(0,0%,100%,0));"
   >}}
   {{< hextra/feature-card
     title="Google Cloud Platform (GCP)"
     subtitle="Design and operate GCP deployments in secure, efficient, resilient, high-performing, and cost-effective way."
-    class="hx-aspect-auto md:hx-aspect-[1.1/1] max-md:hx-min-h-[40px]"
-    image="images/google-cloud-icon.png"
-    imageClass="hx-top-[0%] hx-left-[24px] hx-w-[180%] sm:hx-w-[110%] dark:hx-opacity-80"
     link="https://cloud.google.com/?hl=en"
-    style="background: radial-gradient(ellipse at 50% 80%,rgba(142,53,74,0.15),hsla(0,0%,100%,0));"
   >}}
   {{< hextra/feature-card
-    title="ArgoCD"
-    subtitle="Declarative, GitOps continuous delivery tool for Kubernetes, with a fully-loaded UI."
-    link="https://argoproj.github.io/cd"
+    title="Terraform"
+    subtitle="Most Popular IaC"
+    link="https://www.terraform.io/"
   >}}
   {{< hextra/feature-card
-    title="FluxCD"
-    subtitle="Cloud native certificate management for Kubernetes, with production certificates provided by Cloudflare."
+    title="GitOps"
+    subtitle="FluxCD by Weaveworks, ArgoCD and Github Action"
     link="https://fluxcd.io/"
   >}}
   {{< hextra/feature-card
