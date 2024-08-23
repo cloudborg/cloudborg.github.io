@@ -1,0 +1,165 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloudborg – </title>
+    <link>http://localhost:1313/blog/aws/</link>
+    <description>Recent content on Cloudborg</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 24 Aug 2024 01:13:21 +0530</lastBuildDate>
+    
+	  <atom:link href="http://localhost:1313/blog/aws/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Aws Control Tower</title>
+      <link>http://localhost:1313/blog/aws/aws-control-tower/</link>
+      <pubDate>Sat, 24 Aug 2024 01:13:21 +0530</pubDate>
+      
+      <guid>http://localhost:1313/blog/aws/aws-control-tower/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>Aws Transit Gateway</title>
+      <link>http://localhost:1313/blog/aws/aws-transit-gateway/</link>
+      <pubDate>Sat, 24 Aug 2024 00:44:23 +0530</pubDate>
+      
+      <guid>http://localhost:1313/blog/aws/aws-transit-gateway/</guid>
+      <description>
+        
+        
+        &lt;h1&gt;Overview&lt;/h1&gt;&lt;p&gt;
+    &lt;img src=&#34;../images/aws-transit-gw.png&#34; alt=&#34;tgw&#34; loading=&#34;lazy&#34; /&gt;&lt;/p&gt;
+&lt;h4&gt;Why might I want to use Transit VPCs instead of Transit Gateways?&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;why-might-i-want-to-use-transit-vpcs-instead-of-transit-gateways&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#why-might-i-want-to-use-transit-vpcs-instead-of-transit-gateways&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Transit Gateways provide no capability to examine the content of transitive traffic. This would need to be done using EC2-hosted software in a transit VPC.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Transit VPCs are an un-managed option, requiring more effort from the customer to manage resources.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Applying security controls to traffic entering a single, shared-services VPC, or traffic leaving your network for the internet can be accomplished by routing traffic via a Transit Gateway to a spoke VPC, and does not require use of a Transit VPC.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Which Direct Connect components cannot directly interact with Transit VPC architecture?&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;which-direct-connect-components-cannot-directly-interact-with-transit-vpc-architecture&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#which-direct-connect-components-cannot-directly-interact-with-transit-vpc-architecture&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Transit VIF&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Direct Connect Gateway&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Public VIF&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For Direct Connect components to interact with a Transit VPC architecture, they must be able to associate with a detached Virtual Private Gateway. Public and Transit VIFs cannot associate with VGWs, while Direct Connect Gateways may only associate with VGWs that are attached to a VPC.&lt;/p&gt;
+&lt;h4&gt;After creating a Transit Gateway infrastructure with default settings, you realize that, while some networks must be accessible from all networks, other networks should be isolated from each other. Which steps must be performed to configure new route tables for restricted networks while continue using the default route table for shared networks?&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;after-creating-a-transit-gateway-infrastructure-with-default-settings-you-realize-that-while-some-networks-must-be-accessible-from-all-networks-other-networks-should-be-isolated-from-each-other-which-steps-must-be-performed-to-configure-new-route-tables-for-restricted-networks-while-continue-using-the-default-route-table-for-shared-networks&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#after-creating-a-transit-gateway-infrastructure-with-default-settings-you-realize-that-while-some-networks-must-be-accessible-from-all-networks-other-networks-should-be-isolated-from-each-other-which-steps-must-be-performed-to-configure-new-route-tables-for-restricted-networks-while-continue-using-the-default-route-table-for-shared-networks&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Disassociate the restricted networks from their current route table and associate them with a new route table containing routes to the shared networks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create additional route tables as needed for your restricted networks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Configure the shared networks to propagate routes to a new route table. This will allow traffic to be routed from your shared networks to your restricted networks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Which of the following statements about VPC attachments to Transit Gateways are true?&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;which-of-the-following-statements-about-vpc-attachments-to-transit-gateways-are-true&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#which-of-the-following-statements-about-vpc-attachments-to-transit-gateways-are-true&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;VPC attachments to TGWs must have at least one subnet associated.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;AWS customers are charged per TGW attachment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;VPCs propagate their CIDR to appropriate TGW route tables, not their local or static routes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Routes from the associated TGW route table are never propagated to VPC route tables. Routes from the VPC to the Transit Gateway must be added manually.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Transit VPCs support transitive networking by:&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;transit-vpcs-support-transitive-networking-by&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#transit-vpcs-support-transitive-networking-by&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Transit VPCs support transitive networking by hosting software VPN systems that connect to other VPCs using site-to-site VPN connections.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Allowing other VPCs to establish site-to-site VPN connections with the transit VPC&amp;rsquo;s VGW or establishing VPC peering relationships to other VPCs will not create transitive networks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;While using dynamic routing to distribute VPC prefixes throughout the network is recommended, it alone does not enable transitive networking.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;A Transit Gateway receives traffic destined for 192.168.1.34. Which of the following route table entries will be used?&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;a-transit-gateway-receives-traffic-destined-for-192168134-which-of-the-following-route-table-entries-will-be-used&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#a-transit-gateway-receives-traffic-destined-for-192168134-which-of-the-following-route-table-entries-will-be-used&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;The TGW will use the 192.168.1.0/24 static route to a DX Gateway.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Routes with longer prefixes are preferred, then static over propagated routes. Finally, within propagated routes, VPC over Direct Connect over VPN. In this scenario, all routes have the same prefix length, but only one route is static.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Which of the following statements about AWS Site-to-Site VPN attachments to Transit Gateways are true?&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;which-of-the-following-statements-about-aws-site-to-site-vpn-attachments-to-transit-gateways-are-true&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#which-of-the-following-statements-about-aws-site-to-site-vpn-attachments-to-transit-gateways-are-true&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;TGW VPN attachments create a VPN connection to a new or existing Customer Gateway in the same region, not to Virtual Private Gateways.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;VPN attachments also incur standard AWS Site-to-Site VPN charges in addition to TGW attachment charges.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Both static and dynamic routing are supported for VPN attachments.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;By default, each Transit Gateway attachment may propagate to how many TGW route tables?&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;by-default-each-transit-gateway-attachment-may-propagate-to-how-many-tgw-route-tables&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#by-default-each-transit-gateway-attachment-may-propagate-to-how-many-tgw-route-tables&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;TGW attachments may propagate to as many route tables as the TGW can support, which by default is 20.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;An organization using a Transit Gateway architecture wants to have all internet-bound traffic processed by customer-managed security appliances in a DMZ network. Traffic to known bad-actor networks should be prevented while minimizing traffic to the DMZ network. Which of the following features should be used to enable proper routing?&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;an-organization-using-a-transit-gateway-architecture-wants-to-have-all-internet-bound-traffic-processed-by-customer-managed-security-appliances-in-a-dmz-network-traffic-to-known-bad-actor-networks-should-be-prevented-while-minimizing-traffic-to-the-dmz-network-which-of-the-following-features-should-be-used-to-enable-proper-routing&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#an-organization-using-a-transit-gateway-architecture-wants-to-have-all-internet-bound-traffic-processed-by-customer-managed-security-appliances-in-a-dmz-network-traffic-to-known-bad-actor-networks-should-be-prevented-while-minimizing-traffic-to-the-dmz-network-which-of-the-following-features-should-be-used-to-enable-proper-routing&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Default routes should be used in applicable TGW route tables to send internet-bound traffic to the designated network attachment. Blackhole routes to the bad-actor networks should be created in TGW route tables to cause matching traffic to be dropped by the TGW before it reaches the DMZ network.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Additional TGW route tables and TGW peering might be required depending on other network needs, but the question does not specify any situations requiring them.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If the DMZ network is hosted in AWS, then an Internet Gateway would be needed, but the question does not specify where the DMZ network is located.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;While Network ACLs in a VPC could prevent traffic to the bad-actor networks, the traffic would only be blocked as it is leaving the DMZ network, which does not satisfy the scenario requirement to minimize traffic to the DMZ network.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;The simplest way for an on-prem network to interconnect to a transit VPC architecture using VPN is to:&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;the-simplest-way-for-an-on-prem-network-to-interconnect-to-a-transit-vpc-architecture-using-vpn-is-to&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#the-simplest-way-for-an-on-prem-network-to-interconnect-to-a-transit-vpc-architecture-using-vpn-is-to&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;The simplest way for an on-prem network to interconnect to a transit VPC architecture using VPN is to connect to the EC2-hosted VPN systems in the transit VPC. If dynamic routing is used for all connections, the on-prem network will be able to reach all of the spoke VPC networks.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Connecting to a VGW attached to the transit VPC would prevent transitive communication to the spoke VPCs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Connect to the VGWs attached to each spoke VPC could allow full connectivity but is not the simplest option.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Connect to a Client VPN endpoint in the transit VPC could allow full connectivity but is not the simplest option.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;&lt;strong&gt;True or false&lt;/strong&gt;: spoke VPCs connected to a transit VPC can have direct communication by provisioning a fully operational peering connection between the two spoke VPCs.&lt;span class=&#34;hx-absolute -hx-mt-20&#34; id=&#34;true-or-false-spoke-vpcs-connected-to-a-transit-vpc-can-have-direct-communication-by-provisioning-a-fully-operational-peering-connection-between-the-two-spoke-vpcs&#34;&gt;&lt;/span&gt;
+    &lt;a href=&#34;#true-or-false-spoke-vpcs-connected-to-a-transit-vpc-can-have-direct-communication-by-provisioning-a-fully-operational-peering-connection-between-the-two-spoke-vpcs&#34; class=&#34;subheading-anchor&#34; aria-label=&#34;Permalink for this section&#34;&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;TRUE&lt;/strong&gt;.Spoke VPCs may be directly peered together, but static routes to the peered VPCs must still be added to their route tables, otherwise traffic will still flow through the Transit VPC, as long as appropriate routes are in place.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>AWS Networking</title>
+      <link>http://localhost:1313/blog/aws/aws-networking/</link>
+      <pubDate>Sat, 24 Aug 2024 00:29:36 +0530</pubDate>
+      
+      <guid>http://localhost:1313/blog/aws/aws-networking/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
