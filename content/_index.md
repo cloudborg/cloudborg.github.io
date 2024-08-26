@@ -6,7 +6,7 @@ draft = false
 
 
 {{< hextra/hero-container
-  image="images/kind.png"
+  image="images/cloudborg-logo.svg"
   imageTitle="Kubernetes Services"
 >}}
 <div class="hx-mt-6 hx-mb-6">
