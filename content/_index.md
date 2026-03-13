@@ -40,7 +40,7 @@ draft = false
   {{< hextra/feature-card
     title="Google Cloud Platform (GCP)"
     subtitle="Design and operate GCP deployments in secure, efficient, resilient, high-performing, and cost-effective way."
-    link="https://cloud.google.com/?hl=en"
+    link="blog/gcp/"
   >}}
   {{< hextra/feature-card
     title="Terraform"
@@ -53,14 +53,14 @@ draft = false
     link="https://fluxcd.io/"
   >}}
   {{< hextra/feature-card
-    title="Networking"
-    subtitle="Cloud and Kubernetes Networking"
-    link="https://aws.amazon.com/what-is/cloud-networking/"
+    title="Enterprise Architecture"
+    subtitle="Enterprise Architecture"
+    link="https://en.wikipedia.org/wiki/Enterprise_architecture_framework"
   >}}
   {{< hextra/feature-card
-    title="Load Balancers"
-    subtitle="Reliable, high-performance TCP/HTTP load balancer and proxy."
-    link="https://www.cloudflare.com/learning/performance/what-is-load-balancing/"
+    title="Philosophy"
+    subtitle="The art of asking the right questions"
+    link="https://www.openaccessgovernment.org/philosophy-the-art-of-asking-the-right-questions/189680/"
   >}}
   
 {{< /hextra/feature-grid >}}
