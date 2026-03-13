@@ -8,30 +8,44 @@
 <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
 <link fetchpriority="low" href="/site.webmanifest" rel="manifest" />
-<title>Blogs – Cloudborg</title>
-  <meta name="description" content="" /><link rel="canonical" href="http://localhost:1313/blog/" itemprop="url" />
+<title>AWS Migration Overview with Zachman Framework &amp; Best Practices – Cloudborg</title>
+  <meta name="description" content="The Zachman Framework The Zachman Framework is an enterprise architecture framework created by John Zachman in 1987. It’s essentially a two-dimensional classification schema for organizing architectural artifacts of an enterprise — think of it as a structured way to describe any complex system from multiple perspectives.
+The Grid: Two Axes Columns — The “Interrogatives” (What, How, Where, Who, When, Why)
+These represent the fundamental questions you can ask about any system:" /><link rel="canonical" href="http://localhost:1313/blog/aws/aws-migration-overview-with-zachman-framework/" itemprop="url" />
 
-<meta property="og:title" content="Blogs">
+<meta property="og:title" content="AWS Migration Overview with Zachman Framework &amp; Best Practices">
 <meta
   property="og:description"
   content="
     
-      Modern, responsive, batteries-included Hugo theme for creating beautiful static websites.
+      The Zachman Framework
+    The Zachman Framework is an enterprise architecture framework created by John Zachman in 1987. It&rsquo;s essentially a two-dimensional classification schema for organizing architectural artifacts of an enterprise — think of it as a structured way to describe any complex system from multiple perspectives.
+
+The Grid: Two Axes
+    Columns — The &ldquo;Interrogatives&rdquo; (What, How, Where, Who, When, Why)
+These represent the fundamental questions you can ask about any system:
     
   ">
 <meta
   property="og:type"
   content="
-    website
+    article
   ">
-<meta property="og:url" content="http://localhost:1313/blog/">
+<meta property="og:url" content="http://localhost:1313/blog/aws/aws-migration-overview-with-zachman-framework/"><meta property="article:section" content="blog">
 
 
-  <meta itemprop="name" content="Blogs">
-  <meta itemprop="description" content="Modern, responsive, batteries-included Hugo theme for creating beautiful static websites.">
+
+
+  <meta itemprop="name" content="AWS Migration Overview with Zachman Framework & Best Practices">
+  <meta itemprop="description" content="The Zachman Framework The Zachman Framework is an enterprise architecture framework created by John Zachman in 1987. It’s essentially a two-dimensional classification schema for organizing architectural artifacts of an enterprise — think of it as a structured way to describe any complex system from multiple perspectives.
+The Grid: Two Axes Columns — The “Interrogatives” (What, How, Where, Who, When, Why)
+These represent the fundamental questions you can ask about any system:">
+  <meta itemprop="wordCount" content="2608">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Blogs">
-  <meta name="twitter:description" content="Modern, responsive, batteries-included Hugo theme for creating beautiful static websites.">
+  <meta name="twitter:title" content="AWS Migration Overview with Zachman Framework & Best Practices">
+  <meta name="twitter:description" content="The Zachman Framework The Zachman Framework is an enterprise architecture framework created by John Zachman in 1987. It’s essentially a two-dimensional classification schema for organizing architectural artifacts of an enterprise — think of it as a structured way to describe any complex system from multiple perspectives.
+The Grid: Two Axes Columns — The “Interrogatives” (What, How, Where, Who, When, Why)
+These represent the fundamental questions you can ask about any system:">
 <link href="/css/compiled/main.css" rel="stylesheet" />
     <link href="/css/variables.css" rel="stylesheet" />
     <link href="/css/custom.css" rel="stylesheet" />
@@ -141,20 +155,19 @@
     <ul class="hx:flex hx:flex-col hx:gap-1 hx:md:hidden">
       
       
-              <li class="open"><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="true">
+              <li class="open"><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
     <a
       class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:ltr:pr-8 hx:rtl:pl-8
       hx:hextra-focus-visible-inset
-        hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
+        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
       href="/blog/"
       
     >
       <span class="hx:min-w-0 [word-break:break-word]">Blog</span>
     </a>
       <button type="button" class="hextra-sidebar-collapsible-button hx:absolute hx:top-1/2 hx:-translate-y-1/2 hx:ltr:right-2 hx:rtl:left-2 hx:shrink-0 hx:cursor-pointer hx:p-0 hx:text-gray-500 hx:dark:text-neutral-400 hx:group-hover:text-gray-900 hx:dark:group-hover:text-gray-50 hx:group-data-[active=true]:text-primary-800 hx:group-data-[active=true]:dark:text-primary-600 hx:hextra-focus-visible-inset" aria-label="Toggle section" aria-expanded="true"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></button>
-  </div>
-  <div class="hextra-sidebar-children hx:ltr:pr-0 hx:rtl:pl-0 hx:overflow-hidden">
-        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+  </div><div class="hextra-sidebar-children hx:ltr:pr-0 hx:rtl:pl-0 hx:overflow-hidden">
+        <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col open"><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
     <a
       class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:ltr:pr-8 hx:rtl:pl-8
       hx:hextra-focus-visible-inset
@@ -164,7 +177,7 @@
     >
       <span class="hx:min-w-0 [word-break:break-word]">AWS</span>
     </a>
-      <button type="button" class="hextra-sidebar-collapsible-button hx:absolute hx:top-1/2 hx:-translate-y-1/2 hx:ltr:right-2 hx:rtl:left-2 hx:shrink-0 hx:cursor-pointer hx:p-0 hx:text-gray-500 hx:dark:text-neutral-400 hx:group-hover:text-gray-900 hx:dark:group-hover:text-gray-50 hx:group-data-[active=true]:text-primary-800 hx:group-data-[active=true]:dark:text-primary-600 hx:hextra-focus-visible-inset" aria-label="Toggle section" aria-expanded="false"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></button>
+      <button type="button" class="hextra-sidebar-collapsible-button hx:absolute hx:top-1/2 hx:-translate-y-1/2 hx:ltr:right-2 hx:rtl:left-2 hx:shrink-0 hx:cursor-pointer hx:p-0 hx:text-gray-500 hx:dark:text-neutral-400 hx:group-hover:text-gray-900 hx:dark:group-hover:text-gray-50 hx:group-data-[active=true]:text-primary-800 hx:group-data-[active=true]:dark:text-primary-600 hx:hextra-focus-visible-inset" aria-label="Toggle section" aria-expanded="true"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></button>
   </div>
               <div class="hextra-sidebar-children hx:ltr:pr-0 hx:rtl:pl-0 hx:overflow-hidden">
         <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
@@ -191,17 +204,38 @@
     </a>
   </div>
               
-            </li><li class="hx:flex hx:flex-col "><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+            </li><li class="hx:flex hx:flex-col open"><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="true">
     <a
       class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
       hx:hextra-focus-visible-inset
-        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+        hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
       href="/blog/aws/aws-migration-overview-with-zachman-framework/"
       
     >
       <span class="hx:min-w-0 [word-break:break-word]">AWS Migration Overview with Zachman Framework &amp; Best Practices</span>
     </a>
   </div>
+  
+    <ul class='hx:flex hx:flex-col hx:gap-1 hx:relative hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:dark:before:bg-neutral-800 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:pr-3 hx:rtl:before:right-0 hx:ltr:ml-3 hx:rtl:mr-3'><li>
+              <a
+                href="#the-zachman-framework"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >The Zachman Framework</a>
+            </li>
+          <li>
+              <a
+                href="#architecture-perspective-of-a-aws-migration-project-with-zachman-framework"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              >Architecture perspective of a AWS Migration project with Zachman framework</a>
+            </li>
+          <li>
+              <a
+                href="#"
+                class="hx:flex hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [word-break:break-word] hx:cursor-pointer [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:contrast-more:border hx:gap-2 hx:before:opacity-25 hx:before:content-['#'] hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:text-gray-900 hx:contrast-more:dark:text-gray-50 hx:contrast-more:border-transparent hx:contrast-more:hover:border-gray-900 hx:contrast-more:dark:hover:border-gray-50"
+              ></a>
+            </li>
+          </ul>
+  
               
             </li><li class="hx:flex hx:flex-col "><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
     <a
@@ -360,7 +394,7 @@
 
     <ul class="hx:flex hx:flex-col hx:gap-1 hx:max-md:hidden">
         
-            <li class=""><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+            <li class="open"><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
     <a
       class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none] hx:ltr:pr-8 hx:rtl:pl-8
       hx:hextra-focus-visible-inset
@@ -370,7 +404,7 @@
     >
       <span class="hx:min-w-0 [word-break:break-word]">AWS</span>
     </a>
-      <button type="button" class="hextra-sidebar-collapsible-button hx:absolute hx:top-1/2 hx:-translate-y-1/2 hx:ltr:right-2 hx:rtl:left-2 hx:shrink-0 hx:cursor-pointer hx:p-0 hx:text-gray-500 hx:dark:text-neutral-400 hx:group-hover:text-gray-900 hx:dark:group-hover:text-gray-50 hx:group-data-[active=true]:text-primary-800 hx:group-data-[active=true]:dark:text-primary-600 hx:hextra-focus-visible-inset" aria-label="Toggle section" aria-expanded="false"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></button>
+      <button type="button" class="hextra-sidebar-collapsible-button hx:absolute hx:top-1/2 hx:-translate-y-1/2 hx:ltr:right-2 hx:rtl:left-2 hx:shrink-0 hx:cursor-pointer hx:p-0 hx:text-gray-500 hx:dark:text-neutral-400 hx:group-hover:text-gray-900 hx:dark:group-hover:text-gray-50 hx:group-data-[active=true]:text-primary-800 hx:group-data-[active=true]:dark:text-primary-600 hx:hextra-focus-visible-inset" aria-label="Toggle section" aria-expanded="true"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true" focusable="false" class="hx:h-[18px] hx:min-w-[18px] hx:rounded-xs hx:p-0.5 hx:hover:bg-gray-800/5 hx:dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="hx:origin-center hx:transition-transform hx:rtl:-rotate-180"></path></svg></button>
   </div><div class="hextra-sidebar-children hx:ltr:pr-0 hx:rtl:pl-0 hx:overflow-hidden">
         <ul class='hx:relative hx:flex hx:flex-col hx:gap-1 hx:before:absolute hx:before:inset-y-1 hx:before:w-px hx:before:bg-gray-200 hx:before:content-[""] hx:ltr:ml-3 hx:ltr:pl-3 hx:ltr:before:left-0 hx:rtl:mr-3 hx:rtl:pr-3 hx:rtl:before:right-0 hx:dark:before:bg-neutral-800'><li class="hx:flex hx:flex-col "><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
     <a
@@ -396,11 +430,11 @@
     </a>
   </div>
               
-            </li><li class="hx:flex hx:flex-col "><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="false">
+            </li><li class="hx:flex hx:flex-col open"><div class="hextra-sidebar-item hx:group hx:relative hx:flex hx:items-center" data-active="true">
     <a
       class="hx:flex hx:items-center hx:justify-between hx:gap-2 hx:grow hx:cursor-pointer hx:rounded-sm hx:px-2 hx:py-1.5 hx:text-sm hx:transition-colors [-webkit-tap-highlight-color:transparent] [-webkit-touch-callout:none]
       hx:hextra-focus-visible-inset
-        hx:text-gray-500 hx:hover:bg-gray-100 hx:hover:text-gray-900 hx:contrast-more:border hx:contrast-more:border-transparent hx:contrast-more:text-gray-900 hx:contrast-more:hover:border-gray-900 hx:dark:text-neutral-400 hx:dark:hover:bg-primary-100/5 hx:dark:hover:text-gray-50 hx:contrast-more:dark:text-gray-50 hx:contrast-more:dark:hover:border-gray-50"
+        hextra-sidebar-active-item hx:bg-primary-100 hx:font-semibold hx:text-primary-800 hx:contrast-more:border hx:contrast-more:border-primary-500 hx:dark:bg-primary-400/10 hx:dark:text-primary-600 hx:contrast-more:dark:border-primary-500"
       href="/blog/aws/aws-migration-overview-with-zachman-framework/"
       
     >
@@ -606,8 +640,68 @@
 </div></div></aside>
     
 <nav class="hextra-toc hx:order-last hx:hidden hx:w-64 hx:shrink-0 hx:xl:block hx:print:hidden hx:px-4" aria-label="Table of contents">
-    <div class="hextra-scrollbar hx:sticky hx:top-16 hx:overflow-y-auto hx:pr-4 hx:pt-6 hx:text-sm [hyphens:auto] hx:max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] hx:ltr:-mr-4 hx:rtl:-ml-4">
-      <div class=" hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400">
+    <div class="hextra-scrollbar hx:sticky hx:top-16 hx:overflow-y-auto hx:pr-4 hx:pt-6 hx:text-sm [hyphens:auto] hx:max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] hx:ltr:-mr-4 hx:rtl:-ml-4"><p class="hx:mb-4 hx:font-semibold hx:tracking-tight">On this page</p><ul>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-zachman-framework">The Zachman Framework
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-grid-two-axes">The Grid: Two Axes
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#key-principles">Key Principles
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#practical-relevance">Practical Relevance
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#criticisms">Criticisms
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:font-medium hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#architecture-perspective-of-a-aws-migration-project-with-zachman-framework">Architecture perspective of a AWS Migration project with Zachman framework
+        </a>
+      </li></ul><ul>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#what-is-the-dr-and-decommission-plan-for-a-dc">What is the DR and decommission plan for a DC?
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#how-are-transit-gateway-route-tables-configured-to-isolate-prod-from-dev-in-this-migration">How are Transit Gateway route tables configured to isolate prod from dev in this migration?
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-core-principle-route-table-per-domain-not-per-vpc">The core principle: route table per domain, not per VPC
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#the-three-route-tables">The three route tables
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#what-associated-vs-propagated-actually-means">What “associated” vs “propagated” actually means
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#blackhole-routes-as-an-explicit-safety-net">Blackhole routes as an explicit safety net
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#how-the-security-vpc-fits-in">How the Security VPC fits in
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-8 hx:rtl:pr-8 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#enforcement-beyond-tgw-routing">Enforcement beyond TGW routing
+        </a>
+      </li>
+      <li class="hx:my-2 hx:scroll-my-6 hx:scroll-py-6">
+        <a class="hx:ltr:pl-4 hx:rtl:pr-4 hx:inline-block hx:rounded-sm hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-300 hx:contrast-more:text-gray-900 hx:contrast-more:underline hx:contrast-more:dark:text-gray-50 hx:w-full hx:wrap-break-word hx:hextra-focus-visible-inset" href="#what-nacl-and-security-group-rules-protect-the-public-subnet-tier">What NACL and security group rules protect the public subnet tier?
+        </a>
+      </li></ul>
+      <div class="hx:mt-8 hx:border-t hx:bg-white hx:pt-8 hx:shadow-[0_-12px_16px_white] hx:dark:bg-dark hx:dark:shadow-[0_-12px_16px_#111] hx:sticky hx:bottom-0 hx:flex hx:flex-col hx:items-start hx:gap-2 hx:pb-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-t hx:contrast-more:border-neutral-400 hx:contrast-more:shadow-none hx:contrast-more:dark:border-neutral-400">
         <button id="backToTop" tabindex="-1" onClick="scrollUp();" class="hx:cursor-pointer hx:transition-all hx:duration-75 hx:opacity-0 hx:text-xs hx:font-medium hx:text-gray-500 hx:hover:text-gray-900 hx:dark:text-gray-400 hx:dark:hover:text-gray-100 hx:contrast-more:text-gray-800 hx:contrast-more:dark:text-gray-50">
           <span>Scroll to top</span>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" focusable="false" class="hx:inline hx:ltr:ml-1 hx:rtl:mr-1 hx:h-3.5 hx:w-3.5 hx:rounded-full hx:border hx:border-gray-500 hx:hover:border-gray-900 hx:dark:border-gray-400 hx:dark:hover:border-gray-100 hx:contrast-more:border-gray-800 hx:contrast-more:dark:border-gray-50">
@@ -621,19 +715,262 @@
 
     <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
       <main id="content" class="hx:w-full hx:min-w-0 hextra-max-content-width hx:px-6 hx:pt-4 hx:md:px-12">
-        <div class="hx:mt-1.5 hx:flex hx:items-center hx:gap-1 hx:overflow-hidden hx:text-sm hx:text-gray-500 hx:dark:text-gray-400 hx:contrast-more:text-current"><div class="hx:whitespace-nowrap hx:transition-colors hx:font-medium hx:text-gray-700 hx:contrast-more:font-bold hx:contrast-more:text-current hx:dark:text-gray-100 hx:contrast-more:dark:text-current">Blogs</div>
+        <div class="hx:mt-1.5 hx:flex hx:items-center hx:gap-1 hx:overflow-hidden hx:text-sm hx:text-gray-500 hx:dark:text-gray-400 hx:contrast-more:text-current">
+        <div class="hx:whitespace-nowrap hx:transition-colors hx:min-w-[24px] hx:overflow-hidden hx:text-ellipsis hx:hover:text-gray-900 hx:dark:hover:text-gray-100">
+          <a href="/blog/" class="hx:inline-block hx:rounded-sm hx:hextra-focus-visible-inset">Blogs</a>
+        </div><svg class="hx:w-3.5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+        <div class="hx:whitespace-nowrap hx:transition-colors hx:min-w-[24px] hx:overflow-hidden hx:text-ellipsis hx:hover:text-gray-900 hx:dark:hover:text-gray-100">
+          <a href="/blog/aws/" class="hx:inline-block hx:rounded-sm hx:hextra-focus-visible-inset">AWS</a>
+        </div><svg class="hx:w-3.5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg><div class="hx:whitespace-nowrap hx:transition-colors hx:font-medium hx:text-gray-700 hx:contrast-more:font-bold hx:contrast-more:text-current hx:dark:text-gray-100 hx:contrast-more:dark:text-current">AWS Migration Overview with Zachman Framework &amp; Best Practices</div>
   </div>
 
         <div class="content">
           
           <div class="hx:flex hx:flex-col hx:sm:flex-row hx:items-start hx:sm:items-center hx:sm:justify-between hx:gap-4 hx:mb-4">
-            <h1 class="hx:mb-0">Blogs</h1>
+            <h1 class="hx:mb-0">AWS Migration Overview with Zachman Framework &amp; Best Practices</h1>
             
           </div>
           
-          
+          <h2>The Zachman Framework<span class="hx:absolute hx:-mt-20" id="the-zachman-framework"></span>
+    <a href="#the-zachman-framework" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p>The Zachman Framework is an enterprise architecture framework created by John Zachman in 1987. It&rsquo;s essentially a <strong>two-dimensional classification schema</strong> for organizing architectural artifacts of an enterprise — think of it as a structured way to describe any complex system from multiple perspectives.</p>
+<hr>
+<h3>The Grid: Two Axes<span class="hx:absolute hx:-mt-20" id="the-grid-two-axes"></span>
+    <a href="#the-grid-two-axes" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p><strong>Columns — The &ldquo;Interrogatives&rdquo; (What, How, Where, Who, When, Why)</strong></p>
+<p>These represent the fundamental questions you can ask about any system:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Column</th>
+          <th>Interrogative</th>
+          <th>Concern</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td><strong>What</strong></td>
+          <td>Data / Inventory</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td><strong>How</strong></td>
+          <td>Function / Process</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td><strong>Where</strong></td>
+          <td>Network / Location</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td><strong>Who</strong></td>
+          <td>People / Organization</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td><strong>When</strong></td>
+          <td>Time / Schedule</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td><strong>Why</strong></td>
+          <td>Motivation / Strategy</td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Rows — The &ldquo;Perspectives&rdquo; (Stakeholder viewpoints)</strong></p>
+<table>
+  <thead>
+      <tr>
+          <th>Row</th>
+          <th>Perspective</th>
+          <th>Audience</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td><strong>Contextual</strong> (Scope)</td>
+          <td>Executive / Planner</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td><strong>Conceptual</strong> (Business)</td>
+          <td>Business Owner</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td><strong>Logical</strong> (System)</td>
+          <td>Architect / Designer</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td><strong>Physical</strong> (Technology)</td>
+          <td>Engineer / Builder</td>
+      </tr>
+      <tr>
+          <td>5</td>
+          <td><strong>Detailed</strong> (Component)</td>
+          <td>Technician / Subcontractor</td>
+      </tr>
+      <tr>
+          <td>6</td>
+          <td><strong>Functional</strong> (Operations)</td>
+          <td>Enterprise itself</td>
+      </tr>
+  </tbody>
+</table>
+<p>This produces a <strong>6×6 matrix of 36 cells</strong>, each containing a distinct architectural artifact (e.g., an ER diagram, a process flow, a network diagram).</p>
+<hr>
+<h3>Key Principles<span class="hx:absolute hx:-mt-20" id="key-principles"></span>
+    <a href="#key-principles" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><ul>
+<li><strong>Each cell is unique</strong> — no two cells contain the same type of artifact</li>
+<li><strong>Rows are independent</strong> — each perspective is complete on its own terms, without reference to another row</li>
+<li><strong>Columns are consistent</strong> — the same fundamental question is answered at every level of abstraction</li>
+<li><strong>It&rsquo;s descriptive, not prescriptive</strong> — Zachman doesn&rsquo;t tell you <em>how</em> to build, only <em>what</em> to describe</li>
+</ul>
+<hr>
+<h3>Practical Relevance<span class="hx:absolute hx:-mt-20" id="practical-relevance"></span>
+    <a href="#practical-relevance" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>In your world of <strong>distributed data systems and pipelines</strong>, the Zachman lens maps naturally:</p>
+<ul>
+<li><strong>What (Row 3–4)</strong>: Logical data models → physical Delta Lake schemas, table formats</li>
+<li><strong>How (Row 3–4)</strong>: Logical process flows → Databricks job DAGs, DLT pipelines</li>
+<li><strong>Where (Row 3–4)</strong>: Logical topology → physical multi-region cloud deployment, Kafka cluster placement</li>
+<li><strong>When (Row 3–4)</strong>: Scheduling logic → streaming trigger intervals, checkpointing cadence</li>
+<li><strong>Why (Row 1–2)</strong>: Business drivers → SLAs for streaming ingest, RTO/RPO targets for DR</li>
+</ul>
+<hr>
+<h3>Criticisms<span class="hx:absolute hx:-mt-20" id="criticisms"></span>
+    <a href="#criticisms" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><ul>
+<li><strong>Completeness is overwhelming</strong> — filling all 36 cells for a large enterprise is enormously labor-intensive</li>
+<li><strong>Not a methodology</strong> — it tells you <em>what</em> to document, not <em>how</em> to do architecture</li>
+<li><strong>Can become a bureaucratic exercise</strong> rather than driving real design decisions</li>
+<li>Often more useful as a <strong>communication and audit tool</strong> than a design driver</li>
+</ul>
+<p>It remains influential in EA circles (TOGAF, DoDAF often reference it), but in practice most teams use a subset of cells relevant to their context rather than the full matrix.</p>
+<h2>Architecture perspective of a AWS Migration project with Zachman framework<span class="hx:absolute hx:-mt-20" id="architecture-perspective-of-a-aws-migration-project-with-zachman-framework"></span>
+    <a href="#architecture-perspective-of-a-aws-migration-project-with-zachman-framework" class="subheading-anchor" aria-label="Permalink for this section"></a></h2><p><img src=".././images/zachman-framework-aws-migration.png" alt="zachman-framework-aws-migration"  loading="lazy" /></p>
+<p><a href="zachman_aws_migration.html">zachman_aws_migration</a></p>
+<p>Each of the 36 cells is clickable and contains the actual artifacts, tools, and decisions relevant to that intersection. Here&rsquo;s how to read the framework in the context of your migration:</p>
+<p><strong>Reading across a row</strong> gives you a complete view from one stakeholder&rsquo;s perspective. The Executive row (Row 1) stays intentionally abstract — business drivers, timeline phases, and DC exit goals. The Physical row (Row 4) is where AWS service names, instance families, and CIDR blocks live.</p>
+<p><strong>Reading down a column</strong> shows how an interrogative cascades from intent to reality. The &ldquo;Why&rdquo; column traces from business drivers → architecture principles → SLAs → compliance SCPs → realized ROI. This is where governance gaps tend to appear: when Row 1&rsquo;s &ldquo;why&rdquo; and Row 5&rsquo;s &ldquo;why&rdquo; tell different stories.</p>
+<p><strong>High-value cells for a migration project:</strong></p>
+<ul>
+<li><strong>Logical × How</strong> (Row 3, Col 2) — the 7R classification per workload is where most migration architecture debate happens. Rehost vs replatform vs refactor decisions cascade into cost, timeline, and risk.</li>
+<li><strong>Physical × Where</strong> (Row 4, Col 3) — CIDR design, TGW topology, and DNS cutover strategy. Mistakes here are the hardest to remediate post-migration.</li>
+<li><strong>Detailed × Why</strong> (Row 5, Col 6) — SCPs and Config Rules are the enforceable expression of your governance intent. If these don&rsquo;t match Row 1&rsquo;s compliance drivers, you have a paper policy.</li>
+<li><strong>Functional × When</strong> (Row 6, Col 5) — where your RPO/RTO commitments meet the real world. This cell is the ultimate test of everything above it.</li>
+</ul>
+<h1>Complete logical network architecture</h1><p>The network architecture cuts across all six Zachman rows — from the executive&rsquo;s two-sentence connectivity statement all the way down to CIDR blocks and NACLs. Here it is as three sequential diagrams, each zooming in one level.</p>
+<p><strong>Row 1–2: Geographic scope</strong> — where the DCs are, what the AWS target regions are, and how they connect at a business level.</p>
+<p><img src=".././images/geographic_connectivity.png" alt="geographic_connectivity"  loading="lazy" /></p>
+<p>Image: <strong>Geographic Connectivity</strong></p>
+<p><strong>Row 3: Logical VPC topology</strong> — this is where design decisions live. The hub-and-spoke model with Transit Gateway as the central routing plane, four purpose-built VPCs, the Direct Connect Gateway chain down to on-prem, and Route 53 Resolver hanging off Shared Services as the DNS authority for all private hosted zones.</p>
+<p><img src=".././images/logical_vpc_tgw_topology.png" alt="logical_vpc_tgw_topology"  loading="lazy" />
+<strong>Rows 4–5: Physical subnet architecture</strong> — this is the inside of a single production VPC. Three horizontal tiers, each with its own CIDR block, security controls, and service placement. Every prod VPC in the Landing Zone follows this same pattern across all three AZs.Reading down the &ldquo;Where&rdquo; column, a few design decisions compound across rows in ways worth calling out:</p>
+<p><img src=".././images/physical_subnet_tiers.png" alt="physical_subnet_tiers"  loading="lazy" /></p>
+<p>The <strong>Direct Connect + VPN pair</strong> (Diagram 1) is not just redundancy — it&rsquo;s a deliberate BGP design. DX carries primary traffic with AS path prepending favouring ap-southeast-1. VPN uses the same BGP session but with longer AS paths, so it only wins if DX drops. This gets tested explicitly during each wave&rsquo;s DR drill.</p>
+<p>The <strong>Security VPC as a mandatory choke point</strong> (Diagram 2) is the most contentious decision in this topology. All east-west traffic between Prod, Dev, and Shared Services transits through it via TGW route tables, not through direct VPC attachments. This adds ~1ms of latency but gives the Security team a single enforcement plane for Network Firewall rules across all 42 accounts — the alternative (per-VPC security groups only) was rejected at the Architecture Board.</p>
+<p>The <strong>three-tier subnet pattern</strong> (Diagram 3) is enforced at the Landing Zone level via Service Control Policies. No team can provision an RDS instance in a public subnet — the SCP denies <code>rds:CreateDBInstance</code> unless the subnet has the tag <code>tier=data</code>. The <code>SG: app → 5432</code> annotation in the data tier isn&rsquo;t advisory; it&rsquo;s the only inbound rule allowed — an AWS Config rule flags any data-tier SG that opens port 5432 to anything other than the app SG ID.</p>
+<h3>What is the DR and decommission plan for a DC?<span class="hx:absolute hx:-mt-20" id="what-is-the-dr-and-decommission-plan-for-a-dc"></span>
+    <a href="#what-is-the-dr-and-decommission-plan-for-a-dc" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>As per the <strong>Geographic Connectivity</strong> image above, here&rsquo;s the consolidated picture across all six perspectives for one of the DC, here Sydney DC specifically.</p>
+<p><strong>What Sydney is today (Contextual)</strong></p>
+<p>Sydney DC is the existing DR site for the Singapore primary DC. It runs a subset of Tier 1 workloads in warm standby — not active-active, but with RPO of a few hours via replication. The plan is full exit by December 2025, mirroring the Singapore DC exit timeline.</p>
+<p><strong>The migration sequencing logic (Conceptual)</strong></p>
+<p>Sydney isn&rsquo;t migrated in isolation — it follows Singapore. The wave structure is:</p>
+<ul>
+<li>Waves 1–4 migrate workloads from Singapore DC to ap-southeast-1 (primary AWS region)</li>
+<li>As each Singapore workload is migrated and validated on AWS, the Sydney DR copy of that workload is decommissioned — not migrated separately</li>
+<li>ap-southeast-2 (Sydney AWS region) becomes the new DR target, replacing the physical Sydney DC</li>
+</ul>
+<p>This means Sydney DC decommissioning is a byproduct of Singapore migration completion, not a parallel workstream.</p>
+<p><strong>AWS DR architecture replacing Sydney DC (Logical)</strong></p>
+<p>The Sydney DC&rsquo;s DR role is taken over by ap-southeast-2 with three mechanisms:</p>
+<ul>
+<li>Aurora Global Database with a read replica in ap-southeast-2 — sub-second replication lag, promotes to primary in under a minute for Tier 1 databases</li>
+<li>S3 Cross-Region Replication from ap-southeast-1 buckets to ap-southeast-2, continuous with replication time control (RTC) for PCI-scoped data</li>
+<li>Route 53 health checks with failover routing — if the ap-southeast-1 ALB health check fails, DNS automatically resolves to ap-southeast-2 endpoints</li>
+</ul>
+<p>RTO for Tier 1 on AWS DR is under 4 hours (tested), versus the Sydney DC warm standby which was never formally RTO-tested.</p>
+<p><strong>Physical decommission steps (Physical/Detailed)</strong></p>
+<p>Each Sydney DC rack follows this sequence after its workload exits:</p>
+<ol>
+<li>Confirm zero active connections via network flow logs — 30-day observation window</li>
+<li>Power down non-critical services first, then standby databases</li>
+<li>AWS DMS replication tasks terminated, DX cross-connect to Sydney cage cancelled</li>
+<li>Hardware vendor notified for asset retrieval or disposal (ITAD vendor with data destruction certificates)</li>
+<li>Colocation contract termination — 90-day notice clause in the colo agreement</li>
+<li>Final audit: CloudTrail confirms no API calls originating from Sydney DC IP ranges</li>
+</ol>
+<p><strong>The co-existence risk period</strong></p>
+<p>The 6-month hybrid window is the highest-risk phase for Sydney specifically. During this period both Sydney DC and ap-southeast-2 hold live replicas of Tier 1 data. The risk is split-brain — a failover triggered during this window could land on either target. The mitigation is a hard operational rule: during the hybrid window, Sydney DC failover is manually gated via a ServiceNow change request, while ap-southeast-2 failover is automated. This forces any DR invocation to make a conscious choice about which target to use.</p>
+<p><strong>What remains in Sydney post-exit</strong></p>
+<p>Nothing persistent. The only planned aws presence in ap-southeast-2 post-migration is the DR replica tier — no active workloads run there in steady state. This is a cost decision: running full active-active across two AWS regions roughly doubles compute spend. The architecture board accepted the RTO/RPO trade-off of a warm DR replica over active-active given the workload&rsquo;s actual availability requirements.</p>
+<h3>How are Transit Gateway route tables configured to isolate prod from dev in this migration?<span class="hx:absolute hx:-mt-20" id="how-are-transit-gateway-route-tables-configured-to-isolate-prod-from-dev-in-this-migration"></span>
+    <a href="#how-are-transit-gateway-route-tables-configured-to-isolate-prod-from-dev-in-this-migration" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>This is one of the more nuanced TGW design decisions in a Landing Zone deployment. The isolation model uses <strong>separate route tables per environment</strong>, not a single shared route table — here&rsquo;s exactly how it works.</p>
+<h4>The core principle: route table per domain, not per VPC<span class="hx:absolute hx:-mt-20" id="the-core-principle-route-table-per-domain-not-per-vpc"></span>
+    <a href="#the-core-principle-route-table-per-domain-not-per-vpc" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>A Transit Gateway has its own routing plane that&rsquo;s completely separate from VPC route tables. Each TGW attachment (VPC or DX Gateway) is associated with exactly one TGW route table, and can propagate its CIDR into one or more route tables. You exploit this asymmetry to create one-way or zero-way visibility between environments.</p>
+<h4>The three route tables<span class="hx:absolute hx:-mt-20" id="the-three-route-tables"></span>
+    <a href="#the-three-route-tables" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p><strong>Production route table</strong></p>
+<ul>
+<li>Associated attachments: Prod VPC, Shared Services VPC, DX Gateway (on-prem)</li>
+<li>Routes propagated into it: Prod VPC CIDR, Shared Services CIDR, on-prem summary routes</li>
+<li>Dev VPC is never propagated here — Prod literally has no route to Dev&rsquo;s CIDR</li>
+</ul>
+<p><strong>Non-production route table</strong></p>
+<ul>
+<li>Associated attachments: Dev VPC, Test VPC, Staging VPC</li>
+<li>Routes propagated into it: Dev/Test/Staging CIDRs, Shared Services CIDR, on-prem summary routes (for build servers, artifact repos)</li>
+<li>Prod VPC CIDR is absent — Dev cannot reach Prod at the network layer at all</li>
+</ul>
+<p><strong>Shared Services route table</strong></p>
+<ul>
+<li>Associated attachments: Shared Services VPC only</li>
+<li>Routes propagated into it: all CIDRs — Prod, Dev, Test, on-prem</li>
+<li>This is what allows Shared Services to act as the hub: it can reach everyone, but that reachability is not symmetric</li>
+</ul>
+<h4>What &ldquo;associated&rdquo; vs &ldquo;propagated&rdquo; actually means<span class="hx:absolute hx:-mt-20" id="what-associated-vs-propagated-actually-means"></span>
+    <a href="#what-associated-vs-propagated-actually-means" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>These two concepts are the crux of TGW isolation:</p>
+<ul>
+<li><strong>Association</strong> determines which route table governs outbound traffic <em>from</em> an attachment. A VPC attachment associated with the Prod route table means: when traffic leaves the Prod VPC into the TGW, the TGW looks up the destination in the Prod route table.</li>
+<li><strong>Propagation</strong> determines which route tables a VPC&rsquo;s CIDR block is <em>advertised into</em>. The Dev VPC propagates its CIDR into the Non-Prod route table and the Shared Services route table — but not into the Prod route table. So even if someone in Prod tries to send a packet to a Dev IP, the TGW drops it: no matching route.</li>
+</ul>
+<p>The combination of the two is what creates the asymmetric isolation. Dev can reach Shared Services. Shared Services can reach Prod. But Dev cannot reach Prod, and Prod cannot reach Dev — because neither has the other&rsquo;s CIDR in its associated route table.</p>
+<h4>Blackhole routes as an explicit safety net<span class="hx:absolute hx:-mt-20" id="blackhole-routes-as-an-explicit-safety-net"></span>
+    <a href="#blackhole-routes-as-an-explicit-safety-net" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>On top of the propagation design, explicit blackhole routes are added to each route table for CIDRs that must never be reachable. For example, the Prod route table has a static blackhole for the entire <code>10.10.8.0/22</code> dev/test supernet. This matters because propagation controls can drift — a misconfigured attachment, a new VPC peering accidentally added — but a static blackhole route always wins over a propagated route (static &gt; propagated in TGW route priority). It&rsquo;s a belt-and-suspenders enforcement.</p>
+<h4>How the Security VPC fits in<span class="hx:absolute hx:-mt-20" id="how-the-security-vpc-fits-in"></span>
+    <a href="#how-the-security-vpc-fits-in" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>The Security VPC (running AWS Network Firewall) sits between all VPCs and the internet, and also intercepts east-west traffic between Prod and Shared Services. Its TGW route table has a default route pointing at the Network Firewall endpoint. This means even traffic that is <em>allowed</em> by the TGW route tables still passes through stateful inspection before it reaches its destination — the TGW isolation is a routing-layer control, and Network Firewall is the packet-inspection layer on top.</p>
+<h4>Enforcement beyond TGW routing<span class="hx:absolute hx:-mt-20" id="enforcement-beyond-tgw-routing"></span>
+    <a href="#enforcement-beyond-tgw-routing" class="subheading-anchor" aria-label="Permalink for this section"></a></h4><p>TGW route tables prevent lateral movement at the routing plane, but three additional controls reinforce this in the migration:</p>
+<p>An <strong>SCP</strong> denies VPC peering creation between accounts tagged <code>env=prod</code> and accounts tagged <code>env=dev</code> — this prevents engineers from accidentally bypassing TGW isolation by creating a direct peering.</p>
+<p><strong>AWS Config rules</strong> continuously evaluate whether any TGW route table has a route to a CIDR that violates the isolation policy. A finding auto-opens a Jira ticket and alerts the Security team.</p>
+<p><strong>Security group rules</strong> in the Prod VPC never reference Dev security group IDs as sources — so even if someone somehow punched a routing hole, the instance-level SG would reject the connection.</p>
+<p>The TGW route table design is the primary control, but the SCP and Config rules are what give the Architecture Board confidence that the isolation won&rsquo;t be accidentally dismantled six months after go-live when institutional memory has faded.</p>
+<h3>What NACL and security group rules protect the public subnet tier?<span class="hx:absolute hx:-mt-20" id="what-nacl-and-security-group-rules-protect-the-public-subnet-tier"></span>
+    <a href="#what-nacl-and-security-group-rules-protect-the-public-subnet-tier" class="subheading-anchor" aria-label="Permalink for this section"></a></h3><p>This is covered in the detail panel of the <code>physical_subnet_tiers</code> artifact — click the green public subnets tier to expand it. Here&rsquo;s the full breakdown from that cell:</p>
+<p><strong>NACLs (stateless, subnet boundary)</strong></p>
+<p>Inbound allows 443 and 80 from <code>0.0.0.0/0</code> — everything else is denied at the boundary before it even reaches a security group. Outbound allows ephemeral ports 1024–65535 back to the private subnets (required for return traffic since NACLs are stateless), with a deny for any cross-environment CIDRs so public subnet resources can&rsquo;t accidentally initiate traffic toward dev or test ranges.</p>
+<p><strong>Security groups (stateful, instance/service boundary)</strong></p>
+<p>The public tier runs no EC2 instances — only managed services (ALB, NAT Gateway, Bastion). So the security group model here is:</p>
+<ul>
+<li>ALB security group: inbound 443/80 from <code>0.0.0.0/0</code>, outbound port 8080 to the App SG in the private tier only. No other outbound.</li>
+<li>NAT Gateway: managed by AWS, no SG attached — NACL is the only control.</li>
+<li>Bastion: inbound port 22 locked to the corporate IP range (or ideally removed entirely in favour of SSM Session Manager, which requires no open inbound port at all).</li>
+</ul>
+<p><strong>The layering logic</strong></p>
+<p>NACLs act as a coarse perimeter — they drop traffic that should never reach the subnet regardless of what services are running inside it. Security groups are the fine-grained per-service control. Because NACLs are stateless, the ephemeral port outbound rule is easy to forget and causes hard-to-diagnose connectivity failures; the Config rule in the Landing Zone checks that this return-traffic rule is always present on the public tier NACL.</p>
+<p>The most important design choice here is the absence of any compute in the public tier. Keeping it to ALB + NAT + Bastion means the SG attack surface is minimal — the ALB SG is the only one that accepts public internet traffic, and its only outbound permission is a single port to a specific SG ID in the private tier.</p>
+
         </div>
-        <div class="hx:mt-16"></div>
+        <div class="hx:mt-16"></div><div class="hx:mb-8 hx:flex hx:items-center hx:border-t hx:pt-8 hx:border-gray-200 hx:dark:border-neutral-800 hx:contrast-more:border-neutral-400 hx:dark:contrast-more:border-neutral-400 hx:print:hidden"><a
+        href="/blog/aws/aws-global-accelerator/"
+        title="AWS Global Accelerator"
+        class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:pr-4 hx:rtl:pl-4"
+      ><svg class="hx:inline hx:h-5 hx:shrink-0 hx:ltr:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>AWS Global Accelerator</a><a
+        href="/blog/aws/aws-networking/"
+        title="AWS Networking"
+        class="hx:flex hx:max-w-[50%] hx:items-center hx:gap-1 hx:py-4 hx:text-base hx:font-medium hx:text-gray-600 hx:transition-colors [word-break:break-word] hx:hover:text-primary-600 hx:dark:text-gray-300 hx:md:text-lg hx:ltr:ml-auto hx:ltr:pl-4 hx:ltr:text-right hx:rtl:mr-auto hx:rtl:pr-4 hx:rtl:text-left"
+      >AWS Networking<svg class="hx:inline hx:h-5 hx:shrink-0 hx:rtl:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></a></div>
       </main>
     </article>
   </div>
