@@ -1,8 +1,9 @@
-+++
-title = 'Aws Transit Gateway'
-date = 2024-08-24T00:44:23+05:30
-draft = false
-+++
+---
+title: AWS Transit Gateway
+cascade:
+  type: docs
+weight: 2
+---
 
 
 
