@@ -6,7 +6,6 @@ draft = false
 
 
 
-# End-to-End Encryption Architecture for AWS EKS with Istio Ambient Mesh
 
 ## Architecture Overview
 
@@ -23,7 +22,7 @@ This architecture implements comprehensive end-to-end encryption for application
 
 ## Architecture Diagram
 
-![Architecture Diagram](../images/eks-istio-ambient-e2e-encryption.png)
+![Architecture Diagram](images/eks-istio-ambient-e2e-encryption.png)
 
 ## Encryption Layers
 
