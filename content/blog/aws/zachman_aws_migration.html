@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zachman Framework · AWS Migration</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f8f7f4;color:#1a1a18;padding:24px 16px}
+h1{font-size:18px;font-weight:500;margin-bottom:4px;color:#1a1a18}
+.subtitle{font-size:12px;color:#73726c;margin-bottom:16px}
+.grid-wrap{overflow-x:auto;border-radius:10px;border:0.5px solid #d3d1c7}
+table{border-collapse:collapse;width:100%;min-width:700px;font-size:11px;background:#fff}
+thead th{font-size:11px;font-weight:500;padding:8px 8px;text-align:center;background:#f1efe8;color:#5f5e5a;border:0.5px solid #d3d1c7}
+thead th:first-child{width:96px;text-align:left;padding-left:10px}
+.row-hdr{font-weight:500;font-size:10px;color:#5f5e5a;padding:8px 8px;text-align:left;background:#f1efe8;border:0.5px solid #d3d1c7;vertical-align:top;line-height:1.5}
+.rh-name{font-size:11px;font-weight:500;color:#1a1a18;display:block;margin-bottom:2px}
+.rh-sub{font-size:10px;color:#73726c}
+td.cell{border:0.5px solid #d3d1c7;padding:6px 8px;vertical-align:top;cursor:pointer;transition:background 0.12s;min-width:100px;background:#fff}
+td.cell:hover{background:#f1efe8}
+td.cell.active{background:#e6f1fb;border-color:#85b7eb}
+.cell-title{font-size:10px;font-weight:500;color:#1a1a18;line-height:1.4;margin-bottom:2px}
+.cell-tag{font-size:9px;color:#73726c;line-height:1.5}
+.detail-panel{border:0.5px solid #d3d1c7;border-radius:10px;padding:16px 18px;margin-top:14px;background:#fff;display:none}
+.detail-panel.show{display:block}
+.dp-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.dp-breadcrumb{font-size:11px;color:#73726c;margin-bottom:3px}
+.dp-title{font-size:15px;font-weight:500;color:#1a1a18;flex:1;min-width:200px}
+.dp-close{font-size:11px;color:#73726c;cursor:pointer;padding:3px 10px;border:0.5px solid #b4b2a9;border-radius:6px;background:#fff;white-space:nowrap}
+.dp-close:hover{background:#f1efe8}
+.dp-items{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.dp-item{background:#f8f7f4;border-radius:6px;padding:9px 11px}
+.dp-item-label{font-size:10px;color:#73726c;font-weight:500;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:3px}
+.dp-item-val{font-size:12px;color:#1a1a18;line-height:1.5}
+.pill{display:inline-block;font-size:9px;font-weight:500;padding:1px 6px;border-radius:10px;margin-right:4px}
+.r1{background:#faeeda;color:#633806}
+.r2{background:#eaf3de;color:#27500a}
+.r3{background:#e6f1fb;color:#0c447c}
+.r4{background:#fcebeb;color:#791f1f}
+.r5{background:#f1efe8;color:#444441}
+.r6{background:#eeedfe;color:#3c3489}
+@media(max-width:500px){.dp-items{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<h1>Zachman Framework · AWS Migration</h1>
+<div class="subtitle">Click any cell to explore artifacts · 6 perspectives × 6 interrogatives</div>
+<div class="grid-wrap">
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th>What<br><span style="font-weight:400;font-size:10px">Data / Inventory</span></th>
+  <th>How<br><span style="font-weight:400;font-size:10px">Function / Process</span></th>
+  <th>Where<br><span style="font-weight:400;font-size:10px">Network / Location</span></th>
+  <th>Who<br><span style="font-weight:400;font-size:10px">People / Org</span></th>
+  <th>When<br><span style="font-weight:400;font-size:10px">Time / Schedule</span></th>
+  <th>Why<br><span style="font-weight:400;font-size:10px">Motivation</span></th>
+</tr>
+</thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+<div class="detail-panel" id="dp">
+  <div class="dp-header">
+    <div style="flex:1">
+      <div id="dp-breadcrumb" class="dp-breadcrumb"></div>
+      <div id="dp-title" class="dp-title"></div>
+    </div>
+    <button class="dp-close" onclick="closePanel()">✕ close</button>
+  </div>
+  <div class="dp-items" id="dp-items"></div>
+</div>
+
+<script>
+const rows=[
+  {name:"Contextual",sub:"Executive / Planner",cls:"r1"},
+  {name:"Conceptual",sub:"Business Owner",cls:"r2"},
+  {name:"Logical",sub:"Architect / Designer",cls:"r3"},
+  {name:"Physical",sub:"Engineer / Builder",cls:"r4"},
+  {name:"Detailed",sub:"Technician",cls:"r5"},
+  {name:"Functional",sub:"Operations",cls:"r6"}
+];
+const cols=["What","How","Where","Who","When","Why"];
+
+const cells=[
+  [
+    {t:"Application & Data Inventory",s:"~500 apps, 200TB data estates",d:[{l:"Scope",v:"On-prem portfolio: 480 applications, 200TB structured + 60TB unstructured data"},{l:"Inventory tool",v:"AWS Migration Evaluator, Discovery Service"},{l:"Prioritisation",v:"Business criticality A/B/C rating"},{l:"Output",v:"Migration Portfolio Assessment (MPA) report"}]},
+    {t:"Business Capabilities",s:"What the business does, not how",d:[{l:"Core capabilities",v:"Order management, billing, customer portal, analytics, HR systems"},{l:"Migration intent",v:"Lift-shift legacy, replatform SaaS, retire end-of-life"},{l:"Business continuity",v:"Zero disruption to revenue-generating services"},{l:"Success metric",v:"Zero unplanned outages during migration waves"}]},
+    {t:"Current DC + AWS Target Regions",s:"On-prem Singapore → ap-southeast-1",d:[{l:"Source",v:"2× on-prem DCs: Singapore (primary), Sydney (DR)"},{l:"AWS target",v:"ap-southeast-1 (primary), ap-southeast-2 (DR)"},{l:"Connectivity",v:"AWS Direct Connect 10Gbps ordered"},{l:"Colocation",v:"6-month co-existence in hybrid mode"}]},
+    {t:"Executive Sponsors & Vendors",s:"CTO, CFO, AWS, SI partner",d:[{l:"Internal sponsors",v:"CTO (accountable), CIO (responsible), CFO (budget owner)"},{l:"AWS team",v:"Enterprise Support, TAM, Solutions Architect"},{l:"SI partner",v:"Accenture / Infosys leading delivery"},{l:"Governance",v:"Monthly Steering Committee review"}]},
+    {t:"3-Year Migration Roadmap",s:"Phase-gated by business risk",d:[{l:"Phase 1",v:"2024 Q1–Q2: Foundation & 30 low-risk apps"},{l:"Phase 2",v:"2024 Q3–Q4: Mid-tier 200 apps, data migration"},{l:"Phase 3",v:"2025: Core business systems & decommission"},{l:"Exit criterion",v:"100% DC exit by Dec 2025"}]},
+    {t:"Business Drivers",s:"Why we're migrating to AWS",d:[{l:"Cost",v:"35% TCO reduction over 5 years (RI + Savings Plans)"},{l:"Agility",v:"Speed to market: new features in days not months"},{l:"Resilience",v:"99.99% availability SLA, multi-AZ by default"},{l:"Compliance",v:"SOC2, ISO 27001, MAS TRM alignment on AWS"}]}
+  ],
+  [
+    {t:"Data Domains & Business Models",s:"Customer, Order, Product, Finance",d:[{l:"Core domains",v:"Customer (CRM), Order (OMS), Product (PIM), Finance (ERP), Employee (HCM)"},{l:"Data classification",v:"PII, PCI-DSS, confidential, internal, public"},{l:"Ownership",v:"Domain data owners assigned per business unit"},{l:"Governance",v:"Data mesh ownership model adopted for AWS"}]},
+    {t:"Business Process Mapping",s:"7R strategy per workload",d:[{l:"Rehost (lift & shift)",v:"Legacy COTS, low-change-rate systems (40% of portfolio)"},{l:"Replatform",v:"Databases → RDS/Aurora, Tomcat → Elastic Beanstalk (30%)"},{l:"Refactor",v:"Monolith → microservices for core 10 apps (15%)"},{l:"Retire / Replace",v:"EOL apps, SaaS substitution (15%)"}]},
+    {t:"Geographic & Regulatory Presence",s:"Multi-region data residency",d:[{l:"APAC users",v:"Singapore, Australia, India, Japan — data must stay in region"},{l:"EMEA expansion",v:"eu-west-1 planned for 2025 launch"},{l:"Data residency",v:"PII must not leave APAC — enforced via SCP"},{l:"Latency targets",v:"<50ms p99 for APAC, <80ms for EMEA"}]},
+    {t:"Business Unit Stakeholders",s:"Ownership by department",d:[{l:"Line of business",v:"Retail BU, Payments BU, Analytics CoE, IT Infrastructure"},{l:"Data stewards",v:"One per domain, accountable for data quality post-migration"},{l:"Change management",v:"200+ end-user training sessions planned"},{l:"Communication",v:"Bi-weekly stakeholder newsletter + portal"}]},
+    {t:"Migration Waves & Business Milestones",s:"Aligned to fiscal quarters",d:[{l:"Wave 1 (Q1)",v:"Dev/test environments — validate tooling & runbooks"},{l:"Wave 2 (Q2)",v:"Non-prod, analytics, monitoring stack"},{l:"Wave 3–4 (Q3–Q4)",v:"Production tier 2 & 3 apps with full DR test"},{l:"Wave 5 (2025)",v:"Tier 1 core systems: ERP, OMS, payments cutover"}]},
+    {t:"Business Case & KPIs",s:"Measurable outcomes per sponsor",d:[{l:"Cost KPI",v:"AWS spend vs on-prem: tracked monthly via Cost Explorer"},{l:"Velocity KPI",v:"DORA metrics: deploy frequency, lead time post-migration"},{l:"Reliability KPI",v:"MTTR, incident count — target 50% reduction"},{l:"OKR linkage",v:"Each migration wave maps to a signed-off OKR"}]}
+  ],
+  [
+    {t:"Logical Data Models & Schema Map",s:"Source → target data mapping",d:[{l:"Relational",v:"Oracle → Aurora PostgreSQL via AWS SCT + DMS"},{l:"NoSQL",v:"Cassandra → DynamoDB with TTL and GSI redesign"},{l:"Blob / Object",v:"NFS shares + local disk → S3 with lifecycle policies"},{l:"Streaming",v:"On-prem Kafka → MSK, schema registry migrated"}]},
+    {t:"Application Architecture Patterns",s:"Target state designs per 7R",d:[{l:"Rehosted pattern",v:"VMware VM → EC2 via Application Migration Service (MGN)"},{l:"Replatformed pattern",v:"Bare-metal DB → Multi-AZ RDS with read replicas"},{l:"Refactored pattern",v:"Monolith → ECS Fargate microservices behind ALB"},{l:"Event-driven",v:"SQS + SNS + Lambda replacing on-prem ESB"}]},
+    {t:"Logical Network Topology",s:"VPC, Transit Gateway, Direct Connect",d:[{l:"Hub-and-spoke",v:"Central Network VPC with Transit Gateway hub"},{l:"VPC layout",v:"Prod / Dev / Shared Services VPCs per AWS Landing Zone"},{l:"DNS",v:"Route 53 Resolver + Private Hosted Zones replacing on-prem DNS"},{l:"Connectivity",v:"Direct Connect + VPN failover, BGP routing policies"}]},
+    {t:"Migration Team Structure",s:"Cloud CoE + stream leads",d:[{l:"Cloud CoE",v:"Platform engineering team: Landing Zone, networking, security guardrails"},{l:"App streams",v:"4 agile squads: app migration, data migration, testing, DevOps"},{l:"Architecture board",v:"Weekly ARB reviews target state designs"},{l:"Partner embed",v:"SI architects co-located with each squad"}]},
+    {t:"Logical Migration Sequence",s:"Dependency-ordered sprint plan",d:[{l:"Prerequisites",v:"Landing Zone → networking → security baseline → monitoring"},{l:"Dependency graph",v:"App dependency map via AWS Application Discovery Service"},{l:"Sprint cadence",v:"2-week sprints, wave kickoff + wave retrospective"},{l:"Gate criteria",v:"Smoke test pass, security scan clear, perf baseline met"}]},
+    {t:"Architecture Principles",s:"Guardrails for all design decisions",d:[{l:"Security",v:"Zero trust, least privilege, encryption in transit + at rest"},{l:"Resilience",v:"Multi-AZ mandatory for prod; DR tested per wave"},{l:"Cost",v:"Right-size before lift; tag everything for showback"},{l:"Automation",v:"No manual change in prod — IaC or bust"}]}
+  ],
+  [
+    {t:"Physical Schemas & Storage Configs",s:"Actual AWS resource specs",d:[{l:"RDS",v:"db.r6g.4xlarge Multi-AZ, 2TB gp3, automated backups 35 days"},{l:"DynamoDB",v:"On-demand billing, DynamoDB Streams enabled, PITR on"},{l:"S3",v:"S3 Intelligent-Tiering, SSE-KMS, Object Lock for PCI data"},{l:"DMS tasks",v:"Full-load + CDC tasks, 10K rows/sec validated throughput"}]},
+    {t:"AWS Service Configurations",s:"EC2, ECS, Lambda, Step Functions",d:[{l:"Compute",v:"EC2 m6i / c6i family; Graviton3 for new workloads"},{l:"Containers",v:"ECS Fargate + ECR; EKS for complex orchestration needs"},{l:"Serverless",v:"Lambda + SQS replacing batch jobs; EventBridge scheduler"},{l:"IaC",v:"Terraform Enterprise; CDK v2 for greenfield microservices"}]},
+    {t:"AWS Network Configuration",s:"Physical subnets, SGs, Route53",d:[{l:"CIDR design",v:"10.0.0.0/8 supernet; /16 per account, /24 per subnet tier"},{l:"Security groups",v:"Stateful SGs: app SG → DB SG only; no 0.0.0.0/0 inbound"},{l:"Transit Gateway",v:"TGW with route tables per env; blackhole routes for isolation"},{l:"DNS cutover",v:"Route53 weighted routing for gradual traffic shift at cutover"}]},
+    {t:"Engineering Roles & Tooling",s:"Cloud engineers, DBAs, DevOps",d:[{l:"Cloud engineers",v:"AWS Certified SA/DevOps mandatory; 12 FTEs on platform"},{l:"DBA team",v:"Oracle → PostgreSQL specialists; AWS DMS certified"},{l:"DevOps",v:"Jenkins → AWS CodePipeline; ArgoCD for K8s GitOps"},{l:"Tooling stack",v:"Terraform Cloud, Datadog, PagerDuty, Jira, Confluence"}]},
+    {t:"CI/CD Pipelines & Cutover Windows",s:"Build → deploy → cutover automation",d:[{l:"Pipeline",v:"CodeCommit → CodeBuild → ECR → CodeDeploy (blue/green)"},{l:"Cutover window",v:"Saturday 22:00–06:00 SGT; change freeze lifted 30 min post-smoke"},{l:"Rollback SLA",v:"<15 min automated rollback via Route53 failover + MGN revert"},{l:"Runbook",v:"Jira ticket auto-created per step; approvals via ServiceNow"}]},
+    {t:"SLAs, Cost Targets & Tagging",s:"Physical guardrails and budgets",d:[{l:"Availability SLA",v:"99.95% prod uptime; alarms → PagerDuty < 2 min"},{l:"Cost guardrails",v:"AWS Budgets alert at 80%/100%; Savings Plans purchased quarterly"},{l:"Tagging standard",v:"Mandatory: env, owner, costcenter, app-id, compliance-scope"},{l:"Right-sizing",v:"Compute Optimizer recommendations actioned within 30 days"}]}
+  ],
+  [
+    {t:"Migration Scripts & DMS Configs",s:"Actual ETL and replication code",d:[{l:"DMS task config",v:"Full-load parallelism: 8 threads; LOB handling: limited 32KB"},{l:"SCT reports",v:"Schema Conversion Tool action items resolved per app"},{l:"Validation",v:"AWS DMS data validation enabled; row count + checksum checks"},{l:"Cutover delta",v:"CDC lag monitored; cutover when lag <10s for 30 min sustained"}]},
+    {t:"IaC Modules & Runbooks",s:"Terraform modules, CDK constructs",d:[{l:"TF modules",v:"vpc, eks-cluster, rds-aurora, s3-bucket, iam-role — all in private registry"},{l:"CDK constructs",v:"L3 constructs for standard app patterns (ALB+ECS, API GW+Lambda)"},{l:"Runbooks",v:"Confluence: 120+ step-by-step operational runbooks"},{l:"DR runbook",v:"Automated DR drill playbook; GameDay every quarter"}]},
+    {t:"Security Groups, NACLs & WAF Rules",s:"Packet-level network controls",d:[{l:"NACLs",v:"Stateless deny-all default; explicit allow per subnet pair"},{l:"WAF rules",v:"AWS Managed Rules + custom rate-limit rules on CloudFront"},{l:"Secrets",v:"Secrets Manager rotation every 30 days; no hardcoded creds"},{l:"Patch",v:"SSM Patch Manager: critical patches within 48h, standard 7 days"}]},
+    {t:"Individual Runbooks & RACI",s:"Who does exactly what, step by step",d:[{l:"RACI matrix",v:"Per wave: R=cloud engineer, A=stream lead, C=architect, I=CAB"},{l:"On-call rota",v:"PagerDuty schedule: primary + secondary coverage 24/7"},{l:"Escalation path",v:"L1 on-call → L2 cloud SME → L3 AWS Premium Support"},{l:"SOP library",v:"120 SOPs in Confluence; reviewed quarterly"}]},
+    {t:"Maintenance Windows & Cron Jobs",s:"Scheduled operations automation",d:[{l:"Patch windows",v:"SSM: Sundays 02:00 SGT for non-prod; Saturdays 03:00 for prod"},{l:"Backup jobs",v:"RDS automated: 01:00 SGT daily; S3 replication: continuous"},{l:"Cron migration",v:"On-prem cron → EventBridge Scheduler; audit every 90 days"},{l:"Lambda timeouts",v:"All functions tuned with Compute Optimizer; P90 < 5s target"}]},
+    {t:"Compliance & Security Policies",s:"SCPs, Config Rules, GuardDuty",d:[{l:"SCPs",v:"Deny non-approved regions; deny disabling CloudTrail; deny root use"},{l:"AWS Config",v:"55 managed rules + custom rules for tagging and encryption"},{l:"GuardDuty",v:"Threat detection enabled all accounts; findings → Security Hub"},{l:"Audit",v:"CloudTrail + Config + Access Analyzer reports for MAS TRM"}]}
+  ],
+  [
+    {t:"Live Production Data in AWS",s:"Steady-state post-migration",d:[{l:"Data estate",v:"260TB on AWS: RDS, Aurora, DynamoDB, S3, Redshift"},{l:"Data quality",v:"Great Expectations pipelines validate daily; SLA 99.9%"},{l:"Lineage",v:"AWS Glue Data Catalog + DataZone for discovery and governance"},{l:"Backup status",v:"All prod data: daily snapshots + cross-region replication active"}]},
+    {t:"Running Workloads & Auto-Scaling",s:"ASGs, ECS scaling, Lambda concurrency",d:[{l:"Auto-scaling",v:"ASG target tracking: 60% CPU; ECS Service Auto Scaling on memory"},{l:"Load patterns",v:"Handled via CloudWatch alarms + Predictive Scaling for peak events"},{l:"Lambda concurrency",v:"Reserved concurrency set; provisioned for latency-sensitive functions"},{l:"Cost vs perf",v:"Graviton3 adoption 65%; Spot instances for batch workloads"}]},
+    {t:"Live AWS Infrastructure",s:"Deployed and operating state",d:[{l:"Accounts",v:"Landing Zone: 42 AWS accounts across 6 OUs in AWS Organizations"},{l:"Regions active",v:"ap-southeast-1 (primary), ap-southeast-2 (DR), us-east-1 (global services)"},{l:"Network state",v:"TGW with 28 VPC attachments; Direct Connect 10G active + 10G standby"},{l:"Endpoints",v:"156 VPC endpoints replacing NAT for AWS service traffic"}]},
+    {t:"SRE & On-Call Teams",s:"Who runs production day-to-day",d:[{l:"SRE team",v:"8 SREs: observability, incident management, capacity planning"},{l:"On-call",v:"Follow-the-sun: Singapore, Dublin, US East rotations"},{l:"Runbook execution",v:"95% of P2 incidents resolved via automated runbooks"},{l:"Blameless PIR",v:"Post-incident review within 48h for every P1/P2 event"}]},
+    {t:"Production SLAs & RPO/RTO",s:"Measured, not just promised",d:[{l:"Availability",v:"12-month trailing: 99.97% (target 99.95%) — exceeded"},{l:"RTO achieved",v:"Tier 1: <4h (target <4h); Tier 2: <8h (target <8h)"},{l:"RPO achieved",v:"Tier 1: <15min (Aurora replica); Tier 2: <4h (daily snapshot)"},{l:"Incident metrics",v:"MTTR P1: 42min (down from 3.5h on-prem)"}]},
+    {t:"Business Value Realised",s:"Outcomes vs original drivers",d:[{l:"Cost",v:"38% TCO reduction (exceeded 35% target); $4.2M saved Year 1"},{l:"Velocity",v:"Deploy frequency 10× increase; lead time 3 days → 4 hours"},{l:"Reliability",v:"Incident count down 48%; MTTR down 80% vs on-prem baseline"},{l:"New capabilities",v:"ML on SageMaker, real-time analytics on Kinesis — net new"}]}
+  ]
+];
+
+let activeCell=null;
+
+function renderGrid(){
+  const tb=document.getElementById("tbody");
+  cells.forEach((row,ri)=>{
+    const tr=document.createElement("tr");
+    const th=document.createElement("th");
+    th.className="row-hdr";
+    th.innerHTML=`<span class="rh-name"><span class="pill ${rows[ri].cls}">${ri+1}</span> ${rows[ri].name}</span><span class="rh-sub">${rows[ri].sub}</span>`;
+    tr.appendChild(th);
+    row.forEach((cell,ci)=>{
+      const td=document.createElement("td");
+      td.className="cell";
+      td.id=`c${ri}_${ci}`;
+      td.innerHTML=`<div class="cell-title">${cell.t}</div><div class="cell-tag">${cell.s}</div>`;
+      td.onclick=()=>showPanel(ri,ci,cell);
+      tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+}
+
+function showPanel(ri,ci,cell){
+  if(activeCell){
+    const prev=document.getElementById(`c${activeCell[0]}_${activeCell[1]}`);
+    if(prev) prev.classList.remove("active");
+  }
+  activeCell=[ri,ci];
+  document.getElementById(`c${ri}_${ci}`).classList.add("active");
+  const dp=document.getElementById("dp");
+  document.getElementById("dp-breadcrumb").textContent=`${rows[ri].name} · ${cols[ci]}`;
+  document.getElementById("dp-title").textContent=cell.t;
+  const items=document.getElementById("dp-items");
+  items.innerHTML=cell.d.map(d=>`<div class="dp-item"><div class="dp-item-label">${d.l}</div><div class="dp-item-val">${d.v}</div></div>`).join("");
+  dp.classList.add("show");
+  dp.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+function closePanel(){
+  if(activeCell){
+    const prev=document.getElementById(`c${activeCell[0]}_${activeCell[1]}`);
+    if(prev) prev.classList.remove("active");
+    activeCell=null;
+  }
+  document.getElementById("dp").classList.remove("show");
+}
+
+renderGrid();
+</script>
+</body>
+</html>
