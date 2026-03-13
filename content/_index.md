@@ -26,12 +26,6 @@ draft = false
 </div>
 {{< /hextra/hero-container >}}
 
-{{< hextra/feature-grid >}}
-  {{< hextra/feature-card
-    title="Kubernetes"
-    subtitle="Learn Kubernetes on AWS, GCP, Azure, Tanzu, OSS."
-    link="https://kubernetes.io/"
-  >}}
   {{< hextra/feature-card
     title="Amazon Web Services (AWS)"
     subtitle="Learn the fundamentals best practices on Amazon Web Services"
@@ -46,6 +40,12 @@ draft = false
     title="Azure"
     subtitle="Azure"
     link="blog/azure/"
+  >}}
+  {{< hextra/feature-grid >}}
+  {{< hextra/feature-card
+    title="Kubernetes"
+    subtitle="Learn Kubernetes on AWS, GCP, Azure, Tanzu, OSS."
+    link="blog/k8s/"
   >}}
   {{< hextra/feature-card
     title="Enterprise Architecture"
