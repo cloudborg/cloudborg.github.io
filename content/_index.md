@@ -43,14 +43,9 @@ draft = false
     link="blog/gcp/"
   >}}
   {{< hextra/feature-card
-    title="Terraform"
-    subtitle="Most Popular IaC"
-    link="https://www.terraform.io/"
-  >}}
-  {{< hextra/feature-card
-    title="GitOps"
-    subtitle="FluxCD by Weaveworks, ArgoCD and Github Action"
-    link="https://fluxcd.io/"
+    title="Azure"
+    subtitle="Azure"
+    link="blog/azure/"
   >}}
   {{< hextra/feature-card
     title="Enterprise Architecture"
