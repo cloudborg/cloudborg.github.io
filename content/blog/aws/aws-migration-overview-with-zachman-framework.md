@@ -76,7 +76,7 @@ It remains influential in EA circles (TOGAF, DoDAF often reference it), but in p
 
 ![zachman-framework-aws-migration](./images/zachman-framework-aws-migration.png)
 
-[zachman_aws_migration](https://github.com/ckp-aws/aws-enterprise-cloud-architecture/blob/main/aws-migration/zachman_aws_migration.html)
+[zachman_aws_migration](https://cloudborg.github.io/blog/aws/zachman_aws_migration.html)
 
 Each of the 36 cells is clickable and contains the actual artifacts, tools, and decisions relevant to that intersection. Here's how to read the framework in the context of your migration:
 
