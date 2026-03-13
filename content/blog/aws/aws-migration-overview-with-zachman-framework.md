@@ -1,9 +1,9 @@
-+++
-title = 'AWS Migration Overview with Zachman Framework & Best Practices'
-date = 2026-03-13T20:41:12+05:30
-draft = false
-+++
-
+---
+title: AWS Migration Overview with Zachman Framework & Best Practices
+cascade:
+  type: docs
+weight: 2
+---
 
 ## The Zachman Framework
 

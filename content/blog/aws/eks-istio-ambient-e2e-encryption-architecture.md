@@ -6,8 +6,6 @@ weight: 2
 ---
 
 
-
-
 ## Architecture Overview
 
 This architecture implements comprehensive end-to-end encryption for applications running on Amazon EKS using Istio Ambient Mesh, following AWS best practices for security and compliance.
