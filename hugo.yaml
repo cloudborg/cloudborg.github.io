@@ -44,11 +44,11 @@ menu:
       weight: 4
       params:
         type: search
-    - name: GitHub
-      weight: 5
-      url: "https://github.com/cloudborg/cloudborg.github.io"
-      params:
-        icon: github
+    # - name: GitHub
+    #   weight: 5
+    #   url: "https://github.com/cloudborg/cloudborg.github.io"
+    #   params:
+    #     icon: github
 
   sidebar:
     - identifier: more
