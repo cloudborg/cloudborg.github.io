@@ -5,9 +5,7 @@ cascade:
 weight: 2
 ---
 
-
-
-# AWS Security and Compliance Tools
+# Tools Overview
 
 
 - **AWS Shield** is a managed Distributed Denial of Service (DDoS) protection service that safeguards applications running on AWS. AWS Shield Standard mitigates attacks that occur at layers 3 and 4 of the OSI model. (With the help of the Shield Response Team (SRT), AWS Shield Advanced includes intelligent DDoS attack detection and mitigation for application layer (layer 7) attacks as well).

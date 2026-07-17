@@ -6,8 +6,6 @@ weight: 2
 ---
 
 
-# AWS Certifications
-
 ## AWS Networking Fundamentals (AWS)
 
 - [2019 - AWS Networking Fundamentals](https://www.youtube.com/watch?v=hiKPPy584Mg)

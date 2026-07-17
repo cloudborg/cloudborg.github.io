@@ -4,7 +4,7 @@ cascade:
   type: docs
 weight: 2
 ---
-
+# Overview
 
 **AWS Control Tower** is an AWS-managed solution that helps you set up and govern a secure, multi-account AWS environment (a “landing zone”) using opinionated guardrails and standardized account provisioning.
 
