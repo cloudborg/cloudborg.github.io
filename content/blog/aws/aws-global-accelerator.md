@@ -4,7 +4,6 @@ cascade:
   type: docs
 weight: 2
 ---
-# AWS Global Accelerator
 
 ## Overview
 
