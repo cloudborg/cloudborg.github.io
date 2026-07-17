@@ -1,3 +1,10 @@
+---
+title: 'Near-Real-Time ETL Architecture with Kinesis Data Streams'
+cascade:
+  type: docs
+weight: 2
+---
+
 # Near-Real-Time ETL Architecture with Kinesis Data Streams
 
 ## Architecture Overview
