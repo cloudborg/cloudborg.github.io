@@ -6,7 +6,7 @@ draft = false
 
 
 {{< hextra/hero-container
-  image="images/cloudborg-logo2.png"
+  image="images/cloudborg-logo.png"
   imageTitle="Cloudborg Tech Services"
 >}}
 <div class="hx-mt-6 hx-mb-6">
