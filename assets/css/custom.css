@@ -1,4 +1,19 @@
 /* ================================================================
+   HEXTRA / CUSTOM HOMEPAGE LAYOUT OVERRIDES
+   These rules support layouts/home.html and the full-width
+   Cloudborg landing page.
+   ================================================================ */
+
+:root {
+  --hextra-max-content-width: 100%;
+}
+
+.cloudborg-home {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ================================================================
    CLOUDBORG HOMEPAGE
    Hextra custom landing page
    ================================================================ */
@@ -19,6 +34,7 @@
   --cb-muted: #aab8cc;
 
   width: 100%;
+  max-width: 100%;
   color: var(--cb-text);
 }
 
@@ -828,6 +844,60 @@
   color: #8797ac;
 
   font-size: 12px;
+}
+
+
+/* ================================================================
+   HOMEPAGE LINK RESET
+   The category cards and article cards are links in layouts/home.html.
+   Remove Hextra's default link styling so the cards remain visually
+   consistent with the reference design.
+   ================================================================ */
+
+.cb-category-card,
+.cb-article-card a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.cb-category-card {
+  display: block;
+}
+
+.cb-category-card:hover,
+.cb-category-card:focus,
+.cb-category-card:active,
+.cb-article-card a:hover,
+.cb-article-card a:focus,
+.cb-article-card a:active {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.cb-article-card a {
+  display: block;
+}
+
+
+/* ================================================================
+   FULL-WIDTH HEXTRA HOMEPAGE
+   The custom home template should use the full viewport width
+   rather than Hextra's normal article/content constraint.
+   ================================================================ */
+
+#content {
+  max-width: none !important;
+}
+
+#content > .content {
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+.cloudborg-home {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
