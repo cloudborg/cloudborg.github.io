@@ -1,0 +1,8 @@
+{{ $customCSS := resources.Get "css/custom.css" }}
+
+{{ if $customCSS }}
+<link
+  rel="stylesheet"
+  href="{{ $customCSS.RelPermalink }}"
+>
+{{ end }}
