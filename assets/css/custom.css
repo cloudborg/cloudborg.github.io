@@ -390,6 +390,13 @@
   color: #c8d4e6;
 }
 
+.cb-tech-svg {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
 
 .cb-aws {
   left: 0;
