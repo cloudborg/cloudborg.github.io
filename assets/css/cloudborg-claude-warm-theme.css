@@ -2092,24 +2092,24 @@ body:has(.cloudborg-home) footer {
 }
 
 /* =================================================================
-   CLOUDBORG LIGHT PURPLE THEME — CLAUDE-INSPIRED
-   Experimental light-purple alternative palette.
+   CLOUDBORG WARM THEME — CLAUDE-INSPIRED
+   Experimental alternative palette.
    Does NOT replace the existing design; append this file after
    custom.css to preview the warm direction.
    ================================================================= */
 
 :root {
-  --cb-warm-bg: #f7f5fc;
-  --cb-warm-bg-deep: #eeebf6;
-  --cb-warm-surface: #fcfbff;
-  --cb-warm-surface-2: #f2eff8;
-  --cb-warm-text: #28242f;
-  --cb-warm-muted: #716b7b;
-  --cb-warm-border: #ded9e8;
-  --cb-warm-border-strong: #cdc5da;
-  --cb-warm-accent: #8b6fc7;
-  --cb-warm-accent-dark: #6f56a8;
-  --cb-warm-accent-soft: #cfc2ea;
+  --cb-warm-bg: #f6f2e9;
+  --cb-warm-bg-deep: #eee8dc;
+  --cb-warm-surface: #fbf9f4;
+  --cb-warm-surface-2: #f3eee5;
+  --cb-warm-text: #24211d;
+  --cb-warm-muted: #706a61;
+  --cb-warm-border: #ded7ca;
+  --cb-warm-border-strong: #cfc5b5;
+  --cb-warm-accent: #c86b3c;
+  --cb-warm-accent-dark: #9f4e29;
+  --cb-warm-accent-soft: #e8b08e;
   --cb-warm-shadow: rgba(76, 56, 37, .10);
 }
 
@@ -2120,15 +2120,15 @@ body:has(.cloudborg-home) footer {
 body:has(.cloudborg-home) {
   color: var(--cb-warm-text) !important;
   background:
-    radial-gradient(circle at 80% 0%, rgba(177, 153, 224, .13), transparent 27%),
+    radial-gradient(circle at 80% 0%, rgba(232, 176, 142, .18), transparent 27%),
     var(--cb-warm-bg) !important;
 }
 
 body:has(.cloudborg-home) #content {
   background:
-    radial-gradient(circle at 80% 6%, rgba(177, 153, 224, .11), transparent 28%),
-    radial-gradient(circle at 8% 34%, rgba(186, 174, 211, .09), transparent 31%),
-    linear-gradient(180deg, #faf8fd 0%, #f7f5fc 58%, #f0edf7 100%) !important;
+    radial-gradient(circle at 80% 6%, rgba(229, 166, 126, .16), transparent 28%),
+    radial-gradient(circle at 8% 34%, rgba(207, 189, 160, .12), transparent 31%),
+    linear-gradient(180deg, #f8f4ec 0%, #f6f2e9 58%, #f1ece2 100%) !important;
 }
 
 /* ---------------------------------------------------------------
@@ -2151,7 +2151,7 @@ body:has(.cloudborg-home) .hextra-nav-container-blur {
 
 body:has(.cloudborg-home) .hextra-nav-container a,
 body:has(.cloudborg-home) .hextra-nav-container button {
-  color: #514a5d !important;
+  color: #454039 !important;
 }
 
 body:has(.cloudborg-home) .hextra-nav-container a:hover,
@@ -2170,13 +2170,13 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
 .cb-hero::before {
   background:
     radial-gradient(circle at 72% 48%, rgba(206, 119, 76, .13), transparent 31%),
-    radial-gradient(circle at 18% 44%, rgba(186, 174, 211, .10), transparent 38%),
+    radial-gradient(circle at 18% 44%, rgba(205, 190, 165, .14), transparent 38%),
     linear-gradient(90deg, rgba(248, 245, 238, .18), transparent 55%);
 }
 
 .cb-hero-kicker {
   border-color: rgba(157, 92, 58, .20);
-  background: rgba(139, 111, 199, .065);
+  background: rgba(199, 107, 60, .065);
   color: var(--cb-warm-accent-dark);
 }
 
@@ -2193,7 +2193,7 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
   background: linear-gradient(
     100deg,
     #9e4d29 0%,
-    #8b6fc7 50%,
+    #c86b3c 50%,
     #d68b61 100%
   );
   -webkit-background-clip: text;
@@ -2207,15 +2207,15 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
 
 .cb-button-primary {
   color: #fff !important;
-  background: linear-gradient(135deg, #a9512b, #8b6fc7 65%, #d47d4e);
+  background: linear-gradient(135deg, #a9512b, #c86b3c 65%, #d47d4e);
   box-shadow:
-    0 10px 28px rgba(111, 86, 168, .14),
+    0 10px 28px rgba(161, 76, 40, .16),
     inset 0 1px rgba(255, 255, 255, .22);
 }
 
 .cb-button-primary:hover {
   box-shadow:
-    0 14px 36px rgba(111, 86, 168, .19),
+    0 14px 36px rgba(161, 76, 40, .22),
     inset 0 1px rgba(255, 255, 255, .28);
 }
 
@@ -2227,7 +2227,7 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
 
 .cb-button-secondary:hover {
   color: var(--cb-warm-accent-dark) !important;
-  border-color: rgba(111, 86, 168, .36);
+  border-color: rgba(170, 91, 53, .42);
   background: rgba(255, 251, 244, .92);
 }
 
@@ -2239,8 +2239,8 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
   background:
     radial-gradient(
       ellipse,
-      rgba(139, 111, 199, .15),
-      rgba(207, 194, 234, .08) 42%,
+      rgba(201, 108, 62, .19),
+      rgba(224, 175, 143, .08) 42%,
       transparent 69%
     );
   filter: blur(38px);
@@ -2248,23 +2248,23 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
 }
 
 .cb-main-cloud {
-  border-color: rgba(128, 104, 178, .40);
+  border-color: rgba(168, 95, 59, .50);
   background:
     radial-gradient(
       circle at 50% 14%,
-      rgba(207, 194, 234, .25),
+      rgba(229, 166, 126, .30),
       transparent 35%
     ),
     linear-gradient(
       180deg,
-      #e8e1f2 0%,
-      #d8cbe8 100%
+      #eadfd0 0%,
+      #d9c7b2 100%
     );
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, .38),
-    0 20px 60px rgba(77, 61, 104, .10),
+    0 20px 60px rgba(103, 73, 49, .12),
     inset 0 1px rgba(255, 255, 255, .72),
-    inset 0 -35px 65px rgba(104, 83, 135, .08);
+    inset 0 -35px 65px rgba(132, 96, 67, .10);
 }
 
 .cb-main-cloud::before {
@@ -2272,13 +2272,13 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
     linear-gradient(
       90deg,
       transparent,
-      rgba(111, 91, 145, .18),
+      rgba(148, 104, 73, .22),
       transparent
     );
 }
 
 .cb-cloud-text {
-  color: #3d3548;
+  color: #3b332c;
   text-shadow: none;
 }
 
@@ -2305,17 +2305,17 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
 }
 
 .cb-orbit {
-  border-color: rgba(126, 106, 157, .17);
+  border-color: rgba(156, 113, 80, .20);
   box-shadow: 0 0 18px rgba(150, 107, 75, .035);
 }
 
 .cb-orbit-2 {
-  border-color: rgba(126, 106, 157, .11);
+  border-color: rgba(156, 113, 80, .13);
 }
 
 /* Technology node badges */
 .cb-cloud-label {
-  border-color: rgba(120, 105, 143, .16);
+  border-color: rgba(136, 112, 88, .18);
   background:
     linear-gradient(
       145deg,
@@ -2323,7 +2323,7 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
       rgba(242, 235, 224, .88)
     );
   box-shadow:
-    0 12px 30px rgba(68, 54, 91, .08),
+    0 12px 30px rgba(75, 56, 39, .10),
     inset 0 1px rgba(255, 255, 255, .80);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -2332,12 +2332,12 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
 .cb-cloud-label:hover {
   border-color: rgba(170, 91, 53, .38);
   box-shadow:
-    0 15px 35px rgba(68, 54, 91, .11),
+    0 15px 35px rgba(75, 56, 39, .13),
     0 0 20px rgba(199, 107, 60, .06);
 }
 
 .cb-cloud-label strong {
-  color: #40384d;
+  color: #433a32;
   text-shadow: none;
 }
 
@@ -2346,19 +2346,19 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
 }
 
 .cb-aws strong {
-  color: #8b6fc7;
+  color: #b8662f;
 }
 
 .cb-gcp strong {
-  color: #7184aa;
+  color: #567c9e;
 }
 
 .cb-ai strong {
-  color: #8b72a5;
+  color: #8a5b7b;
 }
 
 .cb-k8s strong {
-  color: #667fa0;
+  color: #537f91;
 }
 
 .cb-aws::after,
@@ -2415,21 +2415,21 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
     ),
     linear-gradient(
       145deg,
-      #fefcff,
-      #f4f0fa
+      #fffdf8,
+      #f7f1e7
     );
   box-shadow:
-    0 22px 52px rgba(68, 54, 91, .105),
+    0 22px 52px rgba(76, 56, 37, .13),
     0 0 30px var(--cb-card-shadow, rgba(177, 93, 50, .05)),
     inset 0 1px rgba(255, 255, 255, .90);
 }
 
 .cb-category-card h3 {
-  color: #2d2936;
+  color: #29251f;
 }
 
 .cb-category-card p {
-  color: #736d7d;
+  color: #716a61;
 }
 
 .cb-category-card > span {
@@ -2437,7 +2437,7 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
 }
 
 .cb-category-card:hover > span {
-  color: #7b60b5 !important;
+  color: #c15e30 !important;
 }
 
 /* Icon containers */
@@ -2455,10 +2455,10 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
 }
 
 .cb-category-card:hover .cb-category-icon {
-  border-color: rgba(126, 101, 181, .28);
+  border-color: rgba(176, 96, 57, .30);
   box-shadow:
     0 10px 26px rgba(76, 56, 37, .10),
-    0 0 18px rgba(126, 101, 181, .045);
+    0 0 18px rgba(194, 103, 59, .05);
 }
 
 .cb-category-icon::after {
@@ -2516,7 +2516,7 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
 }
 
 .cb-section-header h2 {
-  color: #2d2936;
+  color: #29251f;
 }
 
 .cb-view-all {
@@ -2532,49 +2532,49 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
       rgba(246, 241, 232, .96)
     );
   box-shadow:
-    0 14px 38px rgba(68, 54, 91, .075),
+    0 14px 38px rgba(76, 56, 37, .09),
     inset 0 1px rgba(255, 255, 255, .78);
 }
 
 .cb-article-card:hover {
   border-color: rgba(184, 105, 62, .34);
   box-shadow:
-    0 22px 52px rgba(68, 54, 91, .105),
+    0 22px 52px rgba(76, 56, 37, .13),
     0 0 26px rgba(184, 105, 62, .045);
 }
 
 .cb-article-image {
-  border-bottom-color: rgba(120, 105, 143, .13);
+  border-bottom-color: rgba(137, 113, 87, .14);
 }
 
 .cb-image-aws {
   background:
     radial-gradient(circle at 50% 42%, rgba(213, 132, 67, .16), transparent 30%),
-    linear-gradient(145deg, #e8e3f2, #d8d1e5);
+    linear-gradient(145deg, #e9ddd0, #d9c8b6);
 }
 
 .cb-image-gcp {
   background:
     radial-gradient(circle at 50% 42%, rgba(91, 129, 154, .15), transparent 30%),
-    linear-gradient(145deg, #e3e2ef, #d6d4e3);
+    linear-gradient(145deg, #dce4e5, #cdd8d9);
 }
 
 .cb-image-ai {
   background:
     radial-gradient(circle at 50% 42%, rgba(145, 102, 127, .17), transparent 30%),
-    linear-gradient(145deg, #e5dff0, #d7cfe2);
+    linear-gradient(145deg, #e6dce1, #d9cbd3);
 }
 
 .cb-image-k8s {
   background:
     radial-gradient(circle at 50% 42%, rgba(75, 131, 146, .16), transparent 30%),
-    linear-gradient(145deg, #dde1ee, #d1d5e2);
+    linear-gradient(145deg, #d9e3e4, #cbd7d9);
 }
 
 .cb-article-tag {
   background: rgba(255, 251, 244, .80);
-  color: #696273;
-  border: 1px solid rgba(120, 105, 143, .14);
+  color: #665e55;
+  border: 1px solid rgba(137, 113, 87, .16);
 }
 
 .cb-article-content h3 {
@@ -2582,11 +2582,11 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
 }
 
 .cb-article-content p {
-  color: #787180;
+  color: #746d64;
 }
 
 .cb-article-meta {
-  color: #8b8494;
+  color: #8b8278;
 }
 
 /* ---------------------------------------------------------------
@@ -2594,13 +2594,13 @@ body:has(.cloudborg-home) .hextra-nav-container button:hover {
    --------------------------------------------------------------- */
 
 body:has(.cloudborg-home) footer {
-  color: #706a79 !important;
-  background: #eeebf6 !important;
+  color: #6e665d !important;
+  background: #eee8dc !important;
   border-top: 1px solid var(--cb-warm-border);
 }
 
 body:has(.cloudborg-home) footer a {
-  color: #696273 !important;
+  color: #665e55 !important;
 }
 
 body:has(.cloudborg-home) footer a:hover {
@@ -2615,387 +2615,5 @@ body:has(.cloudborg-home) footer a:hover {
 @media (prefers-color-scheme: dark) {
   body:has(.cloudborg-home) {
     color-scheme: light;
-  }
-}
-
-/* =================================================================
-   CLOUDBORG PASS 4 — TECHNOLOGY IDENTITY + ARTICLE VISUALS
-   CSS-only enhancement for the current homepage markup.
-   No template/content changes required.
-   ================================================================= */
-
-/* ---------------------------------------------------------------
-   Shared technology mark treatment
-   --------------------------------------------------------------- */
-
-.cb-cloud-label strong,
-.cb-category-icon,
-.cb-article-image .cb-article-tag {
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-}
-
-/* Hero technology labels: replace glyph-like appearance with
-   clean typographic marks using the existing text nodes. */
-.cb-cloud-label strong {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 31px;
-  height: 27px;
-  letter-spacing: -.7px;
-}
-
-.cb-cloud-label.cb-aws strong {
-  font-size: 19px;
-  font-weight: 800;
-  text-transform: lowercase;
-  letter-spacing: -1px;
-  color: #8a67ba;
-}
-
-.cb-cloud-label.cb-gcp strong::before {
-  content: "";
-  width: 19px;
-  height: 19px;
-  border: 2px solid #7184aa;
-  border-radius: 50%;
-  box-sizing: border-box;
-}
-
-.cb-cloud-label.cb-gcp strong {
-  font-size: 0;
-  position: relative;
-}
-
-.cb-cloud-label.cb-gcp strong::after {
-  content: "";
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #7184aa;
-}
-
-.cb-cloud-label.cb-ai strong {
-  font-size: 21px;
-  font-weight: 750;
-  color: #8b72a5;
-}
-
-.cb-cloud-label.cb-ai strong::before {
-  content: "AI";
-  font-size: 13px;
-  letter-spacing: .2px;
-}
-
-.cb-cloud-label.cb-ai strong {
-  font-size: 0;
-}
-
-.cb-cloud-label.cb-k8s strong {
-  font-size: 0;
-  position: relative;
-}
-
-.cb-cloud-label.cb-k8s strong::before {
-  content: "";
-  width: 19px;
-  height: 19px;
-  border: 2px solid #667fa0;
-  clip-path: polygon(
-    25% 4%,
-    75% 4%,
-    100% 50%,
-    75% 96%,
-    25% 96%,
-    0 50%
-  );
-}
-
-.cb-cloud-label.cb-k8s strong::after {
-  content: "K";
-  position: absolute;
-  font-size: 10px;
-  font-weight: 800;
-  color: #667fa0;
-}
-
-/* ---------------------------------------------------------------
-   Category icons
-   --------------------------------------------------------------- */
-
-.cb-category-icon {
-  font-size: 0 !important;
-  position: relative;
-  overflow: hidden;
-}
-
-.cb-category-icon::before {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* AWS — clean lowercase wordmark treatment */
-.cb-icon-aws::before {
-  content: "aws";
-  font-size: 19px;
-  font-weight: 800;
-  letter-spacing: -1px;
-  color: #8a67ba;
-}
-
-/* GCP — four-segment-inspired ring */
-.cb-icon-gcp::before {
-  content: "";
-  width: 23px;
-  height: 23px;
-  border: 3px solid #7184aa;
-  border-right-color: transparent;
-  border-radius: 50%;
-}
-
-.cb-icon-gcp::after {
-  content: "";
-  position: absolute;
-  width: 8px;
-  height: 3px;
-  left: 24px;
-  top: 22px;
-  border-radius: 3px;
-  background: #7184aa;
-}
-
-/* AI — neutral Cloudborg mark */
-.cb-icon-ai::before {
-  content: "AI";
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: .5px;
-  color: #8b72a5;
-}
-
-/* Kubernetes — restrained hex mark */
-.cb-icon-k8s::before {
-  content: "K";
-  width: 26px;
-  height: 26px;
-  border: 2px solid #667fa0;
-  clip-path: polygon(
-    25% 4%,
-    75% 4%,
-    100% 50%,
-    75% 96%,
-    25% 96%,
-    0 50%
-  );
-  font-size: 11px;
-  font-weight: 800;
-  color: #667fa0;
-}
-
-/* ---------------------------------------------------------------
-   Article visual language
-   --------------------------------------------------------------- */
-
-.cb-article-image {
-  position: relative;
-}
-
-.cb-article-tag {
-  border-color: rgba(139, 111, 199, .22) !important;
-  background: rgba(252, 250, 255, .86) !important;
-  color: #6f56a8 !important;
-  font-weight: 750;
-  letter-spacing: .2px;
-  box-shadow: 0 4px 14px rgba(68, 54, 91, .06);
-}
-
-/* AWS article illustration */
-.cb-image-aws {
-  background:
-    radial-gradient(
-      circle at 50% 48%,
-      rgba(139, 111, 199, .18),
-      transparent 35%
-    ),
-    linear-gradient(145deg, #ebe6f4, #ddd7e9) !important;
-}
-
-.cb-image-aws .cb-architecture-art {
-  position: relative;
-  transform: scale(.82);
-}
-
-.cb-image-aws .cb-architecture-art::before {
-  content: "aws";
-  position: absolute;
-  left: 50%;
-  top: 12px;
-  transform: translateX(-50%);
-  color: #7356a5;
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: -1.5px;
-  z-index: 2;
-}
-
-.cb-image-aws .cb-architecture-art div {
-  border-color: rgba(126, 99, 175, .28);
-  background:
-    linear-gradient(
-      180deg,
-      rgba(153, 126, 198, .18),
-      rgba(112, 88, 151, .06)
-    );
-  box-shadow: 0 0 16px rgba(126, 99, 175, .08);
-}
-
-/* GCP article illustration */
-.cb-image-gcp {
-  background:
-    radial-gradient(
-      circle at 50% 48%,
-      rgba(112, 132, 170, .17),
-      transparent 35%
-    ),
-    linear-gradient(145deg, #e9ebf3, #dfe1eb) !important;
-}
-
-.cb-image-gcp::after {
-  content: "";
-  width: 56px;
-  height: 56px;
-  border: 6px solid #7184aa;
-  border-right-color: transparent;
-  border-radius: 50%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  opacity: .82;
-}
-
-.cb-image-gcp .cb-architecture-art {
-  opacity: .16;
-}
-
-/* AI article illustration */
-.cb-image-ai {
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(139, 114, 165, .20),
-      transparent 40%
-    ),
-    linear-gradient(145deg, #ebe5f1, #e1d9eb) !important;
-}
-
-.cb-ai-art {
-  font-size: 0 !important;
-  width: 68px;
-  height: 68px;
-  border: 1px solid rgba(139, 114, 165, .30);
-  border-radius: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #8b72a5 !important;
-  text-shadow: none !important;
-  box-shadow:
-    0 0 30px rgba(139, 114, 165, .10),
-    inset 0 0 22px rgba(255, 255, 255, .42);
-}
-
-.cb-ai-art::before {
-  content: "AI";
-  font-size: 20px;
-  font-weight: 800;
-  letter-spacing: .5px;
-}
-
-/* Kubernetes article illustration */
-.cb-image-k8s {
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(102, 127, 160, .17),
-      transparent 40%
-    ),
-    linear-gradient(145deg, #e5e9f1, #d9dfe9) !important;
-}
-
-.cb-k8s-art {
-  font-size: 0 !important;
-  width: 66px;
-  height: 66px;
-  border: 2px solid rgba(102, 127, 160, .48);
-  clip-path: polygon(
-    25% 4%,
-    75% 4%,
-    100% 50%,
-    75% 96%,
-    25% 96%,
-    0 50%
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #667fa0 !important;
-  text-shadow: none !important;
-}
-
-.cb-k8s-art::before {
-  content: "K";
-  font-size: 23px;
-  font-weight: 800;
-}
-
-/* ---------------------------------------------------------------
-   Article card editorial polish
-   --------------------------------------------------------------- */
-
-.cb-article-card {
-  border-radius: 13px;
-}
-
-.cb-article-image {
-  height: 155px;
-}
-
-.cb-article-content h3 {
-  letter-spacing: -.25px;
-}
-
-.cb-article-meta {
-  letter-spacing: .05px;
-}
-
-/* Make article tags feel like category labels rather than badges. */
-.cb-article-tag {
-  border-radius: 7px !important;
-  padding: 5px 9px !important;
-}
-
-/* ---------------------------------------------------------------
-   Responsive adjustments
-   --------------------------------------------------------------- */
-
-@media (max-width: 800px) {
-  .cb-article-image {
-    height: 145px;
-  }
-}
-
-@media (max-width: 600px) {
-  .cb-cloud-label strong {
-    min-width: 27px;
-  }
-
-  .cb-article-image {
-    height: 150px;
   }
 }

@@ -1,0 +1,67 @@
+diff --git a/layouts/_default/home.html b/layouts/_default/home.html
+index c4d3525..eb39b62 100644
+--- a/layouts/_default/home.html
++++ b/layouts/_default/home.html
+@@ -67,22 +67,22 @@
+       <div class="cb-orbit cb-orbit-2"></div>
+ 
+       <div class="cb-cloud-label cb-aws">
+-        <strong>aws</strong>
++        {{ partial "cb-tech-icon.html" (dict "name" "aws" "label" "AWS") }}
+         <small>AWS</small>
+       </div>
+ 
+       <div class="cb-cloud-label cb-gcp">
+-        <strong>●</strong>
++        {{ partial "cb-tech-icon.html" (dict "name" "gcp" "label" "GCP") }}
+         <small>GCP</small>
+       </div>
+ 
+       <div class="cb-cloud-label cb-ai">
+-        <strong>✣</strong>
++        {{ partial "cb-tech-icon.html" (dict "name" "ai" "label" "AI") }}
+         <small>AI</small>
+       </div>
+ 
+       <div class="cb-cloud-label cb-k8s">
+-        <strong>⬡</strong>
++        {{ partial "cb-tech-icon.html" (dict "name" "kubernetes" "label" "Kubernetes") }}
+         <small>Kubernetes</small>
+       </div>
+ 
+@@ -100,7 +100,7 @@
+     <a href="/blog/aws/" class="cb-category-card">
+ 
+       <div class="cb-category-icon cb-icon-aws">
+-        aws
++        {{ partial "cb-tech-icon.html" (dict "name" "aws" "label" "AWS") }}
+       </div>
+ 
+       <h3>AWS</h3>
+@@ -120,7 +120,7 @@
+     <a href="/blog/gcp/" class="cb-category-card">
+ 
+       <div class="cb-category-icon cb-icon-gcp">
+-        ●
++        {{ partial "cb-tech-icon.html" (dict "name" "gcp" "label" "GCP") }}
+       </div>
+ 
+       <h3>GCP</h3>
+@@ -140,7 +140,7 @@
+     <a href="/blog/ai/" class="cb-category-card">
+ 
+       <div class="cb-category-icon cb-icon-ai">
+-        ✣
++        {{ partial "cb-tech-icon.html" (dict "name" "ai" "label" "AI") }}
+       </div>
+ 
+       <h3>AI</h3>
+@@ -160,7 +160,7 @@
+     <a href="/blog/k8s/" class="cb-category-card">
+ 
+       <div class="cb-category-icon cb-icon-k8s">
+-        ⬡
++        {{ partial "cb-tech-icon.html" (dict "name" "kubernetes" "label" "Kubernetes") }}
+       </div>
+ 
+       <h3>Kubernetes</h3>

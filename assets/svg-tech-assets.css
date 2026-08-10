@@ -1,0 +1,59 @@
+/* ================================================================
+   CLOUDBORG PASS 4A — SVG TECHNOLOGY ASSETS
+   Put after the existing Cloudborg stylesheet.
+   ================================================================ */
+
+/* Hero technology nodes */
+.cb-cloud-label .cb-tech-svg {
+  width: 31px;
+  height: 31px;
+  display: block;
+  flex: 0 0 31px;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 10px rgba(70, 55, 90, .08));
+}
+
+/* Technology cards */
+.cb-category-icon .cb-tech-svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+  object-fit: contain;
+}
+
+/* Article artwork */
+.cb-article-image .cb-tech-svg {
+  width: 72px;
+  height: 72px;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 18px rgba(70, 55, 90, .10));
+}
+
+/* Remove the CSS-generated Pass 4 marks when SVGs are present. */
+.cb-cloud-label .cb-tech-svg + strong,
+.cb-category-icon .cb-tech-svg + span {
+  display: none;
+}
+
+/* Keep the cards clean and editorial. */
+.cb-category-icon {
+  overflow: hidden;
+}
+
+.cb-article-image {
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .cb-cloud-label .cb-tech-svg {
+    width: 27px;
+    height: 27px;
+    flex-basis: 27px;
+  }
+
+  .cb-article-image .cb-tech-svg {
+    width: 64px;
+    height: 64px;
+  }
+}
