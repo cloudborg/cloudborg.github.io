@@ -3072,3 +3072,141 @@ body:has(.cloudborg-home) footer a:hover {
   content: none !important;
   display: none !important;
 }
+
+
+/* =================================================================
+   CLOUDBORG FINAL FIX — ARTICLE CARDS
+   Use the real technology SVGs instead of the old CSS-drawn marks.
+   No HTML/template changes required.
+   ================================================================= */
+
+/* Keep the article cards visually balanced and consistent. */
+.cb-article-card {
+  border-radius: 14px !important;
+  overflow: hidden !important;
+}
+
+.cb-article-image {
+  height: 155px !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+
+/* Remove the old hand-drawn illustration elements. */
+.cb-article-image .cb-architecture-art {
+  width: 72px !important;
+  height: 72px !important;
+  margin: 0 !important;
+  transform: none !important;
+  display: block !important;
+  position: relative !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 64px 64px !important;
+}
+
+/* Hide the old AWS/GCP building shapes and generated labels. */
+.cb-article-image .cb-architecture-art > div {
+  display: none !important;
+}
+
+.cb-image-aws .cb-architecture-art::before,
+.cb-image-aws .cb-architecture-art::after,
+.cb-image-gcp .cb-architecture-art::before,
+.cb-image-gcp .cb-architecture-art::after,
+.cb-image-gcp::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Real technology icons. */
+.cb-image-aws .cb-architecture-art {
+  background-image: url("/icons/aws.svg") !important;
+}
+
+.cb-image-gcp .cb-architecture-art {
+  background-image: url("/icons/gcp.svg") !important;
+}
+
+/* AI and Kubernetes cards already have dedicated elements; replace
+   the old CSS-generated symbols with the actual SVGs. */
+.cb-image-ai .cb-ai-art,
+.cb-image-k8s .cb-k8s-art {
+  width: 72px !important;
+  height: 72px !important;
+  margin: 0 !important;
+  font-size: 0 !important;
+  border: 0 !important;
+  clip-path: none !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 64px 64px !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.cb-image-ai .cb-ai-art {
+  background-image: url("/icons/ai.svg") !important;
+}
+
+.cb-image-k8s .cb-k8s-art {
+  background-image: url("/icons/kubernetes.svg") !important;
+}
+
+.cb-image-ai .cb-ai-art::before,
+.cb-image-ai .cb-ai-art::after,
+.cb-image-k8s .cb-k8s-art::before,
+.cb-image-k8s .cb-k8s-art::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Softer, cleaner image backgrounds. */
+.cb-image-aws {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(139, 111, 199, .14), transparent 38%),
+    linear-gradient(145deg, #eeeaf5, #e1dceb) !important;
+}
+
+.cb-image-gcp {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(100, 130, 165, .13), transparent 38%),
+    linear-gradient(145deg, #e9ebf2, #e0e2eb) !important;
+}
+
+.cb-image-ai {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(139, 114, 165, .13), transparent 38%),
+    linear-gradient(145deg, #eee9f2, #e4dfea) !important;
+}
+
+.cb-image-k8s {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(102, 127, 160, .13), transparent 38%),
+    linear-gradient(145deg, #e9ecf2, #e1e5ec) !important;
+}
+
+/* Keep article text clean and consistent. */
+.cb-article-content {
+  min-height: 226px;
+  box-sizing: border-box;
+}
+
+.cb-article-content h3 {
+  font-size: 18px !important;
+  line-height: 1.35 !important;
+  margin-bottom: 12px !important;
+}
+
+.cb-article-content p {
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+  margin-bottom: 20px !important;
+}
+
+.cb-article-meta {
+  font-size: 12px !important;
+}
