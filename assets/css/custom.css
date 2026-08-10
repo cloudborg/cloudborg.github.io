@@ -3006,3 +3006,69 @@ body:has(.cloudborg-home) footer a:hover {
     height: 150px;
   }
 }
+
+
+/* =================================================================
+   CLOUDBORG FINAL FIX — REAL TECHNOLOGY SVGs IN CATEGORY CARDS
+   Keep the existing homepage/template files unchanged.
+   ================================================================= */
+
+/*
+   The category cards now contain real SVG <img> elements.
+   The older CSS below this area was written for text/pseudo-element
+   technology marks, so it can overlap the real SVGs (especially GCP).
+*/
+
+/* Keep the SVG inside the 46px technology icon container. */
+.cb-category-card .cb-category-icon {
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  min-height: 46px !important;
+  flex: 0 0 46px !important;
+  overflow: hidden !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* The real technology SVG is the only technology mark displayed. */
+.cb-category-card .cb-category-icon .cb-tech-svg {
+  display: block !important;
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+  max-height: 32px !important;
+  margin: 0 !important;
+  object-fit: contain !important;
+}
+
+/* Disable the old pseudo-element technology drawings.
+   These are what overlap the real GCP SVG. */
+.cb-category-card .cb-category-icon::before,
+.cb-category-card .cb-category-icon::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Keep the category-card typography stable regardless of Hextra
+   typography rules or stylesheet load order. */
+.cb-category-card h3 {
+  display: block !important;
+  margin: 0 !important;
+  font-size: 20px !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
+}
+
+.cb-category-card p {
+  margin: 10px 0 20px !important;
+  font-size: 13px !important;
+  line-height: 1.62 !important;
+}
+
+/* The HTML already contains "→"; do not add a second arrow in CSS. */
+.cb-category-card > span::after {
+  content: none !important;
+  display: none !important;
+}
