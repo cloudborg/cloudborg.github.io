@@ -5,8 +5,6 @@ cascade:
 weight: 2
 ---
 
-# Near-Real-Time ETL Architecture with Kinesis Data Streams
-
 ## Architecture Overview
 
 A near-real-time ETL pipeline on AWS uses Kinesis Data Streams as the central ingestion bus, fanning out to three processing paths (hot, warm, cold) that all land in a Bronze → Silver → Gold S3 data lake. Every layer is independently scalable and observable.

@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Near-Real-Time ETL Architecture — Kinesis Data Streams</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Syne:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0c10;
+    --bg2: #0f1218;
+    --bg3: #161b24;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #e2e8f0;
+    --text2: #8899aa;
+    --text3: #566370;
+    --teal: #2dd4bf;
+    --teal-dim: rgba(45,212,191,0.12);
+    --purple: #a78bfa;
+    --purple-dim: rgba(167,139,250,0.12);
+    --amber: #fbbf24;
+    --amber-dim: rgba(251,191,36,0.12);
+    --blue: #60a5fa;
+    --blue-dim: rgba(96,165,250,0.12);
+    --coral: #fb7185;
+    --coral-dim: rgba(251,113,133,0.12);
+    --gray-dim: rgba(148,163,184,0.08);
+    --mono: 'IBM Plex Mono', monospace;
+    --display: 'Syne', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── header ── */
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 3rem 0 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(45,212,191,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: 10%;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(167,139,250,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  h1 span { color: var(--teal); }
+  .subtitle {
+    color: var(--text2);
+    font-size: 15px;
+    max-width: 600px;
+    font-weight: 300;
+  }
+  .meta-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1.5rem;
+  }
+  .chip {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border2);
+    color: var(--text2);
+    background: var(--bg3);
+    letter-spacing: 0.05em;
+  }
+  .chip.teal { border-color: rgba(45,212,191,0.3); color: var(--teal); background: var(--teal-dim); }
+  .chip.purple { border-color: rgba(167,139,250,0.3); color: var(--purple); background: var(--purple-dim); }
+  .chip.amber { border-color: rgba(251,191,36,0.3); color: var(--amber); background: var(--amber-dim); }
+
+  /* ── layout ── */
+  .content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2.5rem 4rem;
+  }
+
+  section { margin-top: 4rem; }
+
+  h2 {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  h2::before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 1.4em;
+    background: var(--teal);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  h3 {
+    font-family: var(--display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 2rem 0 0.75rem;
+    letter-spacing: 0.01em;
+  }
+
+  p { color: var(--text2); margin-bottom: 1rem; line-height: 1.75; }
+
+  /* ── diagram card ── */
+  .diagram-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+  .diagram-card-header {
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .diagram-card-header span {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text3);
+    letter-spacing: 0.05em;
+  }
+  .diagram-card-header .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+  }
+  .diagram-card svg {
+    display: block;
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  /* ── SVG overrides for dark theme ── */
+  svg .arr {
+    stroke: rgba(255,255,255,0.25);
+    stroke-width: 1.5px;
+    fill: none;
+  }
+  svg .leader {
+    stroke: rgba(255,255,255,0.18);
+    stroke-width: 0.5px;
+    stroke-dasharray: 3 3;
+    fill: none;
+  }
+  svg .node { cursor: pointer; }
+  svg .box {
+    fill: rgba(255,255,255,0.05);
+    stroke: rgba(255,255,255,0.12);
+    stroke-width: 0.5px;
+  }
+  svg .t { fill: #e2e8f0; font-family: 'Inter', sans-serif; font-size: 14px; }
+  svg .ts { fill: #8899aa; font-family: 'Inter', sans-serif; font-size: 12px; }
+  svg .th { fill: #e2e8f0; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; }
+
+  svg .c-teal rect, svg .c-teal circle, svg .c-teal ellipse { fill: rgba(45,212,191,0.1); stroke: rgba(45,212,191,0.35); }
+  svg .c-teal .th { fill: #2dd4bf; }
+  svg .c-teal .ts { fill: rgba(45,212,191,0.7); }
+
+  svg .c-purple rect, svg .c-purple circle { fill: rgba(167,139,250,0.1); stroke: rgba(167,139,250,0.35); }
+  svg .c-purple .th { fill: #a78bfa; }
+  svg .c-purple .ts { fill: rgba(167,139,250,0.7); }
+
+  svg .c-amber rect, svg .c-amber circle { fill: rgba(251,191,36,0.1); stroke: rgba(251,191,36,0.35); }
+  svg .c-amber .th { fill: #fbbf24; }
+  svg .c-amber .ts { fill: rgba(251,191,36,0.7); }
+
+  svg .c-blue rect, svg .c-blue circle { fill: rgba(96,165,250,0.1); stroke: rgba(96,165,250,0.35); }
+  svg .c-blue .th { fill: #60a5fa; }
+  svg .c-blue .ts { fill: rgba(96,165,250,0.7); }
+
+  svg .c-coral rect, svg .c-coral circle { fill: rgba(251,113,133,0.1); stroke: rgba(251,113,133,0.35); }
+  svg .c-coral .th { fill: #fb7185; }
+  svg .c-coral .ts { fill: rgba(251,113,133,0.7); }
+
+  svg .c-gray rect, svg .c-gray circle { fill: rgba(148,163,184,0.08); stroke: rgba(148,163,184,0.25); }
+  svg .c-gray .th { fill: #94a3b8; }
+  svg .c-gray .ts { fill: rgba(148,163,184,0.6); }
+
+  /* ── detail cards grid ── */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 800px) { .grid-3 { grid-template-columns: 1fr; } }
+
+  .detail-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    transition: border-color 0.2s;
+  }
+  .detail-card:hover { border-color: var(--border2); }
+  .detail-card-title {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .detail-card-title.teal { color: var(--teal); border-color: rgba(45,212,191,0.2); }
+  .detail-card-title.purple { color: var(--purple); border-color: rgba(167,139,250,0.2); }
+  .detail-card-title.amber { color: var(--amber); border-color: rgba(251,191,36,0.2); }
+  .detail-card-title.blue { color: var(--blue); border-color: rgba(96,165,250,0.2); }
+  .detail-card-title.gray { color: #94a3b8; }
+
+  .detail-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .detail-card ul li {
+    font-size: 13px;
+    color: var(--text2);
+    padding: 3px 0;
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .detail-card ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--text3);
+  }
+
+  /* ── code block ── */
+  .code-block {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--text2);
+    margin: 1rem 0 1.5rem;
+    overflow-x: auto;
+    line-height: 1.6;
+  }
+  .code-block .kw { color: var(--purple); }
+  .code-block .val { color: var(--teal); }
+  .code-block .comment { color: var(--text3); }
+  .code-block .label { color: var(--amber); }
+
+  /* ── latency table ── */
+  .latency-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 1rem 0 1.5rem;
+  }
+  .latency-table th {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text3);
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .latency-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text2);
+    vertical-align: top;
+  }
+  .latency-table tr:last-child td { border-bottom: none; }
+  .latency-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .latency-table td:first-child { color: var(--text); font-weight: 500; }
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+  }
+  .badge.hot { background: var(--coral-dim); color: var(--coral); border: 1px solid rgba(251,113,133,0.2); }
+  .badge.warm { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(251,191,36,0.2); }
+  .badge.cold { background: var(--blue-dim); color: var(--blue); border: 1px solid rgba(96,165,250,0.2); }
+
+  /* ── divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 3rem 0;
+  }
+
+  /* ── footer ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  footer span {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <p class="eyebrow">AWS Reference Architecture</p>
+    <h1>Near-Real-Time <span>ETL</span> into a Data Lake</h1>
+    <p class="subtitle">End-to-end pipeline using Kinesis Data Streams — from multi-source ingestion through S3 Bronze/Silver/Gold to analytical consumption.</p>
+    <div class="meta-chips">
+      <span class="chip teal">Kinesis Data Streams</span>
+      <span class="chip teal">Kinesis Firehose</span>
+      <span class="chip purple">Lambda · KDA Flink</span>
+      <span class="chip purple">Glue ETL · EMR</span>
+      <span class="chip amber">Delta Lake · Parquet</span>
+      <span class="chip">S3 · Athena · Redshift</span>
+      <span class="chip">Databricks · QuickSight</span>
+    </div>
+  </div>
+</header>
+
+<div class="content">
+
+  <!-- ── DIAGRAM 1 ── -->
+  <section>
+    <h2>End-to-end pipeline overview</h2>
+    <div class="diagram-card">
+      <div class="diagram-card-header">
+        <span class="dot"></span>
+        <span>NRT ETL · sources → ingestion → processing → lake → consumption</span>
+      </div>
+      <svg viewBox="0 0 680 640" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+        </defs>
+
+        <rect x="10" y="10" width="660" height="74" rx="8" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5" stroke-dasharray="5 4"/>
+        <text class="ts" x="20" y="24">Sources</text>
+
+        <g class="node c-teal">
+          <rect x="18" y="32" width="148" height="44" rx="6" stroke-width="0.5"/>
+          <text class="th" x="92" y="54" text-anchor="middle" dominant-baseline="central">RDBMS / DMS</text>
+        </g>
+        <g class="node c-teal">
+          <rect x="178" y="32" width="148" height="44" rx="6" stroke-width="0.5"/>
+          <text class="th" x="252" y="54" text-anchor="middle" dominant-baseline="central">App events</text>
+        </g>
+        <g class="node c-teal">
+          <rect x="338" y="32" width="148" height="44" rx="6" stroke-width="0.5"/>
+          <text class="th" x="412" y="54" text-anchor="middle" dominant-baseline="central">IoT / Kafka</text>
+        </g>
+        <g class="node c-teal">
+          <rect x="498" y="32" width="162" height="44" rx="6" stroke-width="0.5"/>
+          <text class="th" x="579" y="54" text-anchor="middle" dominant-baseline="central">Clickstream / logs</text>
+        </g>
+
+        <line x1="92" y1="76" x2="92" y2="120" fill="none" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <line x1="252" y1="76" x2="252" y2="120" fill="none" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <line x1="412" y1="76" x2="412" y2="120" fill="none" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <line x1="579" y1="76" x2="579" y2="120" fill="none" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+        <rect x="10" y="98" width="660" height="80" rx="8" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5" stroke-dasharray="5 4"/>
+        <text class="ts" x="20" y="112">Ingestion</text>
+
+        <g class="node c-purple">
+          <rect x="18" y="120" width="644" height="50" rx="8" stroke-width="0.5"/>
+          <text class="th" x="340" y="137" text-anchor="middle" dominant-baseline="central">Kinesis Data Streams</text>
+          <text class="ts" x="340" y="153" text-anchor="middle" dominant-baseline="central">Shards · partition keys · EFO · 24h–365d retention · sequence numbers · at-least-once delivery</text>
+        </g>
+
+        <line x1="120" y1="170" x2="120" y2="214" fill="none" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <line x1="339" y1="170" x2="339" y2="214" fill="none" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <line x1="559" y1="170" x2="559" y2="214" fill="none" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+        <rect x="10" y="192" width="660" height="84" rx="8" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5" stroke-dasharray="5 4"/>
+        <text class="ts" x="20" y="206">Processing paths</text>
+
+        <g class="node c-amber">
+          <rect x="18" y="214" width="205" height="56" rx="6" stroke-width="0.5"/>
+          <text class="th" x="120" y="233" text-anchor="middle" dominant-baseline="central">Lambda — hot path</text>
+          <text class="ts" x="120" y="251" text-anchor="middle" dominant-baseline="central">&lt;1s · DynamoDB · alerts</text>
+        </g>
+        <g class="node c-amber">
+          <rect x="237" y="214" width="205" height="56" rx="6" stroke-width="0.5"/>
+          <text class="th" x="339" y="233" text-anchor="middle" dominant-baseline="central">KDA / Flink — warm</text>
+          <text class="ts" x="339" y="251" text-anchor="middle" dominant-baseline="central">windowed ops · 1–30s</text>
+        </g>
+        <g class="node c-amber">
+          <rect x="456" y="214" width="206" height="56" rx="6" stroke-width="0.5"/>
+          <text class="th" x="559" y="233" text-anchor="middle" dominant-baseline="central">Kinesis Firehose</text>
+          <text class="ts" x="559" y="251" text-anchor="middle" dominant-baseline="central">60s–5min · Parquet batch</text>
+        </g>
+
+        <line x1="120" y1="270" x2="120" y2="312" fill="none" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <line x1="339" y1="270" x2="339" y2="312" fill="none" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <line x1="559" y1="270" x2="559" y2="312" fill="none" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+        <rect x="10" y="290" width="660" height="80" rx="8" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5" stroke-dasharray="5 4"/>
+        <text class="ts" x="20" y="304">S3 data lake</text>
+
+        <g class="node c-gray">
+          <rect x="18" y="312" width="644" height="50" rx="8" stroke-width="0.5"/>
+          <text class="th" x="340" y="329" text-anchor="middle" dominant-baseline="central">Amazon S3 — Bronze / Silver / Gold zones</text>
+          <text class="ts" x="340" y="345" text-anchor="middle" dominant-baseline="central">Parquet · Delta Lake · Iceberg · lifecycle policies · intelligent tiering · versioning</text>
+        </g>
+
+        <line x1="120" y1="362" x2="120" y2="406" fill="none" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <line x1="339" y1="362" x2="339" y2="406" fill="none" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <line x1="559" y1="362" x2="559" y2="406" fill="none" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+        <rect x="10" y="384" width="660" height="84" rx="8" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5" stroke-dasharray="5 4"/>
+        <text class="ts" x="20" y="398">Transform &amp; catalog</text>
+
+        <g class="node c-blue">
+          <rect x="18" y="406" width="205" height="56" rx="6" stroke-width="0.5"/>
+          <text class="th" x="120" y="425" text-anchor="middle" dominant-baseline="central">Glue Catalog + LF</text>
+          <text class="ts" x="120" y="443" text-anchor="middle" dominant-baseline="central">schemas · governance · RBAC</text>
+        </g>
+        <g class="node c-blue">
+          <rect x="237" y="406" width="205" height="56" rx="6" stroke-width="0.5"/>
+          <text class="th" x="339" y="425" text-anchor="middle" dominant-baseline="central">AWS Glue ETL</text>
+          <text class="ts" x="339" y="443" text-anchor="middle" dominant-baseline="central">Spark · DPU · job bookmarks</text>
+        </g>
+        <g class="node c-blue">
+          <rect x="456" y="406" width="206" height="56" rx="6" stroke-width="0.5"/>
+          <text class="th" x="559" y="425" text-anchor="middle" dominant-baseline="central">EMR / Databricks</text>
+          <text class="ts" x="559" y="443" text-anchor="middle" dominant-baseline="central">Auto Loader · Delta merge</text>
+        </g>
+
+        <line x1="120" y1="462" x2="92" y2="504" fill="none" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <line x1="339" y1="462" x2="339" y2="504" fill="none" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <line x1="559" y1="462" x2="559" y2="504" fill="none" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+        <rect x="10" y="482" width="660" height="74" rx="8" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5" stroke-dasharray="5 4"/>
+        <text class="ts" x="20" y="496">Consumption</text>
+
+        <g class="node c-coral">
+          <rect x="18" y="504" width="148" height="44" rx="6" stroke-width="0.5"/>
+          <text class="th" x="92" y="526" text-anchor="middle" dominant-baseline="central">Amazon Athena</text>
+        </g>
+        <g class="node c-coral">
+          <rect x="178" y="504" width="148" height="44" rx="6" stroke-width="0.5"/>
+          <text class="th" x="252" y="526" text-anchor="middle" dominant-baseline="central">Redshift Spectrum</text>
+        </g>
+        <g class="node c-coral">
+          <rect x="338" y="504" width="148" height="44" rx="6" stroke-width="0.5"/>
+          <text class="th" x="412" y="526" text-anchor="middle" dominant-baseline="central">Databricks SQL</text>
+        </g>
+        <g class="node c-coral">
+          <rect x="498" y="504" width="162" height="44" rx="6" stroke-width="0.5"/>
+          <text class="th" x="579" y="526" text-anchor="middle" dominant-baseline="central">QuickSight / BI</text>
+        </g>
+
+        <text class="ts" x="340" y="568" text-anchor="middle">Orchestration &amp; monitoring</text>
+
+        <g class="node c-gray">
+          <rect x="18" y="578" width="310" height="44" rx="6" stroke-width="0.5"/>
+          <text class="th" x="173" y="597" text-anchor="middle" dominant-baseline="central">Step Functions / MWAA</text>
+          <text class="ts" x="173" y="615" text-anchor="middle" dominant-baseline="central">Orchestration · DAG scheduling</text>
+        </g>
+        <g class="node c-gray">
+          <rect x="340" y="578" width="322" height="44" rx="6" stroke-width="0.5"/>
+          <text class="th" x="501" y="597" text-anchor="middle" dominant-baseline="central">CloudWatch + SNS</text>
+          <text class="ts" x="501" y="615" text-anchor="middle" dominant-baseline="central">Metrics · alarms · DLQ alerting</text>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ── DIAGRAM 2 ── -->
+  <section>
+    <h2>S3 Data Lake — zone detail</h2>
+    <div class="diagram-card">
+      <div class="diagram-card-header">
+        <span class="dot" style="background:var(--amber)"></span>
+        <span>Bronze → Silver → Gold · transform chain · catalog → consumption</span>
+      </div>
+      <svg viewBox="0 0 680 390" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+        </defs>
+
+        <rect x="10" y="14" width="155" height="214" rx="10" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5" stroke-dasharray="5 4"/>
+        <g class="node c-coral">
+          <rect x="18" y="22" width="139" height="36" rx="6" stroke-width="0.5"/>
+          <text class="th" x="88" y="40" text-anchor="middle" dominant-baseline="central">Bronze / raw</text>
+        </g>
+        <text class="ts" x="26" y="76">JSON · Avro as-is</text>
+        <text class="ts" x="26" y="102">raw landing zone</text>
+        <text class="ts" x="26" y="128">date= partitioned</text>
+        <text class="ts" x="26" y="154">no schema check</text>
+        <text class="ts" x="26" y="180">Firehose writes</text>
+        <text class="ts" x="26" y="206">~1–5 min latency</text>
+
+        <rect x="240" y="14" width="190" height="214" rx="10" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5" stroke-dasharray="5 4"/>
+        <g class="node c-gray">
+          <rect x="248" y="22" width="174" height="36" rx="6" stroke-width="0.5"/>
+          <text class="th" x="335" y="40" text-anchor="middle" dominant-baseline="central">Silver / curated</text>
+        </g>
+        <text class="ts" x="256" y="76">Parquet · Snappy</text>
+        <text class="ts" x="256" y="102">schema enforced</text>
+        <text class="ts" x="256" y="128">deduplicated</text>
+        <text class="ts" x="256" y="154">date / entity split</text>
+        <text class="ts" x="256" y="180">job bookmarks</text>
+        <text class="ts" x="256" y="206">Crawler indexed</text>
+
+        <rect x="515" y="14" width="155" height="214" rx="10" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5" stroke-dasharray="5 4"/>
+        <g class="node c-teal">
+          <rect x="523" y="22" width="139" height="36" rx="6" stroke-width="0.5"/>
+          <text class="th" x="593" y="40" text-anchor="middle" dominant-baseline="central">Gold / enriched</text>
+        </g>
+        <text class="ts" x="531" y="76">Delta Lake tables</text>
+        <text class="ts" x="531" y="102">ACID transactions</text>
+        <text class="ts" x="531" y="128">aggregated joins</text>
+        <text class="ts" x="531" y="154">SCD dimensions</text>
+        <text class="ts" x="531" y="180">business-ready</text>
+        <text class="ts" x="531" y="206">Databricks SQL</text>
+
+        <text class="ts" x="202" y="120" text-anchor="middle">Glue ETL</text>
+        <line x1="166" y1="127" x2="239" y2="127" fill="none" stroke="#2dd4bf" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+        <text class="ts" x="472" y="120" text-anchor="middle">EMR / DB</text>
+        <line x1="431" y1="127" x2="514" y2="127" fill="none" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+        <g class="node c-blue">
+          <rect x="10" y="246" width="660" height="52" rx="8" stroke-width="0.5"/>
+          <text class="th" x="340" y="263" text-anchor="middle" dominant-baseline="central">Glue Data Catalog + Lake Formation</text>
+          <text class="ts" x="340" y="281" text-anchor="middle" dominant-baseline="central">unified schema registry · fine-grained RBAC · column-level security · Glue Crawler auto-discovery</text>
+        </g>
+
+        <line x1="88" y1="298" x2="88" y2="316" fill="none" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#arrow2)"/>
+        <line x1="335" y1="298" x2="335" y2="316" fill="none" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#arrow2)"/>
+        <line x1="593" y1="298" x2="593" y2="316" fill="none" stroke="#60a5fa" stroke-width="1.5" marker-end="url(#arrow2)"/>
+
+        <g class="node c-coral">
+          <rect x="10" y="316" width="152" height="44" rx="6" stroke-width="0.5"/>
+          <text class="th" x="86" y="338" text-anchor="middle" dominant-baseline="central">Amazon Athena</text>
+        </g>
+        <g class="node c-coral">
+          <rect x="172" y="316" width="152" height="44" rx="6" stroke-width="0.5"/>
+          <text class="th" x="248" y="338" text-anchor="middle" dominant-baseline="central">Redshift Spectrum</text>
+        </g>
+        <g class="node c-coral">
+          <rect x="334" y="316" width="152" height="44" rx="6" stroke-width="0.5"/>
+          <text class="th" x="410" y="338" text-anchor="middle" dominant-baseline="central">Databricks SQL</text>
+        </g>
+        <g class="node c-coral">
+          <rect x="496" y="316" width="174" height="44" rx="6" stroke-width="0.5"/>
+          <text class="th" x="583" y="338" text-anchor="middle" dominant-baseline="central">QuickSight / BI</text>
+        </g>
+
+        <text class="ts" x="340" y="376" text-anchor="middle">All engines read via Glue Catalog — schemas centrally registered, never duplicated</text>
+      </svg>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- ── Processing Paths ── -->
+  <section>
+    <h2>Processing path detail</h2>
+
+    <table class="latency-table">
+      <thead>
+        <tr>
+          <th>Path</th>
+          <th>Service</th>
+          <th>Latency SLA</th>
+          <th>Destination</th>
+          <th>Use cases</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="badge hot">Hot</span></td>
+          <td>Lambda ESM</td>
+          <td>&lt; 1 second</td>
+          <td>DynamoDB · SNS · SQS</td>
+          <td>Fraud signals, real-time session state, push alerts</td>
+        </tr>
+        <tr>
+          <td><span class="badge warm">Warm</span></td>
+          <td>KDA / Flink</td>
+          <td>1 – 30 seconds</td>
+          <td>S3 Silver · ElastiCache · OpenSearch</td>
+          <td>Windowed aggregations, anomaly detection, feature pipelines</td>
+        </tr>
+        <tr>
+          <td><span class="badge cold">Cold</span></td>
+          <td>Kinesis Firehose</td>
+          <td>60 s – 5 min</td>
+          <td>S3 Bronze (Parquet)</td>
+          <td>Archival, batch analytics, historical replay</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>All three paths are fed simultaneously by the same Kinesis stream. Each registers as an independent consumer — with Enhanced Fan-Out (EFO) giving Lambda and Flink their own dedicated 2 MB/s per shard, fully isolated from Firehose's standard polling throughput.</p>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- ── Layer detail cards ── -->
+  <section>
+    <h2>Layer-by-layer configuration</h2>
+
+    <h3>Sources → Kinesis Data Streams</h3>
+    <div class="grid-3">
+      <div class="detail-card">
+        <div class="detail-card-title teal">RDBMS / AWS DMS</div>
+        <ul>
+          <li>DMS replication instance streams CDC to Kinesis target endpoint</li>
+          <li>Row-level INSERT / UPDATE / DELETE as JSON events</li>
+          <li>Primary key used as partition key (shard-ordering guarantee)</li>
+          <li>DMS task ongoing replication mode</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-title teal">Application services</div>
+        <ul>
+          <li>PutRecords API — up to 500 records / 5 MB per batch</li>
+          <li>SDK retry with exponential backoff on ProvisionedThroughputExceeded</li>
+          <li>Domain event ID as partition key for entity ordering</li>
+          <li>KPL for high-throughput producers with aggregation</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-title teal">IoT / Kafka / logs</div>
+        <ul>
+          <li>IoT Core rule action → Kinesis target</li>
+          <li>Kafka → Kinesis via MSK Connect + Kinesis Kafka connector</li>
+          <li>Kinesis Agent for flat file / log tailing on EC2</li>
+          <li>CloudWatch Logs subscription filter → Lambda → KDS</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Kinesis shard capacity formula</h3>
+    <div class="code-block">
+<span class="comment"># Required shards (write side)</span>
+write_shards = <span class="kw">ceil</span>( (records_per_sec × avg_record_bytes) / <span class="val">1_048_576</span> )
+
+<span class="comment"># Required shards (read side — without EFO)</span>
+read_shards  = <span class="kw">ceil</span>( (num_consumers × <span class="val">2_097_152</span>) / <span class="val">2_097_152</span> )
+
+<span class="comment"># Read side with EFO — each consumer gets its own 2 MB/s → same as write side</span>
+read_shards_efo = write_shards
+
+<span class="comment"># Final provisioned count with 20% headroom</span>
+shard_count = <span class="kw">max</span>(write_shards, read_shards) × <span class="val">1.2</span>
+
+<span class="comment"># On-demand mode: skip this — KDS auto-scales up to 200 shards (400 MB/s write)</span></div>
+
+    <h3>Three processing paths</h3>
+    <div class="grid-3">
+      <div class="detail-card">
+        <div class="detail-card-title amber">Lambda — hot path config</div>
+        <ul>
+          <li>Event Source Mapping with BisectBatchOnFunctionError = true</li>
+          <li>MaximumRetryAttempts = 2</li>
+          <li>Dedicated SQS DLQ for poison-pill events</li>
+          <li>ParallelizationFactor 1–10 per shard</li>
+          <li>Concurrency = shards × parallelization factor</li>
+          <li>EFO recommended for low iterator age</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-title amber">KDA Flink — warm path config</div>
+        <ul>
+          <li>Managed Apache Flink (KDA) with EFO consumer</li>
+          <li>RocksDB incremental checkpoints to S3</li>
+          <li>Tumbling window (1 min) + sliding window (5 min)</li>
+          <li>Watermark strategy: bounded out-of-orderness 10s</li>
+          <li>StreamingFileSink → S3 Silver in Parquet + Snappy</li>
+          <li>Parallelism = shard count</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-title amber">Firehose — cold path config</div>
+        <ul>
+          <li>Dynamic partitioning on event_type field</li>
+          <li>Inline Lambda transform for field normalization</li>
+          <li>Buffer: 128 MB or 300 s (whichever first)</li>
+          <li>Format conversion to Parquet via Glue schema</li>
+          <li>S3 prefix: s3://bucket/bronze/dt=!{timestamp:yyyy-MM-dd}/</li>
+          <li>Backup bucket for failed records</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>S3 Bronze → Silver (AWS Glue ETL)</h3>
+    <div class="code-block">
+<span class="comment"># Glue PySpark job — Bronze to Silver transformation</span>
+dyf = glueContext.<span class="kw">create_dynamic_frame_from_catalog</span>(
+    database=<span class="val">"raw_db"</span>,
+    table_name=<span class="val">"events_bronze"</span>,
+    push_down_predicate=<span class="val">"dt >= '2024-01-01'"</span>,       <span class="comment"># partition pruning</span>
+    transformation_ctx=<span class="val">"source"</span>
+)
+
+<span class="comment"># Apply schema, dedup, type coercion</span>
+df = dyf.toDF() \
+    .<span class="kw">dropDuplicates</span>([<span class="val">"event_id"</span>, <span class="val">"event_ts"</span>]) \
+    .<span class="kw">withColumn</span>(<span class="val">"event_ts"</span>, col(<span class="val">"event_ts"</span>).cast(<span class="label">LongType</span>())) \
+    .<span class="kw">withColumn</span>(<span class="val">"amount"</span>,   col(<span class="val">"amount"</span>).cast(<span class="label">DecimalType</span>(<span class="val">18</span>, <span class="val">4</span>)))
+
+<span class="comment"># Write Silver zone — partitioned Parquet with job bookmarks</span>
+glueContext.<span class="kw">write_dynamic_frame_from_options</span>(
+    frame=DynamicFrame.fromDF(df, glueContext, <span class="val">"silver"</span>),
+    connection_type=<span class="val">"s3"</span>,
+    format=<span class="val">"parquet"</span>,
+    connection_options={<span class="val">"path"</span>: <span class="val">"s3://bucket/silver/"</span>, <span class="val">"partitionKeys"</span>: [<span class="val">"year"</span>, <span class="val">"month"</span>, <span class="val">"day"</span>]},
+    transformation_ctx=<span class="val">"sink"</span>
+)</div>
+
+    <h3>S3 Silver → Gold (Databricks / EMR)</h3>
+    <div class="code-block">
+<span class="comment"># Databricks Auto Loader — Silver → Gold Delta merge (SCD Type 2 pattern)</span>
+df_stream = spark.readStream \
+    .<span class="kw">format</span>(<span class="val">"cloudFiles"</span>) \
+    .<span class="kw">option</span>(<span class="val">"cloudFiles.format"</span>, <span class="val">"parquet"</span>) \
+    .<span class="kw">option</span>(<span class="val">"cloudFiles.schemaLocation"</span>, <span class="val">"s3://bucket/_schema/events/"</span>) \
+    .<span class="kw">load</span>(<span class="val">"s3://bucket/silver/events/"</span>)
+
+<span class="comment"># Merge into Gold Delta table</span>
+<span class="kw">def</span> <span class="label">merge_to_gold</span>(batch_df, batch_id):
+    DeltaTable.<span class="kw">forPath</span>(spark, <span class="val">"s3://bucket/gold/dim_events"</span>) \
+        .<span class="kw">merge</span>(batch_df, <span class="val">"target.event_id = source.event_id"</span>) \
+        .<span class="kw">whenMatchedUpdateAll</span>() \
+        .<span class="kw">whenNotMatchedInsertAll</span>() \
+        .<span class="kw">execute</span>()
+
+df_stream.writeStream \
+    .<span class="kw">trigger</span>(availableNow=<span class="label">True</span>) \
+    .<span class="kw">option</span>(<span class="val">"checkpointLocation"</span>, <span class="val">"s3://bucket/_ckpt/gold_events/"</span>) \
+    .<span class="kw">foreachBatch</span>(merge_to_gold) \
+    .<span class="kw">start</span>()</div>
+
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- ── Governance ── -->
+  <section>
+    <h2>Governance &amp; orchestration</h2>
+    <div class="grid-3">
+      <div class="detail-card">
+        <div class="detail-card-title blue">Glue Catalog + Lake Formation</div>
+        <ul>
+          <li>One Catalog shared across Athena, Redshift Spectrum, Databricks, EMR</li>
+          <li>Lake Formation column-level grants per IAM role / group</li>
+          <li>Glue Crawler runs post-ETL to register new partitions</li>
+          <li>Schema registry for Avro / JSON schema evolution</li>
+          <li>analytics_db Gold tables: PII columns masked for BI roles</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-title blue">Step Functions orchestration</div>
+        <ul>
+          <li>GlueStartJobRun → Bronze→Silver ETL</li>
+          <li>GlueCrawler → update Catalog partitions</li>
+          <li>EmrAddStepsTask or Databricks Jobs API → Silver→Gold</li>
+          <li>AthenaStartQueryExecution → data quality check</li>
+          <li>SNS publish on success / failure</li>
+          <li>EventBridge schedule or S3 event trigger</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-title blue">CloudWatch alarms</div>
+        <ul>
+          <li>GetRecords.IteratorAgeMilliseconds &gt; 60 000 ms → consumers lagging</li>
+          <li>WriteProvisionedThroughputExceeded &gt; 0 → hot shards</li>
+          <li>Firehose DeliveryToS3.DataFreshness &gt; 900 s</li>
+          <li>Glue driver.aggregate.numFailedTasks &gt; 0</li>
+          <li>Lambda DestinationDeliveryFailures (DLQ) &gt; 0</li>
+          <li>KDA millisBehindLatest &gt; 30 000 ms</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider"/>
+
+  <!-- ── Design decisions ── -->
+  <section>
+    <h2>Key design decisions &amp; trade-offs</h2>
+    <div class="grid-3">
+      <div class="detail-card">
+        <div class="detail-card-title gray">Shard strategy</div>
+        <ul>
+          <li>Use on-demand mode unless exceeding 200 shards or needing fine-grained cost control</li>
+          <li>Partition key entropy is critical — never use a low-cardinality key like event_type alone</li>
+          <li>Composite keys: customer_id + event_type for ordering + distribution</li>
+          <li>Monitor GetRecords.IteratorAgeMilliseconds as the primary throughput health signal</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-title gray">EFO vs shared throughput</div>
+        <ul>
+          <li>Use EFO for any consumer where latency SLA &lt; 5 s</li>
+          <li>Standard polling: 5 consumers × 2 MB/s = 400 KB/s each at 10 shards</li>
+          <li>EFO: each consumer gets full 2 MB/s per shard — 5× improvement</li>
+          <li>EFO adds ~$0.015/shard-hour — worth it for Lambda and Flink hot/warm paths</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-title gray">Firehose vs direct S3 write</div>
+        <ul>
+          <li>Firehose handles Parquet conversion, S3 buffering, and delivery retries natively</li>
+          <li>Direct KDS → Lambda → S3 gives lower latency but requires custom buffering logic</li>
+          <li>Firehose dynamic partitioning replaces a Bronze Glue job for simple cases</li>
+          <li>Firehose max throughput: 1 GB/s — sufficient for most ingestion loads</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <span>Near-Real-Time ETL Architecture · Kinesis Data Streams</span>
+  <span>AWS · Databricks · Delta Lake · Parquet</span>
+</footer>
+
+</body>
+</html>
