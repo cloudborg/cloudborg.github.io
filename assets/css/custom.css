@@ -1,4 +1,1056 @@
 /* ================================================================
+   HEXTRA / CUSTOM HOMEPAGE LAYOUT OVERRIDES
+   These rules support layouts/home.html and the full-width
+   Cloudborg landing page.
+   ================================================================ */
+
+:root {
+  --hextra-max-content-width: 100%;
+}
+
+.cloudborg-home {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ================================================================
+   CLOUDBORG HOMEPAGE
+   Hextra custom landing page
+   ================================================================ */
+
+
+/* ----------------------------------------------------------------
+   GLOBAL
+   ---------------------------------------------------------------- */
+
+.cloudborg-home {
+  --cb-bg: #020b1c;
+  --cb-bg-light: #06152c;
+  --cb-card: rgba(7, 22, 43, 0.72);
+  --cb-border: rgba(93, 150, 220, 0.18);
+  --cb-blue: #159cff;
+  --cb-blue-light: #42c8ff;
+  --cb-text: #f5f7fb;
+  --cb-muted: #aab8cc;
+
+  width: 100%;
+  max-width: 100%;
+  color: var(--cb-text);
+}
+
+
+/* ----------------------------------------------------------------
+   HERO
+   ---------------------------------------------------------------- */
+
+.cb-hero {
+  position: relative;
+
+  min-height: 520px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+
+  max-width: 1400px;
+  margin: 0 auto;
+
+  padding: 80px 30px 70px;
+
+  overflow: hidden;
+}
+
+
+/* subtle background */
+
+.cb-hero::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 75% 45%,
+      rgba(0, 137, 255, .13),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 25% 50%,
+      rgba(0, 93, 255, .08),
+      transparent 45%
+    );
+
+  pointer-events: none;
+}
+
+
+/* ----------------------------------------------------------------
+   HERO TEXT
+   ---------------------------------------------------------------- */
+
+.cb-hero-content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 650px;
+}
+
+
+.cb-hero-kicker {
+  font-size: 13px;
+  letter-spacing: 3px;
+
+  color: #31b6ff;
+
+  margin-bottom: 20px;
+}
+
+
+.cb-hero h1 {
+  margin: 0;
+
+  font-size: clamp(44px, 5vw, 72px);
+
+  line-height: 1.02;
+
+  font-weight: 750;
+
+  letter-spacing: -2.5px;
+
+  color: #f8fafc;
+}
+
+
+.cb-hero h1 span {
+  display: block;
+
+  background:
+    linear-gradient(
+      90deg,
+      #04aaff,
+      #2b8cff
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+
+.cb-hero-description {
+  max-width: 570px;
+
+  margin-top: 28px;
+
+  font-size: 18px;
+
+  line-height: 1.65;
+
+  color: #b8c4d6;
+}
+
+
+/* ----------------------------------------------------------------
+   BUTTONS
+   ---------------------------------------------------------------- */
+
+.cb-hero-actions {
+  display: flex;
+
+  gap: 16px;
+
+  margin-top: 34px;
+}
+
+
+.cb-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+
+  padding: 0 26px;
+
+  border-radius: 6px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  text-decoration: none !important;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+}
+
+
+.cb-button:hover {
+  transform: translateY(-2px);
+}
+
+
+.cb-button-primary {
+  background: linear-gradient(
+    135deg,
+    #087cf0,
+    #149cfb
+  );
+
+  color: white !important;
+
+  box-shadow:
+    0 8px 30px rgba(0, 137, 255, .22);
+}
+
+
+.cb-button-secondary {
+  border: 1px solid #1689df;
+
+  color: #e8f5ff !important;
+
+  background: rgba(0, 80, 160, .08);
+}
+
+
+.cb-button-secondary span {
+  font-size: 22px;
+
+  margin-right: 9px;
+}
+
+
+/* ----------------------------------------------------------------
+   HERO VISUAL
+   ---------------------------------------------------------------- */
+
+.cb-hero-visual {
+  position: relative;
+
+  min-height: 430px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.cb-cloud-glow {
+  position: absolute;
+
+  width: 400px;
+  height: 260px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(0, 174, 255, .22),
+      transparent 70%
+    );
+
+  filter: blur(25px);
+}
+
+
+/* cloud */
+
+.cb-main-cloud {
+  position: relative;
+
+  width: 410px;
+  height: 220px;
+
+  border-radius:
+    120px
+    120px
+    70px
+    70px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #132b4e,
+      #081a34
+    );
+
+  border: 2px solid #28b7ff;
+
+  box-shadow:
+    0 0 25px rgba(0, 174, 255, .7),
+    inset 0 0 40px rgba(0, 120, 255, .15);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 2;
+}
+
+
+.cb-cloud-text {
+  font-size: 38px;
+
+  color: #dceeff;
+
+  letter-spacing: -1px;
+
+  text-shadow:
+    0 0 20px rgba(76, 190, 255, .35);
+}
+
+
+/* buildings */
+
+.cb-city {
+  position: absolute;
+
+  bottom: -1px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 5px;
+
+  opacity: .55;
+}
+
+
+.cb-building {
+  width: 22px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #1b68a8,
+      #071c35
+    );
+
+  border: 1px solid #1674b8;
+}
+
+
+.b1 { height: 45px; }
+.b2 { height: 70px; }
+.b3 { height: 100px; }
+.b4 { height: 80px; }
+.b5 { height: 125px; }
+.b6 { height: 62px; }
+
+
+/* orbit */
+
+.cb-orbit {
+  position: absolute;
+
+  border: 1px dashed rgba(38, 180, 255, .45);
+
+  border-radius: 50%;
+}
+
+
+.cb-orbit-1 {
+  width: 500px;
+  height: 300px;
+}
+
+
+.cb-orbit-2 {
+  width: 580px;
+  height: 360px;
+
+  transform: rotate(25deg);
+}
+
+
+/* ----------------------------------------------------------------
+   CLOUD LABELS
+   ---------------------------------------------------------------- */
+
+.cb-cloud-label {
+  position: absolute;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  z-index: 5;
+}
+
+
+.cb-cloud-label strong {
+  font-size: 32px;
+
+  color: #54bfff;
+
+  text-shadow:
+    0 0 15px rgba(20, 160, 255, .6);
+}
+
+
+.cb-cloud-label small {
+  margin-top: 7px;
+
+  font-size: 14px;
+
+  color: #c8d4e6;
+}
+
+
+.cb-aws {
+  left: 0;
+  top: 40px;
+}
+
+
+.cb-gcp {
+  right: 0;
+  top: 35px;
+}
+
+
+.cb-ai {
+  left: 0;
+  bottom: 45px;
+}
+
+
+.cb-k8s {
+  right: -10px;
+  bottom: 35px;
+}
+
+
+/* ----------------------------------------------------------------
+   CATEGORY CARDS
+   ---------------------------------------------------------------- */
+
+.cb-categories {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 16px;
+
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  padding: 10px 30px 70px;
+}
+
+
+.cb-category-card {
+  min-height: 175px;
+
+  padding: 28px 24px;
+
+  border: 1px solid var(--cb-border);
+
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(10, 30, 58, .75),
+      rgba(4, 16, 32, .8)
+    );
+
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.025);
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+
+.cb-category-card:hover {
+  transform: translateY(-4px);
+
+  border-color:
+    rgba(39, 166, 255, .45);
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, .2);
+}
+
+
+.cb-category-icon {
+  display: inline-block;
+
+  font-size: 26px;
+
+  font-weight: 700;
+
+  margin-bottom: 12px;
+}
+
+
+.cb-icon-aws {
+  color: #ffad00;
+}
+
+
+.cb-icon-gcp {
+  color: #49a7ff;
+}
+
+
+.cb-icon-ai {
+  color: #ad83ff;
+}
+
+
+.cb-icon-k8s {
+  color: #52a8ff;
+}
+
+
+.cb-category-card h3 {
+  display: inline;
+
+  margin-left: 8px;
+
+  font-size: 22px;
+
+  color: #eaf2fc;
+}
+
+
+.cb-category-card p {
+  margin:
+    12px
+    0
+    17px;
+
+  color: #abb9cc;
+
+  font-size: 15px;
+
+  line-height: 1.55;
+}
+
+
+.cb-category-card a {
+  color: #26aaff !important;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  text-decoration: none !important;
+}
+
+
+/* ----------------------------------------------------------------
+   LATEST ARTICLES
+   ---------------------------------------------------------------- */
+
+.cb-latest {
+  max-width: 1400px;
+
+  margin: 0 auto;
+
+  padding:
+    5px
+    30px
+    90px;
+}
+
+
+.cb-section-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: end;
+
+  margin-bottom: 25px;
+
+  border-bottom: 1px solid
+    rgba(255,255,255,.05);
+
+  padding-bottom: 15px;
+}
+
+
+.cb-section-kicker {
+  color: #299fff;
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 5px;
+}
+
+
+.cb-section-header h2 {
+  margin: 0;
+
+  font-size: 28px;
+
+  color: #f2f6fc;
+}
+
+
+.cb-view-all {
+  color: #299fff !important;
+
+  text-decoration: none !important;
+
+  font-size: 14px;
+}
+
+
+/* ----------------------------------------------------------------
+   ARTICLE GRID
+   ---------------------------------------------------------------- */
+
+.cb-articles {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 17px;
+}
+
+
+.cb-article-card {
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(79, 135, 190, .18);
+
+  border-radius: 9px;
+
+  background:
+    rgba(6, 20, 39, .72);
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease;
+}
+
+
+.cb-article-card:hover {
+  transform: translateY(-4px);
+
+  border-color:
+    rgba(36, 161, 255, .45);
+}
+
+
+.cb-article-image {
+  position: relative;
+
+  height: 145px;
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+.cb-image-aws {
+  background:
+    radial-gradient(
+      circle at center,
+      #082e62,
+      #031326
+    );
+}
+
+
+.cb-image-gcp {
+  background:
+    radial-gradient(
+      circle at center,
+      #073a6e,
+      #031326
+    );
+}
+
+
+.cb-image-ai {
+  background:
+    radial-gradient(
+      circle at center,
+      #24155a,
+      #071025
+    );
+}
+
+
+.cb-image-k8s {
+  background:
+    radial-gradient(
+      circle at center,
+      #082d60,
+      #031326
+    );
+}
+
+
+/* article tag */
+
+.cb-article-tag {
+  position: absolute;
+
+  top: 17px;
+  left: 18px;
+
+  z-index: 3;
+
+  padding:
+    4px
+    9px;
+
+  border:
+    1px solid
+    rgba(56, 165, 255, .35);
+
+  border-radius: 5px;
+
+  background:
+    rgba(2, 14, 31, .8);
+
+  color: #45aaff;
+
+  font-size: 12px;
+}
+
+
+/* abstract article illustration */
+
+.cb-architecture-art {
+  display: flex;
+
+  align-items: end;
+
+  gap: 8px;
+
+  height: 85px;
+}
+
+
+.cb-architecture-art div {
+  width: 45px;
+
+  height: 55px;
+
+  border:
+    1px solid
+    rgba(35, 152, 255, .6);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20, 118, 214, .3),
+      rgba(3, 20, 43, .7)
+    );
+
+  box-shadow:
+    0 0 15px rgba(0, 123, 255, .18);
+}
+
+
+.cb-architecture-art div:nth-child(2) {
+  height: 80px;
+}
+
+
+.cb-architecture-art div:nth-child(3) {
+  height: 65px;
+}
+
+
+.cb-architecture-art div:nth-child(4) {
+  height: 45px;
+}
+
+
+.cb-ai-art {
+  font-size: 80px;
+
+  color: #a76cff;
+
+  text-shadow:
+    0 0 30px rgba(148, 91, 255, .7);
+}
+
+
+.cb-k8s-art {
+  font-size: 85px;
+
+  color: #3f9dff;
+
+  text-shadow:
+    0 0 25px rgba(34, 140, 255, .7);
+}
+
+
+/* ----------------------------------------------------------------
+   ARTICLE CONTENT
+   ---------------------------------------------------------------- */
+
+.cb-article-content {
+  padding: 20px 20px 22px;
+}
+
+
+.cb-article-content h3 {
+  margin: 0 0 12px;
+
+  font-size: 18px;
+
+  line-height: 1.25;
+
+  color: #f0f5fc;
+}
+
+
+.cb-article-content p {
+  margin: 0 0 20px;
+
+  color: #aebcd0;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+.cb-article-meta {
+  color: #8797ac;
+
+  font-size: 12px;
+}
+
+
+/* ================================================================
+   HOMEPAGE LINK RESET
+   The category cards and article cards are links in layouts/home.html.
+   Remove Hextra's default link styling so the cards remain visually
+   consistent with the reference design.
+   ================================================================ */
+
+.cb-category-card,
+.cb-article-card a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.cb-category-card {
+  display: block;
+}
+
+.cb-category-card:hover,
+.cb-category-card:focus,
+.cb-category-card:active,
+.cb-article-card a:hover,
+.cb-article-card a:focus,
+.cb-article-card a:active {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.cb-article-card a {
+  display: block;
+}
+
+
+/* ================================================================
+   FULL-WIDTH HEXTRA HOMEPAGE
+   The custom home template should use the full viewport width
+   rather than Hextra's normal article/content constraint.
+   ================================================================ */
+
+#content {
+  max-width: none !important;
+}
+
+#content > .content {
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+.cloudborg-home {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* ----------------------------------------------------------------
+   HEXTRA OVERRIDES
+   ---------------------------------------------------------------- */
+
+/*
+   Hextra's default homepage container can constrain the content.
+*/
+
+.hextra-home {
+  max-width: none !important;
+}
+
+
+.hextra-feature-grid {
+  max-width: 1400px;
+}
+
+
+/*
+   Remove excessive default spacing around the homepage.
+*/
+
+main {
+  overflow-x: hidden;
+}
+
+
+/* ----------------------------------------------------------------
+   MOBILE
+   ---------------------------------------------------------------- */
+
+@media (max-width: 1000px) {
+
+  .cb-hero {
+    grid-template-columns: 1fr;
+
+    padding-top: 55px;
+  }
+
+
+  .cb-hero-content {
+    text-align: center;
+
+    margin: 0 auto;
+  }
+
+
+  .cb-hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  .cb-hero-actions {
+    justify-content: center;
+  }
+
+
+  .cb-hero-visual {
+    margin-top: 35px;
+
+    transform: scale(.85);
+  }
+
+
+  .cb-categories {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+
+  .cb-articles {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .cb-hero {
+    padding:
+      40px
+      18px
+      30px;
+  }
+
+
+  .cb-hero h1 {
+    font-size: 42px;
+
+    letter-spacing: -1.5px;
+  }
+
+
+  .cb-hero-description {
+    font-size: 16px;
+  }
+
+
+  .cb-hero-actions {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .cb-hero-visual {
+    min-height: 330px;
+
+    transform: scale(.62);
+
+    margin-top: -10px;
+
+    margin-bottom: -50px;
+  }
+
+
+  .cb-categories {
+    grid-template-columns: 1fr;
+
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+
+  .cb-latest {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+
+  .cb-section-header {
+    align-items: start;
+
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+
+  .cb-articles {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ================================================================
    CLOUDBORG HOME PAGE SHELL
    ================================================================ */
 
@@ -167,4 +1219,87 @@ body:has(.cloudborg-home) footer a:hover {
     );
 
   pointer-events: none;
+}
+
+/* ================================================================
+   FINAL HOMEPAGE COMPONENT FIXES
+   ================================================================ */
+
+.cloudborg-home .cb-category-card {
+  display: block;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.cloudborg-home .cb-category-card h3 {
+  display: block;
+  margin: 10px 0 0;
+}
+
+.cloudborg-home .cb-category-card > span {
+  display: inline-block;
+  margin-top: 2px;
+  color: #26aaff !important;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.cloudborg-home .cb-article-card > a {
+  display: block;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.cloudborg-home .cb-hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.cloudborg-home .cb-hero::after {
+  z-index: 0;
+}
+
+.cloudborg-home .cb-hero-content,
+.cloudborg-home .cb-hero-visual {
+  position: relative;
+  z-index: 2;
+}
+
+.cloudborg-home h1,
+.cloudborg-home h2,
+.cloudborg-home h3,
+.cloudborg-home p {
+  font-family: inherit;
+}
+
+body:has(.cloudborg-home) {
+  background: #020b1c !important;
+}
+
+body:has(.cloudborg-home) #content {
+  background:
+    radial-gradient(
+      circle at 78% 18%,
+      rgba(0, 137, 255, 0.10),
+      transparent 28%
+    ),
+    linear-gradient(
+      180deg,
+      #020b1c 0%,
+      #031126 45%,
+      #020b1c 100%
+    ) !important;
+}
+
+body:has(.cloudborg-home) .hextra-nav-container {
+  background: #020b1c !important;
+}
+
+body:has(.cloudborg-home) .hextra-nav-container-blur {
+  background: rgba(2, 11, 28, 0.94) !important;
+}
+
+body:has(.cloudborg-home) footer {
+  background: #020b1c !important;
+  border-top: 1px solid rgba(93, 150, 220, 0.12);
 }
