@@ -2090,3 +2090,530 @@ body:has(.cloudborg-home) footer {
     margin-bottom: 18px !important;
   }
 }
+
+/* =================================================================
+   CLOUDBORG LIGHT PURPLE THEME — CLAUDE-INSPIRED
+   Experimental light-purple alternative palette.
+   Does NOT replace the existing design; append this file after
+   custom.css to preview the warm direction.
+   ================================================================= */
+
+:root {
+  --cb-warm-bg: #f7f5fc;
+  --cb-warm-bg-deep: #eeebf6;
+  --cb-warm-surface: #fcfbff;
+  --cb-warm-surface-2: #f2eff8;
+  --cb-warm-text: #28242f;
+  --cb-warm-muted: #716b7b;
+  --cb-warm-border: #ded9e8;
+  --cb-warm-border-strong: #cdc5da;
+  --cb-warm-accent: #8b6fc7;
+  --cb-warm-accent-dark: #6f56a8;
+  --cb-warm-accent-soft: #cfc2ea;
+  --cb-warm-shadow: rgba(76, 56, 37, .10);
+}
+
+/* ---------------------------------------------------------------
+   Global homepage canvas
+   --------------------------------------------------------------- */
+
+body:has(.cloudborg-home) {
+  color: var(--cb-warm-text) !important;
+  background:
+    radial-gradient(circle at 80% 0%, rgba(177, 153, 224, .13), transparent 27%),
+    var(--cb-warm-bg) !important;
+}
+
+body:has(.cloudborg-home) #content {
+  background:
+    radial-gradient(circle at 80% 6%, rgba(177, 153, 224, .11), transparent 28%),
+    radial-gradient(circle at 8% 34%, rgba(186, 174, 211, .09), transparent 31%),
+    linear-gradient(180deg, #faf8fd 0%, #f7f5fc 58%, #f0edf7 100%) !important;
+}
+
+/* ---------------------------------------------------------------
+   Navbar — warm paper / editorial
+   --------------------------------------------------------------- */
+
+body:has(.cloudborg-home) .hextra-nav-container {
+  color: var(--cb-warm-text) !important;
+  background: rgba(248, 245, 238, .88) !important;
+  border-bottom: 1px solid rgba(151, 134, 112, .18) !important;
+  box-shadow: 0 8px 30px rgba(73, 57, 40, .045) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+body:has(.cloudborg-home) .hextra-nav-container-blur {
+  background: rgba(248, 245, 238, .76) !important;
+  box-shadow: none !important;
+}
+
+body:has(.cloudborg-home) .hextra-nav-container a,
+body:has(.cloudborg-home) .hextra-nav-container button {
+  color: #514a5d !important;
+}
+
+body:has(.cloudborg-home) .hextra-nav-container a:hover,
+body:has(.cloudborg-home) .hextra-nav-container button:hover {
+  color: var(--cb-warm-accent-dark) !important;
+}
+
+/* ---------------------------------------------------------------
+   Hero
+   --------------------------------------------------------------- */
+
+.cb-hero {
+  color: var(--cb-warm-text);
+}
+
+.cb-hero::before {
+  background:
+    radial-gradient(circle at 72% 48%, rgba(206, 119, 76, .13), transparent 31%),
+    radial-gradient(circle at 18% 44%, rgba(186, 174, 211, .10), transparent 38%),
+    linear-gradient(90deg, rgba(248, 245, 238, .18), transparent 55%);
+}
+
+.cb-hero-kicker {
+  border-color: rgba(157, 92, 58, .20);
+  background: rgba(139, 111, 199, .065);
+  color: var(--cb-warm-accent-dark);
+}
+
+.cb-hero-kicker::before {
+  background: var(--cb-warm-accent);
+  box-shadow: 0 0 12px rgba(200, 107, 60, .35);
+}
+
+.cb-hero h1 {
+  color: var(--cb-warm-text) !important;
+}
+
+.cb-hero h1 span {
+  background: linear-gradient(
+    100deg,
+    #9e4d29 0%,
+    #8b6fc7 50%,
+    #d68b61 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: none;
+}
+
+.cb-hero-description {
+  color: var(--cb-warm-muted);
+}
+
+.cb-button-primary {
+  color: #fff !important;
+  background: linear-gradient(135deg, #a9512b, #8b6fc7 65%, #d47d4e);
+  box-shadow:
+    0 10px 28px rgba(111, 86, 168, .14),
+    inset 0 1px rgba(255, 255, 255, .22);
+}
+
+.cb-button-primary:hover {
+  box-shadow:
+    0 14px 36px rgba(111, 86, 168, .19),
+    inset 0 1px rgba(255, 255, 255, .28);
+}
+
+.cb-button-secondary {
+  color: #514a42 !important;
+  border-color: var(--cb-warm-border-strong);
+  background: rgba(255, 253, 248, .60);
+}
+
+.cb-button-secondary:hover {
+  color: var(--cb-warm-accent-dark) !important;
+  border-color: rgba(111, 86, 168, .36);
+  background: rgba(255, 251, 244, .92);
+}
+
+/* ---------------------------------------------------------------
+   Hero cloud — replace cold blue with clay / terracotta
+   --------------------------------------------------------------- */
+
+.cb-cloud-glow {
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(139, 111, 199, .15),
+      rgba(207, 194, 234, .08) 42%,
+      transparent 69%
+    );
+  filter: blur(38px);
+  opacity: .95;
+}
+
+.cb-main-cloud {
+  border-color: rgba(128, 104, 178, .40);
+  background:
+    radial-gradient(
+      circle at 50% 14%,
+      rgba(207, 194, 234, .25),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #e8e1f2 0%,
+      #d8cbe8 100%
+    );
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, .38),
+    0 20px 60px rgba(77, 61, 104, .10),
+    inset 0 1px rgba(255, 255, 255, .72),
+    inset 0 -35px 65px rgba(104, 83, 135, .08);
+}
+
+.cb-main-cloud::before {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(111, 91, 145, .18),
+      transparent
+    );
+}
+
+.cb-cloud-text {
+  color: #3d3548;
+  text-shadow: none;
+}
+
+.cb-city {
+  opacity: .32;
+  filter: none;
+}
+
+.cb-building {
+  border-color: rgba(131, 94, 68, .30);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(160, 119, 89, .52),
+      rgba(87, 63, 46, .26)
+    );
+}
+
+.cb-building::after {
+  background: rgba(199, 107, 60, .62);
+  box-shadow:
+    0 12px rgba(199, 107, 60, .30),
+    0 24px rgba(199, 107, 60, .22);
+}
+
+.cb-orbit {
+  border-color: rgba(126, 106, 157, .17);
+  box-shadow: 0 0 18px rgba(150, 107, 75, .035);
+}
+
+.cb-orbit-2 {
+  border-color: rgba(126, 106, 157, .11);
+}
+
+/* Technology node badges */
+.cb-cloud-label {
+  border-color: rgba(120, 105, 143, .16);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 252, 246, .86),
+      rgba(242, 235, 224, .88)
+    );
+  box-shadow:
+    0 12px 30px rgba(68, 54, 91, .08),
+    inset 0 1px rgba(255, 255, 255, .80);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.cb-cloud-label:hover {
+  border-color: rgba(170, 91, 53, .38);
+  box-shadow:
+    0 15px 35px rgba(68, 54, 91, .11),
+    0 0 20px rgba(199, 107, 60, .06);
+}
+
+.cb-cloud-label strong {
+  color: #40384d;
+  text-shadow: none;
+}
+
+.cb-cloud-label small {
+  color: #7b7167;
+}
+
+.cb-aws strong {
+  color: #8b6fc7;
+}
+
+.cb-gcp strong {
+  color: #7184aa;
+}
+
+.cb-ai strong {
+  color: #8b72a5;
+}
+
+.cb-k8s strong {
+  color: #667fa0;
+}
+
+.cb-aws::after,
+.cb-gcp::after,
+.cb-ai::after,
+.cb-k8s::after {
+  background: var(--cb-warm-accent);
+  box-shadow: 0 0 10px rgba(200, 107, 60, .40);
+}
+
+/* ---------------------------------------------------------------
+   Category cards — paper cards
+   --------------------------------------------------------------- */
+
+.cb-category-card {
+  border-color: var(--cb-warm-border);
+  background:
+    radial-gradient(
+      circle at 94% 6%,
+      var(--cb-card-glow, rgba(200, 107, 60, .06)),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(255, 253, 248, .92),
+      rgba(248, 244, 236, .94)
+    );
+  box-shadow:
+    0 14px 38px var(--cb-warm-shadow),
+    inset 0 1px rgba(255, 255, 255, .78);
+}
+
+.cb-category-card::before {
+  background:
+    linear-gradient(
+      90deg,
+      transparent 4%,
+      var(--cb-card-line, rgba(176, 125, 91, .28)) 50%,
+      transparent 96%
+    );
+}
+
+.cb-category-card::after {
+  background: var(--cb-card-orb, rgba(200, 107, 60, .055));
+}
+
+.cb-category-card:hover {
+  border-color: var(--cb-card-border, rgba(180, 103, 64, .34));
+  background:
+    radial-gradient(
+      circle at 94% 6%,
+      var(--cb-card-glow-hover, rgba(200, 107, 60, .10)),
+      transparent 37%
+    ),
+    linear-gradient(
+      145deg,
+      #fefcff,
+      #f4f0fa
+    );
+  box-shadow:
+    0 22px 52px rgba(68, 54, 91, .105),
+    0 0 30px var(--cb-card-shadow, rgba(177, 93, 50, .05)),
+    inset 0 1px rgba(255, 255, 255, .90);
+}
+
+.cb-category-card h3 {
+  color: #2d2936;
+}
+
+.cb-category-card p {
+  color: #736d7d;
+}
+
+.cb-category-card > span {
+  color: var(--cb-warm-accent-dark) !important;
+}
+
+.cb-category-card:hover > span {
+  color: #7b60b5 !important;
+}
+
+/* Icon containers */
+.cb-category-icon {
+  border-color: rgba(137, 113, 87, .17);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 253, 248, .95),
+      rgba(238, 231, 219, .88)
+    );
+  box-shadow:
+    0 8px 22px rgba(76, 56, 37, .08),
+    inset 0 1px rgba(255, 255, 255, .90);
+}
+
+.cb-category-card:hover .cb-category-icon {
+  border-color: rgba(126, 101, 181, .28);
+  box-shadow:
+    0 10px 26px rgba(76, 56, 37, .10),
+    0 0 18px rgba(126, 101, 181, .045);
+}
+
+.cb-category-icon::after {
+  background: var(--cb-warm-accent);
+  box-shadow: 0 0 9px rgba(200, 107, 60, .40);
+}
+
+/* Warm category accents */
+.cb-category-card:nth-child(1) {
+  --cb-card-glow: rgba(202, 124, 69, .065);
+  --cb-card-glow-hover: rgba(202, 124, 69, .105);
+  --cb-card-orb: rgba(202, 124, 69, .055);
+  --cb-card-line: rgba(202, 124, 69, .30);
+  --cb-card-border: rgba(184, 105, 57, .34);
+  --cb-card-shadow: rgba(184, 105, 57, .055);
+}
+
+.cb-category-card:nth-child(2) {
+  --cb-card-glow: rgba(100, 135, 158, .065);
+  --cb-card-glow-hover: rgba(100, 135, 158, .105);
+  --cb-card-orb: rgba(100, 135, 158, .055);
+  --cb-card-line: rgba(100, 135, 158, .28);
+  --cb-card-border: rgba(88, 123, 149, .34);
+  --cb-card-shadow: rgba(88, 123, 149, .055);
+}
+
+.cb-category-card:nth-child(3) {
+  --cb-card-glow: rgba(147, 103, 126, .065);
+  --cb-card-glow-hover: rgba(147, 103, 126, .105);
+  --cb-card-orb: rgba(147, 103, 126, .055);
+  --cb-card-line: rgba(147, 103, 126, .28);
+  --cb-card-border: rgba(136, 90, 116, .32);
+  --cb-card-shadow: rgba(136, 90, 116, .055);
+}
+
+.cb-category-card:nth-child(4) {
+  --cb-card-glow: rgba(88, 134, 145, .065);
+  --cb-card-glow-hover: rgba(88, 134, 145, .105);
+  --cb-card-orb: rgba(88, 134, 145, .055);
+  --cb-card-line: rgba(88, 134, 145, .28);
+  --cb-card-border: rgba(72, 121, 134, .32);
+  --cb-card-shadow: rgba(72, 121, 134, .055);
+}
+
+/* ---------------------------------------------------------------
+   Latest articles — editorial cards
+   --------------------------------------------------------------- */
+
+.cb-latest {
+  color: var(--cb-warm-text);
+}
+
+.cb-section-kicker {
+  color: var(--cb-warm-accent-dark);
+}
+
+.cb-section-header h2 {
+  color: #2d2936;
+}
+
+.cb-view-all {
+  color: var(--cb-warm-accent-dark) !important;
+}
+
+.cb-article-card {
+  border-color: var(--cb-warm-border);
+  background:
+    linear-gradient(
+      160deg,
+      rgba(255, 253, 248, .94),
+      rgba(246, 241, 232, .96)
+    );
+  box-shadow:
+    0 14px 38px rgba(68, 54, 91, .075),
+    inset 0 1px rgba(255, 255, 255, .78);
+}
+
+.cb-article-card:hover {
+  border-color: rgba(184, 105, 62, .34);
+  box-shadow:
+    0 22px 52px rgba(68, 54, 91, .105),
+    0 0 26px rgba(184, 105, 62, .045);
+}
+
+.cb-article-image {
+  border-bottom-color: rgba(120, 105, 143, .13);
+}
+
+.cb-image-aws {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(213, 132, 67, .16), transparent 30%),
+    linear-gradient(145deg, #e8e3f2, #d8d1e5);
+}
+
+.cb-image-gcp {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(91, 129, 154, .15), transparent 30%),
+    linear-gradient(145deg, #e3e2ef, #d6d4e3);
+}
+
+.cb-image-ai {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(145, 102, 127, .17), transparent 30%),
+    linear-gradient(145deg, #e5dff0, #d7cfe2);
+}
+
+.cb-image-k8s {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(75, 131, 146, .16), transparent 30%),
+    linear-gradient(145deg, #dde1ee, #d1d5e2);
+}
+
+.cb-article-tag {
+  background: rgba(255, 251, 244, .80);
+  color: #696273;
+  border: 1px solid rgba(120, 105, 143, .14);
+}
+
+.cb-article-content h3 {
+  color: #2d2924;
+}
+
+.cb-article-content p {
+  color: #787180;
+}
+
+.cb-article-meta {
+  color: #8b8494;
+}
+
+/* ---------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------- */
+
+body:has(.cloudborg-home) footer {
+  color: #706a79 !important;
+  background: #eeebf6 !important;
+  border-top: 1px solid var(--cb-warm-border);
+}
+
+body:has(.cloudborg-home) footer a {
+  color: #696273 !important;
+}
+
+body:has(.cloudborg-home) footer a:hover {
+  color: var(--cb-warm-accent-dark) !important;
+}
+
+/* ---------------------------------------------------------------
+   Dark-mode safeguard:
+   this experimental theme intentionally remains warm/light.
+   --------------------------------------------------------------- */
+
+@media (prefers-color-scheme: dark) {
+  body:has(.cloudborg-home) {
+    color-scheme: light;
+  }
+}
