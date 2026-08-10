@@ -1691,3 +1691,402 @@ body:has(.cloudborg-home) footer {
     min-width: 76px;
   }
 }
+
+/* =================================================================
+   CLOUDBORG CATEGORY CARDS — PASS 3
+   Premium AWS / GCP / AI / Kubernetes navigation cards.
+   CSS-only: existing homepage markup is preserved.
+   ================================================================= */
+
+.cb-categories {
+  position: relative;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 14px 46px 92px;
+  gap: 18px;
+}
+
+/* Four cards should feel like one coherent technology system. */
+.cb-category-card {
+  position: relative;
+  min-height: 205px;
+  overflow: hidden;
+  isolation: isolate;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 27px 26px 23px;
+  border: 1px solid rgba(103, 159, 211, .16);
+  border-radius: 15px;
+
+  background:
+    radial-gradient(
+      circle at 92% 8%,
+      var(--cb-card-glow, rgba(45, 170, 255, .09)),
+      transparent 34%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(10, 31, 57, .92),
+      rgba(3, 14, 29, .95)
+    );
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, .16),
+    inset 0 1px 0 rgba(255, 255, 255, .035);
+
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background .22s ease;
+}
+
+/* Soft top-edge light. */
+.cb-category-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 4%,
+      var(--cb-card-line, rgba(52, 180, 255, .36)) 50%,
+      transparent 96%
+    );
+
+  opacity: .7;
+}
+
+/* Large atmospheric glow in the corner. */
+.cb-category-card::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 190px;
+  height: 190px;
+  right: -82px;
+  top: -90px;
+
+  border-radius: 50%;
+  background: var(--cb-card-orb, rgba(0, 157, 255, .09));
+  filter: blur(18px);
+  opacity: .8;
+  transition: transform .35s ease, opacity .25s ease;
+}
+
+.cb-category-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--cb-card-border, rgba(55, 184, 255, .42));
+
+  background:
+    radial-gradient(
+      circle at 92% 8%,
+      var(--cb-card-glow-hover, rgba(45, 170, 255, .14)),
+      transparent 37%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(12, 37, 68, .96),
+      rgba(3, 15, 31, .98)
+    );
+
+  box-shadow:
+    0 25px 65px rgba(0, 0, 0, .24),
+    0 0 34px var(--cb-card-shadow, rgba(0, 142, 255, .07)),
+    inset 0 1px 0 rgba(255, 255, 255, .05);
+}
+
+.cb-category-card:hover::after {
+  transform: scale(1.25);
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------
+   Technology-specific accents
+   --------------------------------------------------------------- */
+
+.cb-category-card:nth-child(1) {
+  --cb-card-glow: rgba(255, 167, 54, .075);
+  --cb-card-glow-hover: rgba(255, 167, 54, .13);
+  --cb-card-orb: rgba(255, 157, 39, .075);
+  --cb-card-line: rgba(255, 178, 76, .40);
+  --cb-card-border: rgba(255, 171, 67, .40);
+  --cb-card-shadow: rgba(255, 153, 0, .075);
+}
+
+.cb-category-card:nth-child(2) {
+  --cb-card-glow: rgba(65, 159, 255, .085);
+  --cb-card-glow-hover: rgba(65, 159, 255, .14);
+  --cb-card-orb: rgba(52, 148, 255, .09);
+  --cb-card-line: rgba(74, 174, 255, .40);
+  --cb-card-border: rgba(65, 169, 255, .42);
+  --cb-card-shadow: rgba(0, 143, 255, .08);
+}
+
+.cb-category-card:nth-child(3) {
+  --cb-card-glow: rgba(170, 105, 255, .085);
+  --cb-card-glow-hover: rgba(170, 105, 255, .14);
+  --cb-card-orb: rgba(164, 92, 255, .09);
+  --cb-card-line: rgba(183, 125, 255, .40);
+  --cb-card-border: rgba(177, 113, 255, .40);
+  --cb-card-shadow: rgba(139, 72, 255, .08);
+}
+
+.cb-category-card:nth-child(4) {
+  --cb-card-glow: rgba(51, 191, 255, .085);
+  --cb-card-glow-hover: rgba(51, 191, 255, .14);
+  --cb-card-orb: rgba(32, 179, 255, .09);
+  --cb-card-line: rgba(65, 201, 255, .40);
+  --cb-card-border: rgba(53, 194, 255, .42);
+  --cb-card-shadow: rgba(0, 170, 255, .08);
+}
+
+/* ---------------------------------------------------------------
+   Icon container
+   --------------------------------------------------------------- */
+
+.cb-category-icon {
+  position: relative;
+  z-index: 2;
+
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 0 18px;
+
+  border: 1px solid rgba(114, 177, 225, .16);
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(16, 50, 83, .82),
+      rgba(4, 21, 41, .84)
+    );
+
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, .18),
+    inset 0 1px rgba(255, 255, 255, .045);
+
+  font-size: 21px;
+
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease;
+}
+
+.cb-category-card:hover .cb-category-icon {
+  transform: translateY(-2px) scale(1.04);
+  border-color: rgba(96, 194, 255, .34);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, .22),
+    0 0 20px rgba(0, 147, 255, .08),
+    inset 0 1px rgba(255, 255, 255, .055);
+}
+
+/* Add a small status dot to each icon. */
+.cb-category-icon::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  right: 6px;
+  top: 6px;
+  border-radius: 50%;
+  background: #48bfff;
+  box-shadow: 0 0 10px rgba(72, 191, 255, .75);
+}
+
+/* AWS */
+.cb-category-card:nth-child(1) .cb-category-icon {
+  border-color: rgba(255, 174, 70, .20);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(86, 53, 22, .56),
+      rgba(25, 22, 20, .84)
+    );
+}
+
+.cb-category-card:nth-child(1) .cb-category-icon::after {
+  background: #ffad45;
+  box-shadow: 0 0 10px rgba(255, 173, 69, .72);
+}
+
+/* GCP */
+.cb-category-card:nth-child(2) .cb-category-icon {
+  border-color: rgba(77, 178, 255, .22);
+}
+
+/* AI */
+.cb-category-card:nth-child(3) .cb-category-icon {
+  border-color: rgba(179, 123, 255, .22);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(58, 34, 92, .55),
+      rgba(18, 18, 42, .84)
+    );
+}
+
+.cb-category-card:nth-child(3) .cb-category-icon::after {
+  background: #c08bff;
+  box-shadow: 0 0 10px rgba(192, 139, 255, .72);
+}
+
+/* Kubernetes */
+.cb-category-card:nth-child(4) .cb-category-icon {
+  border-color: rgba(73, 196, 255, .22);
+}
+
+.cb-category-card:nth-child(4) .cb-category-icon::after {
+  background: #48c8ff;
+  box-shadow: 0 0 10px rgba(72, 200, 255, .72);
+}
+
+/* ---------------------------------------------------------------
+   Card typography
+   --------------------------------------------------------------- */
+
+.cb-category-card h3 {
+  position: relative;
+  z-index: 2;
+
+  margin: 0 !important;
+
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -.45px;
+
+  color: #edf7ff;
+}
+
+.cb-category-card p {
+  position: relative;
+  z-index: 2;
+
+  flex: 1;
+
+  margin: 10px 0 20px !important;
+
+  color: #98acc2;
+
+  font-size: 13px;
+  line-height: 1.62;
+}
+
+.cb-category-card > span {
+  position: relative;
+  z-index: 2;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-top: auto;
+
+  color: #50bcff !important;
+
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 750;
+  letter-spacing: .15px;
+
+  transition: gap .2s ease, color .2s ease;
+}
+
+.cb-category-card > span::after {
+  content: "→";
+  font-size: 14px;
+  transition: transform .2s ease;
+}
+
+.cb-category-card:hover > span {
+  gap: 10px;
+  color: #86d4ff !important;
+}
+
+.cb-category-card:hover > span::after {
+  transform: translateX(2px);
+}
+
+/* ---------------------------------------------------------------
+   Small visual divider above the CTA
+   --------------------------------------------------------------- */
+
+.cb-category-card > span::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  margin-right: 2px;
+  background: currentColor;
+  opacity: .30;
+}
+
+/* ---------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+  .cb-categories {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  .cb-category-card {
+    min-height: 195px;
+    padding: 24px 22px 21px;
+  }
+}
+
+@media (max-width: 800px) {
+  .cb-categories {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .cb-category-card {
+    min-height: 190px;
+  }
+}
+
+@media (max-width: 600px) {
+  .cb-categories {
+    grid-template-columns: 1fr;
+    gap: 13px;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 70px;
+  }
+
+  .cb-category-card {
+    min-height: 175px;
+    padding: 22px 21px 20px;
+  }
+
+  .cb-category-icon {
+    width: 43px;
+    height: 43px;
+    flex-basis: 43px;
+    margin-bottom: 15px;
+  }
+
+  .cb-category-card p {
+    margin-top: 9px !important;
+    margin-bottom: 18px !important;
+  }
+}
